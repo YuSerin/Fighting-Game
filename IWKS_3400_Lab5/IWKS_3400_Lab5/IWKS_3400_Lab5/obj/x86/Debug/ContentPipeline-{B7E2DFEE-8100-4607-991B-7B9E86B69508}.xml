@@ -7,8 +7,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\yuser\Desktop\School\Game Development\IWKS_3400_Lab5\IWKS_3400_Lab5\IWKS_3400_Lab5\bin\x86\Debug\Content\Boss.xnb</Output>
-      <Time>2017-02-25T16:47:57.3388062-07:00</Time>
+      <Output>C:\Users\Christopher Corona\Documents\Lab5\Fighting-Game\IWKS_3400_Lab5\IWKS_3400_Lab5\IWKS_3400_Lab5\bin\x86\Debug\Content\Boss.xnb</Output>
+      <Time>2017-03-03T15:56:20.7880176-07:00</Time>
     </Item>
     <Item>
       <Source>forest.png</Source>
@@ -16,8 +16,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\yuser\Desktop\School\Game Development\IWKS_3400_Lab5\IWKS_3400_Lab5\IWKS_3400_Lab5\bin\x86\Debug\Content\forest.xnb</Output>
-      <Time>2017-02-26T17:35:05.5276804-07:00</Time>
+      <Output>C:\Users\Christopher Corona\Documents\Lab5\Fighting-Game\IWKS_3400_Lab5\IWKS_3400_Lab5\IWKS_3400_Lab5\bin\x86\Debug\Content\forest.xnb</Output>
+      <Time>2017-03-03T15:56:20.8164343-07:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
@@ -26,10 +26,10 @@
       <TargetProfile>Reach</TargetProfile>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>C:\Users\yuser\Desktop\School\Game Development\IWKS_3400_Lab5\IWKS_3400_Lab5\IWKS_3400_Lab5Content\</RootDirectory>
-      <LoggerRootDirectory>C:\Users\yuser\Desktop\School\Game Development\IWKS_3400_Lab5\IWKS_3400_Lab5\IWKS_3400_Lab5\</LoggerRootDirectory>
-      <IntermediateDirectory>C:\Users\yuser\Desktop\School\Game Development\IWKS_3400_Lab5\IWKS_3400_Lab5\IWKS_3400_Lab5\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>C:\Users\yuser\Desktop\School\Game Development\IWKS_3400_Lab5\IWKS_3400_Lab5\IWKS_3400_Lab5\bin\x86\Debug\Content\</OutputDirectory>
+      <RootDirectory>C:\Users\Christopher Corona\Documents\Lab5\Fighting-Game\IWKS_3400_Lab5\IWKS_3400_Lab5\IWKS_3400_Lab5Content\</RootDirectory>
+      <LoggerRootDirectory>C:\Users\Christopher Corona\Documents\Lab5\Fighting-Game\IWKS_3400_Lab5\IWKS_3400_Lab5\IWKS_3400_Lab5\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\Users\Christopher Corona\Documents\Lab5\Fighting-Game\IWKS_3400_Lab5\IWKS_3400_Lab5\IWKS_3400_Lab5\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\Users\Christopher Corona\Documents\Lab5\Fighting-Game\IWKS_3400_Lab5\IWKS_3400_Lab5\IWKS_3400_Lab5\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>
@@ -58,7 +58,7 @@
       </Assembly>
       <Assembly>
         <Key>C:\WINDOWS\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
-        <Value>2017-01-23T11:28:47.1873255-07:00</Value>
+        <Value>2017-01-20T11:25:49.73913-07:00</Value>
       </Assembly>
     </Assemblies>
   </Asset>

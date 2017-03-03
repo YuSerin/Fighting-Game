@@ -15,6 +15,8 @@ namespace IWKS_3400_Lab5
     /// This is the main type for your game
     /// </summary>
     public class Game1 : Microsoft.Xna.Framework.Game
+
+        //added this
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
