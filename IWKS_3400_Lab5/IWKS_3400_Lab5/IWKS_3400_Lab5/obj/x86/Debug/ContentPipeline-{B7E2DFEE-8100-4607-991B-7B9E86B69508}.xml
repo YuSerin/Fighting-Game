@@ -7,7 +7,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\yuser\Desktop\School\Game Development\IWKS_3400_Lab5\IWKS_3400_Lab5\IWKS_3400_Lab5\bin\x86\Debug\Content\Boss.xnb</Output>
+      <Output>C:\Users\yuser\OneDrive\Documents\GitHub\Fighting-Game\IWKS_3400_Lab5\IWKS_3400_Lab5\IWKS_3400_Lab5\bin\x86\Debug\Content\Boss.xnb</Output>
       <Time>2017-02-25T16:47:57.3388062-07:00</Time>
     </Item>
     <Item>
@@ -16,7 +16,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\yuser\Desktop\School\Game Development\IWKS_3400_Lab5\IWKS_3400_Lab5\IWKS_3400_Lab5\bin\x86\Debug\Content\forest.xnb</Output>
+      <Output>C:\Users\yuser\OneDrive\Documents\GitHub\Fighting-Game\IWKS_3400_Lab5\IWKS_3400_Lab5\IWKS_3400_Lab5\bin\x86\Debug\Content\forest.xnb</Output>
       <Time>2017-02-26T17:35:05.5276804-07:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
@@ -26,10 +26,10 @@
       <TargetProfile>Reach</TargetProfile>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>C:\Users\yuser\Desktop\School\Game Development\IWKS_3400_Lab5\IWKS_3400_Lab5\IWKS_3400_Lab5Content\</RootDirectory>
-      <LoggerRootDirectory>C:\Users\yuser\Desktop\School\Game Development\IWKS_3400_Lab5\IWKS_3400_Lab5\IWKS_3400_Lab5\</LoggerRootDirectory>
-      <IntermediateDirectory>C:\Users\yuser\Desktop\School\Game Development\IWKS_3400_Lab5\IWKS_3400_Lab5\IWKS_3400_Lab5\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>C:\Users\yuser\Desktop\School\Game Development\IWKS_3400_Lab5\IWKS_3400_Lab5\IWKS_3400_Lab5\bin\x86\Debug\Content\</OutputDirectory>
+      <RootDirectory>C:\Users\yuser\OneDrive\Documents\GitHub\Fighting-Game\IWKS_3400_Lab5\IWKS_3400_Lab5\IWKS_3400_Lab5Content\</RootDirectory>
+      <LoggerRootDirectory>C:\Users\yuser\OneDrive\Documents\GitHub\Fighting-Game\IWKS_3400_Lab5\IWKS_3400_Lab5\IWKS_3400_Lab5\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\Users\yuser\OneDrive\Documents\GitHub\Fighting-Game\IWKS_3400_Lab5\IWKS_3400_Lab5\IWKS_3400_Lab5\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\Users\yuser\OneDrive\Documents\GitHub\Fighting-Game\IWKS_3400_Lab5\IWKS_3400_Lab5\IWKS_3400_Lab5\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>

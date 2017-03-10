@@ -1,0 +1,5 @@
+Content\Textures\Idle.xnb
+Content\Textures\Walk-Right.xnb
+Content\Textures\Walk-Left.xnb
+Content\Textures\Crouch.xnb
+Content\Textures\Mid-Punch.xnb

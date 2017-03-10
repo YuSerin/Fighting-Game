@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSCI_2941_Lab5", "CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5.csproj", "{7B45CF91-CB53-473C-A0A9-2B0E305D5D57}"
+EndProject
+Project("{96E2B04D-8817-42C6-938A-82C39BA4D311}") = "CSCI_2941_Lab5Content", "CSCI_2941_Lab5\CSCI_2941_Lab5Content\CSCI_2941_Lab5Content.contentproj", "{D4328EB7-9DD0-4E75-8C94-51451FD139B1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7B45CF91-CB53-473C-A0A9-2B0E305D5D57}.Debug|x86.ActiveCfg = Debug|x86
+		{7B45CF91-CB53-473C-A0A9-2B0E305D5D57}.Debug|x86.Build.0 = Debug|x86
+		{7B45CF91-CB53-473C-A0A9-2B0E305D5D57}.Release|x86.ActiveCfg = Release|x86
+		{7B45CF91-CB53-473C-A0A9-2B0E305D5D57}.Release|x86.Build.0 = Release|x86
+		{D4328EB7-9DD0-4E75-8C94-51451FD139B1}.Debug|x86.ActiveCfg = Debug|x86
+		{D4328EB7-9DD0-4E75-8C94-51451FD139B1}.Release|x86.ActiveCfg = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

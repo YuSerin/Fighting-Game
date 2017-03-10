@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 
-namespace IWKS_3400_Lab5
+namespace CSCI_2941_Lab5
 {
     /// <summary>
     /// This is the main type for your game
@@ -18,20 +18,16 @@ namespace IWKS_3400_Lab5
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        Texture2D background;
-        Rectangle mainFrame;
-        //Scrolling scrolling1;
-        //Scrolling scrolling2;
 
-        Player player = new Player();
-        Camera camera;
+        PlayerSonya Sonya = new PlayerSonya();
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
 
-            graphics.PreferredBackBufferWidth = 400;
-            graphics.PreferredBackBufferHeight = 240;
+            graphics.PreferredBackBufferWidth = 600;
+            graphics.PreferredBackBufferHeight = 600;
         }
 
         /// <summary>
@@ -42,11 +38,12 @@ namespace IWKS_3400_Lab5
         /// </summary>
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
-            player.Initialize();
-            camera = new Camera(graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight);
+            Sonya.Initialize();
+
             base.Initialize();
-            this.IsMouseVisible = true;     // Mouse visible in screen //
+            this.IsMouseVisible = true;
+            graphics.PreferredBackBufferWidth = 600;
+            graphics.PreferredBackBufferHeight = 600;
         }
 
         /// <summary>
@@ -57,14 +54,8 @@ namespace IWKS_3400_Lab5
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            mainFrame = new Rectangle(0, 0, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height);
-            background = Content.Load<Texture2D>("forest");
 
-            // TODO: use this.Content to load your game content here
-            //scrolling1 = new Scrolling(Content.Load<Texture2D>("forest"), new Rectangle(0, 0, 504, 240));
-            //scrolling2 = new Scrolling(Content.Load<Texture2D>("forest"), new Rectangle(504, 0, 504, 240));
-
-            player.LoadContent(Content);
+            Sonya.LoadContent(Content);
         }
 
         /// <summary>
@@ -73,11 +64,7 @@ namespace IWKS_3400_Lab5
         /// </summary>
         protected override void UnloadContent()
         {
-            // TODO: Unload any non ContentManager content here
-            player.playerImg.Dispose();
-            background.Dispose();
-            //scrolling1.texture.Dispose();
-            //scrolling2.texture.Dispose();
+            Sonya.Dispose();
             spriteBatch.Dispose();
         }
 
@@ -92,9 +79,7 @@ namespace IWKS_3400_Lab5
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 
-            // TODO: Add your update logic here
-            player.Update(gameTime);
-            camera.Update(player.playerPosition);
+            Sonya.Update(gameTime);
 
             base.Update(gameTime);
         }
@@ -105,22 +90,11 @@ namespace IWKS_3400_Lab5
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.Blue);
 
-            // TODO: Add your drawing code here
-            // Anything drawn between the Begin and End is affected by camera //
-            spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend,
-                null, null, null, null, camera.viewMatrix);
-            spriteBatch.Draw(background, mainFrame, Color.White);
-            //scrolling1.Draw(spriteBatch);
-            //scrolling2.Draw(spriteBatch);
-            player.Draw(spriteBatch);
+            spriteBatch.Begin();
+            Sonya.Draw(spriteBatch);
             spriteBatch.End();
-
-            // Can add other Begin and End for other sprites //
-            // spriteBatch.Begin();
-
-            // spriteBatch.End();
 
             base.Draw(gameTime);
         }
