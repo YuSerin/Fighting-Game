@@ -7,13 +7,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-<<<<<<< HEAD
       <Output>C:\Users\yuser\OneDrive\Documents\GitHub\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\Textures\Idle.xnb</Output>
       <Time>2017-03-10T11:41:38.3391822-07:00</Time>
-=======
-      <Output>C:\Users\Taylor\Documents\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\Textures\Idle.xnb</Output>
-      <Time>2017-03-10T11:46:47.3494331-07:00</Time>
->>>>>>> origin/master
     </Item>
     <Item>
       <Source>Textures\Walk-Right.png</Source>
@@ -21,13 +16,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-<<<<<<< HEAD
       <Output>C:\Users\yuser\OneDrive\Documents\GitHub\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\Textures\Walk-Right.xnb</Output>
       <Time>2017-03-10T11:41:38.3431822-07:00</Time>
-=======
-      <Output>C:\Users\Taylor\Documents\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\Textures\Walk-Right.xnb</Output>
-      <Time>2017-03-10T11:46:47.3494331-07:00</Time>
->>>>>>> origin/master
     </Item>
     <Item>
       <Source>Textures\Walk-Left.png</Source>
@@ -35,13 +25,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-<<<<<<< HEAD
       <Output>C:\Users\yuser\OneDrive\Documents\GitHub\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\Textures\Walk-Left.xnb</Output>
       <Time>2017-03-10T11:41:38.3431822-07:00</Time>
-=======
-      <Output>C:\Users\Taylor\Documents\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\Textures\Walk-Left.xnb</Output>
-      <Time>2017-03-10T11:46:47.3494331-07:00</Time>
->>>>>>> origin/master
     </Item>
     <Item>
       <Source>Textures\Crouch.png</Source>
@@ -49,13 +34,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-<<<<<<< HEAD
       <Output>C:\Users\yuser\OneDrive\Documents\GitHub\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\Textures\Crouch.xnb</Output>
       <Time>2017-03-10T11:41:38.3391822-07:00</Time>
-=======
-      <Output>C:\Users\Taylor\Documents\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\Textures\Crouch.xnb</Output>
-      <Time>2017-03-10T11:46:47.3494331-07:00</Time>
->>>>>>> origin/master
     </Item>
     <Item>
       <Source>Textures\Mid-Punch.png</Source>
@@ -63,13 +43,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-<<<<<<< HEAD
       <Output>C:\Users\yuser\OneDrive\Documents\GitHub\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\Textures\Mid-Punch.xnb</Output>
       <Time>2017-03-10T11:41:38.3391822-07:00</Time>
-=======
-      <Output>C:\Users\Taylor\Documents\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\Textures\Mid-Punch.xnb</Output>
-      <Time>2017-03-10T11:46:47.3494331-07:00</Time>
->>>>>>> origin/master
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
@@ -78,17 +53,10 @@
       <TargetProfile>Reach</TargetProfile>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
-<<<<<<< HEAD
       <RootDirectory>C:\Users\yuser\OneDrive\Documents\GitHub\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5Content\</RootDirectory>
       <LoggerRootDirectory>C:\Users\yuser\OneDrive\Documents\GitHub\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\</LoggerRootDirectory>
       <IntermediateDirectory>C:\Users\yuser\OneDrive\Documents\GitHub\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\obj\x86\Debug\</IntermediateDirectory>
       <OutputDirectory>C:\Users\yuser\OneDrive\Documents\GitHub\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\</OutputDirectory>
-=======
-      <RootDirectory>C:\Users\Taylor\Documents\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5Content\</RootDirectory>
-      <LoggerRootDirectory>C:\Users\Taylor\Documents\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\</LoggerRootDirectory>
-      <IntermediateDirectory>C:\Users\Taylor\Documents\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>C:\Users\Taylor\Documents\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\</OutputDirectory>
->>>>>>> origin/master
     </Settings>
     <Assemblies>
       <Assembly>
@@ -117,7 +85,7 @@
       </Assembly>
       <Assembly>
         <Key>C:\WINDOWS\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
-        <Value>2017-01-20T12:01:44.3540463-07:00</Value>
+        <Value>2017-01-23T11:28:47.1873255-07:00</Value>
       </Assembly>
     </Assemblies>
   </Asset>

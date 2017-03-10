@@ -28,9 +28,10 @@ namespace CSCI_2941_Lab5
             //active = false;
         }
 
-        public void Update(GameTime gameTime, bool stateChanged)
+        public void Update(GameTime gameTime, bool stateChanged, bool looping)
         {
             frameTimer += (int)gameTime.ElapsedGameTime.TotalMilliseconds;
+
             if (stateChanged)
                 currentFrame = new Vector2(0, 0);
 
@@ -40,21 +41,14 @@ namespace CSCI_2941_Lab5
                 currentFrame = new Vector2(currentFrame.X + FrameSize[State].X, 0);
 
                 if (currentFrame.X >= playerImg[State].Width)
-                    currentFrame = new Vector2 (0, 0);     // Loop back to first frame //
+                {
+                    currentFrame = new Vector2(0, 0);     // Loop back to first frame //
+
+                    if (looping == false)
+                        return;
+                }
             }
             sourceRect = new Rectangle((int)currentFrame.X, (int)currentFrame.Y, 
-                (int)FrameSize[State].X, (int)FrameSize[State].Y);
-        }
-        public void playThrough(GameTime gameTime)
-        {
-            frameTimer += (int)gameTime.ElapsedGameTime.TotalMilliseconds;
-
-            if (frameTimer >= nextFrameTime)
-            {
-                frameTimer = 0;     // Reset Frame Time //
-                currentFrame = new Vector2(currentFrame.X + FrameSize[State].X, 0);
-            }
-            sourceRect = new Rectangle((int)currentFrame.X, (int)currentFrame.Y,
                 (int)FrameSize[State].X, (int)FrameSize[State].Y);
         }
         
