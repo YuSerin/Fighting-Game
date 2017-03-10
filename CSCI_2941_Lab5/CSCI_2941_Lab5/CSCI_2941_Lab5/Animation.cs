@@ -28,12 +28,11 @@ namespace CSCI_2941_Lab5
             //active = false;
         }
 
-        public void Update(GameTime gameTime)
+        public void Update(GameTime gameTime, bool stateChanged)
         {
-           // if (currentState != State)
-               // currentFrame = new Vector2(0, 0);   // Reset current frame //
-
             frameTimer += (int)gameTime.ElapsedGameTime.TotalMilliseconds;
+            if (stateChanged)
+                currentFrame = new Vector2(0, 0);
 
             if (frameTimer >= nextFrameTime)
             {

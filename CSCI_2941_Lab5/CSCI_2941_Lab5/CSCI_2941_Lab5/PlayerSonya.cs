@@ -20,7 +20,12 @@ namespace CSCI_2941_Lab5
         Vector2[] FrameSize = new Vector2[(int)Sprite.Max];
         Vector2 playerPosition = new Vector2(100f, 400f);
         float moveSpeed = 70f;
+<<<<<<< HEAD
         bool looping = true;
+=======
+        Keys lastKey;
+        bool stateChange;
+>>>>>>> origin/master
         public void Initialize()
         {
             FrameSize[(int)Sprite.Idle] = new Vector2(69f, 128f);
@@ -44,6 +49,7 @@ namespace CSCI_2941_Lab5
         }
         public void Update(GameTime gameTime)
         {
+<<<<<<< HEAD
             if (looping == false)
             {
                 playerAnimation.playThrough(gameTime);
@@ -85,6 +91,53 @@ namespace CSCI_2941_Lab5
 
                 playerAnimation.Update(gameTime);
             }
+=======
+            //playerAnimation.active = true;
+
+            if (Keyboard.GetState().IsKeyDown(Keys.Right))
+            {
+                if (lastKey != Keys.Right)
+                    stateChange = true;
+                lastKey = Keys.Right;
+                playerAnimation.State = (int)Sprite.Walk_R;
+                //playerAnimation.currentState = playerAnimation.State;
+                playerAnimation.playerPos.X += moveSpeed* (float)gameTime.ElapsedGameTime.TotalSeconds;
+            }
+            else if (Keyboard.GetState().IsKeyDown(Keys.Left))
+            {
+                if (lastKey != Keys.Left)
+                    stateChange = true;
+                lastKey = Keys.Left;
+                playerAnimation.State = (int)Sprite.Walk_L;
+                playerAnimation.playerPos.X -= moveSpeed* (float)gameTime.ElapsedGameTime.TotalSeconds;
+            }
+            else if (Keyboard.GetState().IsKeyDown(Keys.Down))
+            {
+                if (lastKey != Keys.Down)
+                    stateChange = true;
+                lastKey = Keys.Down;
+                playerAnimation.State = (int)Sprite.Crouch;
+            }
+            else if (Keyboard.GetState().IsKeyDown(Keys.M))
+            {
+                if (lastKey != Keys.M)
+                    stateChange = true;
+                lastKey = Keys.M;
+                playerAnimation.State = (int)Sprite.Mid_Punch;
+            }
+            else
+            {
+                if (lastKey != Keys.None)
+                    stateChange = true;
+                lastKey = Keys.None;
+                // playerAnimation.active = false;
+                playerAnimation.State = (int)Sprite.Idle;
+                //playerAnimation.currentState = (int)Sprite.Idle;
+            }
+
+            playerAnimation.Update(gameTime, stateChange);
+            stateChange = false;
+>>>>>>> origin/master
         }
         public void Draw(SpriteBatch spriteBatch)
         {

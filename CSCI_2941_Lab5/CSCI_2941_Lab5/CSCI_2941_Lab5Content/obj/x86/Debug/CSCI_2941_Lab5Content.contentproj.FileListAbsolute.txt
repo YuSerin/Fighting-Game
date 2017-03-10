@@ -1,2 +1,6 @@
 C:\Users\yuser\Desktop\School\Game Development\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5Content\obj\x86\Debug\CSCI_2941_Lab5Content.contentprojResolveAssemblyReference.cache
+<<<<<<< HEAD
 C:\Users\yuser\OneDrive\Documents\GitHub\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5Content\obj\x86\Debug\CSCI_2941_Lab5Content.contentprojResolveAssemblyReference.cache
+=======
+C:\Users\Taylor\Documents\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5Content\obj\x86\Debug\CSCI_2941_Lab5Content.contentprojResolveAssemblyReference.cache
+>>>>>>> origin/master
