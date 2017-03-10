@@ -46,6 +46,18 @@ namespace CSCI_2941_Lab5
             sourceRect = new Rectangle((int)currentFrame.X, (int)currentFrame.Y, 
                 (int)FrameSize[State].X, (int)FrameSize[State].Y);
         }
+        public void playThrough(GameTime gameTime)
+        {
+            frameTimer += (int)gameTime.ElapsedGameTime.TotalMilliseconds;
+
+            if (frameTimer >= nextFrameTime)
+            {
+                frameTimer = 0;     // Reset Frame Time //
+                currentFrame = new Vector2(currentFrame.X + FrameSize[State].X, 0);
+            }
+            sourceRect = new Rectangle((int)currentFrame.X, (int)currentFrame.Y,
+                (int)FrameSize[State].X, (int)FrameSize[State].Y);
+        }
         
         public void Draw(SpriteBatch spriteBatch)
         {

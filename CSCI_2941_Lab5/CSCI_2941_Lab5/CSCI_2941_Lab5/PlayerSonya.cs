@@ -20,6 +20,7 @@ namespace CSCI_2941_Lab5
         Vector2[] FrameSize = new Vector2[(int)Sprite.Max];
         Vector2 playerPosition = new Vector2(100f, 400f);
         float moveSpeed = 70f;
+        bool looping = true;
         public void Initialize()
         {
             FrameSize[(int)Sprite.Idle] = new Vector2(69f, 128f);
@@ -43,35 +44,47 @@ namespace CSCI_2941_Lab5
         }
         public void Update(GameTime gameTime)
         {
-            //playerAnimation.active = true;
+            if (looping == false)
+            {
+                playerAnimation.playThrough(gameTime);
 
-            if (Keyboard.GetState().IsKeyDown(Keys.Right))
-            {
-                playerAnimation.State = (int)Sprite.Walk_R;
-                //playerAnimation.currentState = playerAnimation.State;
-                playerAnimation.playerPos.X += moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
-            }
-            else if (Keyboard.GetState().IsKeyDown(Keys.Left))
-            {
-                playerAnimation.State = (int)Sprite.Walk_L;
-                playerAnimation.playerPos.X -= moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
-            }
-            else if (Keyboard.GetState().IsKeyDown(Keys.Down))
-            {
-                playerAnimation.State = (int)Sprite.Crouch;
-            }
-            else if (Keyboard.GetState().IsKeyDown(Keys.M))
-            {
-                playerAnimation.State = (int)Sprite.Mid_Punch;
+                if (playerAnimation.currentFrame.X >= playerAnimation.playerImg[playerAnimation.State].Width)
+                {
+                    looping = true;
+                    playerAnimation.currentFrame = new Vector2(0, 0);
+                }
             }
             else
             {
-               // playerAnimation.active = false;
-                playerAnimation.State = (int)Sprite.Idle;
-                //playerAnimation.currentState = (int)Sprite.Idle;
-            }
+                if (Keyboard.GetState().IsKeyDown(Keys.Right))
+                {
+                    playerAnimation.State = (int)Sprite.Walk_R;
+                    //playerAnimation.currentState = playerAnimation.State;
+                    playerAnimation.playerPos.X += moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                }
+                else if (Keyboard.GetState().IsKeyDown(Keys.Left))
+                {
+                    playerAnimation.State = (int)Sprite.Walk_L;
+                    playerAnimation.playerPos.X -= moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                }
+                else if (Keyboard.GetState().IsKeyDown(Keys.Down))
+                {
+                    playerAnimation.State = (int)Sprite.Crouch;
+                }
+                else if (Keyboard.GetState().IsKeyDown(Keys.M))
+                {
+                    looping = false;
+                    playerAnimation.State = (int)Sprite.Mid_Punch;
+                }
+                else
+                {
+                    // playerAnimation.active = false;
+                    playerAnimation.State = (int)Sprite.Idle;
+                    //playerAnimation.currentState = (int)Sprite.Idle;
+                }
 
-            playerAnimation.Update(gameTime); 
+                playerAnimation.Update(gameTime);
+            }
         }
         public void Draw(SpriteBatch spriteBatch)
         {

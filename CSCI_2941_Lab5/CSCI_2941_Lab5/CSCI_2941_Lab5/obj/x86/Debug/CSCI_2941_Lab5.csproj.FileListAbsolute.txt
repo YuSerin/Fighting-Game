@@ -19,3 +19,24 @@ C:\Users\yuser\Desktop\School\Game Development\CSCI_2941_Lab5\CSCI_2941_Lab5\CSC
 C:\Users\yuser\Desktop\School\Game Development\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\Textures\Walk-Left.xnb
 C:\Users\yuser\Desktop\School\Game Development\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\Textures\Crouch.xnb
 C:\Users\yuser\Desktop\School\Game Development\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\Textures\Mid-Punch.xnb
+C:\Users\yuser\OneDrive\Documents\GitHub\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\Textures\Idle.xnb
+C:\Users\yuser\OneDrive\Documents\GitHub\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\Textures\Walk-Right.xnb
+C:\Users\yuser\OneDrive\Documents\GitHub\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\Textures\Walk-Left.xnb
+C:\Users\yuser\OneDrive\Documents\GitHub\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\Textures\Crouch.xnb
+C:\Users\yuser\OneDrive\Documents\GitHub\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\Textures\Mid-Punch.xnb
+C:\Users\yuser\OneDrive\Documents\GitHub\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\CSCI_2941_Lab5.exe
+C:\Users\yuser\OneDrive\Documents\GitHub\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\CSCI_2941_Lab5.pdb
+C:\Users\yuser\OneDrive\Documents\GitHub\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Microsoft.Xna.Framework.dll
+C:\Users\yuser\OneDrive\Documents\GitHub\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Microsoft.Xna.Framework.Game.dll
+C:\Users\yuser\OneDrive\Documents\GitHub\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Microsoft.Xna.Framework.GamerServices.dll
+C:\Users\yuser\OneDrive\Documents\GitHub\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Microsoft.Xna.Framework.Graphics.dll
+C:\Users\yuser\OneDrive\Documents\GitHub\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Microsoft.Xna.Framework.Input.Touch.dll
+C:\Users\yuser\OneDrive\Documents\GitHub\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Microsoft.Xna.Framework.xml
+C:\Users\yuser\OneDrive\Documents\GitHub\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Microsoft.Xna.Framework.Game.xml
+C:\Users\yuser\OneDrive\Documents\GitHub\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Microsoft.Xna.Framework.Graphics.xml
+C:\Users\yuser\OneDrive\Documents\GitHub\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Microsoft.Xna.Framework.GamerServices.xml
+C:\Users\yuser\OneDrive\Documents\GitHub\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Microsoft.Xna.Framework.Input.Touch.xml
+C:\Users\yuser\OneDrive\Documents\GitHub\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\obj\x86\Debug\CSCI_2941_Lab5.csprojResolveAssemblyReference.cache
+C:\Users\yuser\OneDrive\Documents\GitHub\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\yuser\OneDrive\Documents\GitHub\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\obj\x86\Debug\CSCI_2941_Lab5.exe
+C:\Users\yuser\OneDrive\Documents\GitHub\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\obj\x86\Debug\CSCI_2941_Lab5.pdb

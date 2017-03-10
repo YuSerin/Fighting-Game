@@ -42,8 +42,6 @@ namespace CSCI_2941_Lab5
 
             base.Initialize();
             this.IsMouseVisible = true;
-            graphics.PreferredBackBufferWidth = 600;
-            graphics.PreferredBackBufferHeight = 600;
         }
 
         /// <summary>
