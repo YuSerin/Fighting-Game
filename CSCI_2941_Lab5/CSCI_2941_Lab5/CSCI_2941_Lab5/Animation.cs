@@ -9,17 +9,18 @@ namespace CSCI_2941_Lab5
 {
     class Animation
     {
-        public Texture2D[] playerImg = new Texture2D[(int)Sprite.Max];
+         public Texture2D[] playerImg = new Texture2D[(int)Sprite.Max];
         public Vector2 playerPos;
         public Vector2 currentFrame;
         public int State;
         //public bool active;
         //public bool hasAttacked;
 
-        private Rectangle sourceRect;
-        private int nextFrameTime = 60;
-        private int frameTimer = 0;
+        public bool flipHorizontal = false;
+        public int nextFrameTime = 60;
+        public int frameTimer = 0;
         private Vector2[] FrameSize = new Vector2[(int)Sprite.Max];
+        private Rectangle sourceRect;
 
         public void Initialize(Vector2 newPos, Vector2[] newFrameSize)
         {
@@ -40,13 +41,12 @@ namespace CSCI_2941_Lab5
                 frameTimer = 0;     // Reset Frame Time //
                 currentFrame = new Vector2(currentFrame.X + FrameSize[State].X, 0);
 
-                if (currentFrame.X >= playerImg[State].Width)
+                if (currentFrame.X >= playerImg[State].Width && looping == true)
                 {
                     currentFrame = new Vector2(0, 0);     // Loop back to first frame //
-
-                    if (looping == false)
-                        return;
                 }
+                else if (currentFrame.X >= playerImg[State].Width && looping == false)
+                    return;
             }
             sourceRect = new Rectangle((int)currentFrame.X, (int)currentFrame.Y, 
                 (int)FrameSize[State].X, (int)FrameSize[State].Y);
@@ -54,7 +54,11 @@ namespace CSCI_2941_Lab5
         
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(playerImg[State], playerPos, sourceRect, Color.White);
+            if (!flipHorizontal)
+                spriteBatch.Draw(playerImg[State], playerPos, sourceRect, Color.White);
+            else
+                spriteBatch.Draw(playerImg[State], playerPos, sourceRect, Color.White,
+                    0f, new Vector2(0, 0), 1f, SpriteEffects.FlipHorizontally, 0f);
         }
     }
 }

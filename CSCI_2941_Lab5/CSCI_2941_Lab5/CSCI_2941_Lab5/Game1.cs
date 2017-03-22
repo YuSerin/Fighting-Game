@@ -18,15 +18,15 @@ namespace CSCI_2941_Lab5
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-
         PlayerSonya Sonya = new PlayerSonya();
+        PlayerSubZero SubZero = new PlayerSubZero();
 
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
 
-            graphics.PreferredBackBufferWidth = 600;
+            graphics.PreferredBackBufferWidth = 1000;
             graphics.PreferredBackBufferHeight = 600;
         }
 
@@ -39,6 +39,7 @@ namespace CSCI_2941_Lab5
         protected override void Initialize()
         {
             Sonya.Initialize();
+            SubZero.Initialize();
 
             base.Initialize();
             this.IsMouseVisible = true;
@@ -54,6 +55,7 @@ namespace CSCI_2941_Lab5
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             Sonya.LoadContent(Content);
+            SubZero.LoadContent(Content);
         }
 
         /// <summary>
@@ -63,6 +65,7 @@ namespace CSCI_2941_Lab5
         protected override void UnloadContent()
         {
             Sonya.Dispose();
+            SubZero.Dispose();
             spriteBatch.Dispose();
         }
 
@@ -78,6 +81,7 @@ namespace CSCI_2941_Lab5
                 this.Exit();
 
             Sonya.Update(gameTime);
+            SubZero.Update(gameTime);
 
             base.Update(gameTime);
         }
@@ -88,10 +92,11 @@ namespace CSCI_2941_Lab5
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.Blue);
+            GraphicsDevice.Clear(Color.Purple);
 
             spriteBatch.Begin();
             Sonya.Draw(spriteBatch);
+            SubZero.Draw(spriteBatch);
             spriteBatch.End();
 
             base.Draw(gameTime);
