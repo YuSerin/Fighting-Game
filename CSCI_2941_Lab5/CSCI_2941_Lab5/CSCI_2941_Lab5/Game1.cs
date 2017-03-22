@@ -21,6 +21,17 @@ namespace CSCI_2941_Lab5
         PlayerSonya Sonya = new PlayerSonya();
         PlayerSubZero SubZero = new PlayerSubZero();
 
+        Texture2D background;   //contain the background 
+        Rectangle mainFrame;        //conatin the mianFrme
+
+        ClockTimer clock = new ClockTimer();
+        SpriteFont font;
+
+
+        Texture2D leftHealthBar, rightHealthBar;             //for the health bar
+        Vector2 leftCoor = new Vector2(10, 20);
+        Vector2 rightCoor = new Vector2(590, 20);
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -56,6 +67,20 @@ namespace CSCI_2941_Lab5
 
             Sonya.LoadContent(Content);
             SubZero.LoadContent(Content);
+
+            background = Content.Load<Texture2D>("background");     //load content for the background
+            mainFrame = new Rectangle(0, 0, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height);     //set the rectangle parameters
+
+
+            //timer font
+            font = Content.Load<SpriteFont>("Courier New");
+            //healthbars
+            leftHealthBar = new Texture2D(graphics.GraphicsDevice, 400, 30);
+            rightHealthBar = new Texture2D(graphics.GraphicsDevice, 400, 30);
+            Color[] data = new Color[400 * 30];
+            for (int i = 0; i < data.Length; ++i) data[i] = Color.LimeGreen;
+            leftHealthBar.SetData(data);
+            rightHealthBar.SetData(data);
         }
 
         /// <summary>
@@ -83,6 +108,20 @@ namespace CSCI_2941_Lab5
             Sonya.Update(gameTime);
             SubZero.Update(gameTime);
 
+            // clock start and update  
+            if (clock.isRunning == false)
+            {
+                //count 10 seconds down 
+                clock.start(99);
+            }
+            else
+            {
+                clock.checkTime(gameTime);
+            }
+
+            base.Update(gameTime);
+
+
             base.Update(gameTime);
         }
 
@@ -95,6 +134,16 @@ namespace CSCI_2941_Lab5
             GraphicsDevice.Clear(Color.Purple);
 
             spriteBatch.Begin();
+
+            spriteBatch.Draw(background, mainFrame, Color.White);
+
+            //timer
+            if (!clock.isFinished)
+            {
+                spriteBatch.DrawString(font, clock.displayClock, new Vector2(465, 10), Color.Yellow);
+            }
+            spriteBatch.Draw(leftHealthBar, leftCoor, Color.White);
+            spriteBatch.Draw(rightHealthBar, rightCoor, Color.White);
             Sonya.Draw(spriteBatch);
             SubZero.Draw(spriteBatch);
             spriteBatch.End();
