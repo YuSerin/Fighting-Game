@@ -74,7 +74,7 @@ namespace CSCI_2941_Lab5
                     //playerAnimation.currentState = playerAnimation.State;
                     playerPosition.X += moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
                     playerAnimation.playerPos.X = playerPosition.X;
-                    sonyaHitBox.HB(playerPosition, FrameSize[1]);
+                    sonyaHitBox.HB(new Vector2(playerPosition.X+30, playerPosition.Y), FrameSize[1]);
                 }
                 // Move Left //
                 else if (Keyboard.GetState().IsKeyDown(Keys.A))

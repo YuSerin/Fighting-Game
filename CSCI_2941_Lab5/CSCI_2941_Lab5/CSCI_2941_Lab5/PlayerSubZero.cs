@@ -60,32 +60,32 @@ namespace CSCI_2941_Lab5
             if (looping)
             {
                 // Move Right //
-                if (Keyboard.GetState().IsKeyDown(Keys.NumPad6))
+                if (Keyboard.GetState().IsKeyDown(Keys.OemSemicolon))
                 {
-                    if (lastKey != Keys.NumPad6)
+                    if (lastKey != Keys.OemSemicolon)
                         stateChange = true;
-                    lastKey = Keys.NumPad6;
+                    lastKey = Keys.OemSemicolon;
                     playerAnimation.State = (int)Sprite.Run;
                     playerAnimation.flipHorizontal = false;
                     //playerAnimation.currentState = playerAnimation.State;
                     playerAnimation.playerPos.X += moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
                 }
                 // Move Left //
-                else if (Keyboard.GetState().IsKeyDown(Keys.NumPad4))
+                else if (Keyboard.GetState().IsKeyDown(Keys.K))
                 {
-                    if (lastKey != Keys.NumPad4)
+                    if (lastKey != Keys.K)
                         stateChange = true;
-                    lastKey = Keys.NumPad4;
+                    lastKey = Keys.K;
                     playerAnimation.State = (int)Sprite.Run;
                     playerAnimation.flipHorizontal = true;
                     playerAnimation.playerPos.X -= moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
                 }
                 // Crouch down //
-                else if (Keyboard.GetState().IsKeyDown(Keys.NumPad5))
+                else if (Keyboard.GetState().IsKeyDown(Keys.L))
                 {
-                    if (lastKey != Keys.NumPad5)
+                    if (lastKey != Keys.L)
                         stateChange = true;
-                    lastKey = Keys.NumPad5;
+                    lastKey = Keys.L;
                     playerAnimation.State = (int)Sprite.Crouch;
                     looping = false;
                     playerPosition = playerAnimation.playerPos;
