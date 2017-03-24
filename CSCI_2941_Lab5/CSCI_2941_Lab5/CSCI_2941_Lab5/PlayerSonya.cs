@@ -19,6 +19,7 @@ namespace CSCI_2941_Lab5
         Animation playerAnimation = new Animation();
         Vector2[] FrameSize = new Vector2[(int)Sprite.Max];
         Vector2 playerPosition = new Vector2(100f, 400f);
+        HitBox sonyaHitBox = new HitBox();
         float moveSpeed = 300f;
         bool looping = true;
         Keys lastKey;
@@ -43,6 +44,7 @@ namespace CSCI_2941_Lab5
             playerSprite[(int)Sprite.Kick] = Content.Load<Texture2D>("Sonya/Kick");
             playerSprite[(int)Sprite.Block] = Content.Load<Texture2D>("Sonya/Block");
 
+            sonyaHitBox.HB(playerPosition, FrameSize[0]);
             playerAnimation.playerImg = playerSprite;
         }
         public void Update(GameTime gameTime)
@@ -70,7 +72,9 @@ namespace CSCI_2941_Lab5
                     playerAnimation.State = (int)Sprite.Run;
                     playerAnimation.flipHorizontal = false;
                     //playerAnimation.currentState = playerAnimation.State;
-                    playerAnimation.playerPos.X += moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                    playerPosition.X += moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                    playerAnimation.playerPos.X = playerPosition.X;
+                    sonyaHitBox.HB(playerPosition, FrameSize[1]);
                 }
                 // Move Left //
                 else if (Keyboard.GetState().IsKeyDown(Keys.A))
@@ -80,7 +84,9 @@ namespace CSCI_2941_Lab5
                     lastKey = Keys.A;
                     playerAnimation.State = (int)Sprite.Run;
                     playerAnimation.flipHorizontal = true;
-                    playerAnimation.playerPos.X -= moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                    playerPosition.X -= moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                    playerAnimation.playerPos.X = playerPosition.X;
+                    sonyaHitBox.HB(playerPosition, FrameSize[1]);
                 }
                 // Crouch down //
                 else if (Keyboard.GetState().IsKeyDown(Keys.S))
@@ -90,12 +96,15 @@ namespace CSCI_2941_Lab5
                     lastKey = Keys.S;
                     playerAnimation.State = (int)Sprite.Crouch;
                     looping = false;
+
                     playerPosition = playerAnimation.playerPos;
+
+                    sonyaHitBox.HB(new Vector2(playerPosition.X, playerPosition.Y + 70), FrameSize[3]/2);
+
                     if (!playerAnimation.flipHorizontal)
                         playerAnimation.playerPos = new Vector2(playerAnimation.playerPos.X - 20, playerAnimation.playerPos.Y + 16);
                     else
                         playerAnimation.playerPos = new Vector2(playerAnimation.playerPos.X + 15, playerAnimation.playerPos.Y + 16);
-
                 }
                 else if (Keyboard.GetState().IsKeyDown(Keys.V))
                 {
@@ -144,6 +153,7 @@ namespace CSCI_2941_Lab5
                     // playerAnimation.active = false;
                     playerAnimation.State = (int)Sprite.Idle;
                     //playerAnimation.currentState = (int)Sprite.Idle;
+                    sonyaHitBox.HB(playerPosition, FrameSize[0]);
                 }
 
                 playerAnimation.Update(gameTime, stateChange, looping);
@@ -154,6 +164,7 @@ namespace CSCI_2941_Lab5
         public void Draw(SpriteBatch spriteBatch)
         {
             playerAnimation.Draw(spriteBatch);
+            sonyaHitBox.Draw(spriteBatch);
         }
         public void Dispose()
         {

@@ -29,16 +29,15 @@ namespace CSCI_2941_Lab5
 
 
         Texture2D leftHealthBar, rightHealthBar;             //for the health bar
-        Vector2 leftCoor = new Vector2(10, 20);
-        Vector2 rightCoor = new Vector2(590, 20);
 
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
 
-            graphics.PreferredBackBufferWidth = 1000;
-            graphics.PreferredBackBufferHeight = 600;
+            graphics.PreferredBackBufferWidth = 1280;
+            graphics.PreferredBackBufferHeight = 720;
+            //graphics.IsFullScreen = true;
         }
 
         /// <summary>
@@ -101,6 +100,9 @@ namespace CSCI_2941_Lab5
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
+            if (Keyboard.GetState().IsKeyDown(Keys.Escape))
+                this.Exit();
+
             // Allows the game to exit
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
@@ -112,7 +114,7 @@ namespace CSCI_2941_Lab5
             if (clock.isRunning == false)
             {
                 //count 10 seconds down 
-                clock.start(99);
+                clock.start(11);
             }
             else
             {
@@ -131,6 +133,9 @@ namespace CSCI_2941_Lab5
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
+            Vector2 leftCoor = new Vector2(graphics.PreferredBackBufferWidth/45, graphics.PreferredBackBufferHeight/30);
+            Vector2 rightCoor = new Vector2(2*graphics.PreferredBackBufferWidth/3, graphics.PreferredBackBufferHeight / 30);
+
             GraphicsDevice.Clear(Color.Purple);
 
             spriteBatch.Begin();
@@ -140,7 +145,8 @@ namespace CSCI_2941_Lab5
             //timer
             if (!clock.isFinished)
             {
-                spriteBatch.DrawString(font, clock.displayClock, new Vector2(465, 10), Color.Yellow);
+                Vector2 clockSize = font.MeasureString(clock.displayClock);
+                spriteBatch.DrawString(font, clock.displayClock, new Vector2(graphics.PreferredBackBufferWidth/2 - (clockSize.X / 2), graphics.PreferredBackBufferHeight / 30), Color.Yellow);
             }
             spriteBatch.Draw(leftHealthBar, leftCoor, Color.White);
             spriteBatch.Draw(rightHealthBar, rightCoor, Color.White);

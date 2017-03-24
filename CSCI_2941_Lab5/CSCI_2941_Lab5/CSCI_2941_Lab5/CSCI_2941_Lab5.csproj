@@ -79,6 +79,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Game1.cs" />
+    <Compile Include="SonyaHB.cs" />
+    <Compile Include="HitBox.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Game.ico" />

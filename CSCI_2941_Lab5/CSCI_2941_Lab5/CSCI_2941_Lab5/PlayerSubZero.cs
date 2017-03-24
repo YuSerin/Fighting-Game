@@ -14,7 +14,7 @@ namespace CSCI_2941_Lab5
         Texture2D[] playerSprite = new Texture2D[(int)Sprite.Max];
         Animation playerAnimation = new Animation();
         Vector2[] FrameSize = new Vector2[(int)Sprite.Max];
-        Vector2 playerPosition = new Vector2(850f, 400f);
+        Vector2 playerPosition = new Vector2(1050f, 400f);
         float moveSpeed = 300f;
         bool looping = true;
         Keys lastKey;

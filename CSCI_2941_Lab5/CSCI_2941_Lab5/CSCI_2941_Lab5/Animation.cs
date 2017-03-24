@@ -9,7 +9,7 @@ namespace CSCI_2941_Lab5
 {
     class Animation
     {
-         public Texture2D[] playerImg = new Texture2D[(int)Sprite.Max];
+        public Texture2D[] playerImg = new Texture2D[(int)Sprite.Max];
         public Vector2 playerPos;
         public Vector2 currentFrame;
         public int State;
@@ -55,10 +55,11 @@ namespace CSCI_2941_Lab5
         public void Draw(SpriteBatch spriteBatch)
         {
             if (!flipHorizontal)
-                spriteBatch.Draw(playerImg[State], playerPos, sourceRect, Color.White);
+                spriteBatch.Draw(playerImg[State], playerPos, sourceRect, Color.White,
+                    0f, Vector2.Zero, 2f, SpriteEffects.None, 0f);
             else
                 spriteBatch.Draw(playerImg[State], playerPos, sourceRect, Color.White,
-                    0f, new Vector2(0, 0), 1f, SpriteEffects.FlipHorizontally, 0f);
+                    0f, Vector2.Zero, 2f, SpriteEffects.FlipHorizontally, 0f);
         }
     }
 }
