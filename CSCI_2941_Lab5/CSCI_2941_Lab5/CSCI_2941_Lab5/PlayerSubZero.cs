@@ -105,7 +105,7 @@ namespace CSCI_2941_Lab5
                         playerPosition.X -= moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
                     playerAnimation.playerPos.X = playerPosition.X;
                     if (playerPosition.X >= -10)
-                        subZeroHitBox.HB(playerPosition, FrameSize[1]);
+                        subZeroHitBox.HB(new Vector2(playerPosition.X + 20, playerPosition.Y), FrameSize[1]);
                     else
                         subZeroHitBox.HB(playerPosition, FrameSize[0]);
                 }
@@ -118,11 +118,18 @@ namespace CSCI_2941_Lab5
                     playerAnimation.State = (int)Sprite.Crouch;
                     looping = false;
                     playerPosition = playerAnimation.playerPos;
-                    subZeroHitBox.HB(new Vector2(playerPosition.X + 25, playerPosition.Y + 100), FrameSize[3] / 2);
+                    //subZeroHitBox.HB(new Vector2(playerPosition.X + 25, playerPosition.Y + 100), FrameSize[3] / 2);
                     if (playerAnimation.flipHorizontal)
-                        playerAnimation.playerPos = new Vector2(playerAnimation.playerPos.X, playerAnimation.playerPos.Y + 16);
+                    {
+                        playerAnimation.playerPos = new Vector2(playerAnimation.playerPos.X, playerAnimation.playerPos.Y + 25);
+                        subZeroHitBox.HB(new Vector2(playerPosition.X + 30, playerPosition.Y + 110), FrameSize[3] / 2);
+                    }
+                        
                     else
-                        playerAnimation.playerPos = new Vector2(playerAnimation.playerPos.X, playerAnimation.playerPos.Y + 16);
+                    {
+                        playerAnimation.playerPos = new Vector2(playerAnimation.playerPos.X, playerAnimation.playerPos.Y + 25);
+                        subZeroHitBox.HB(new Vector2(playerPosition.X + 25, playerPosition.Y + 110), FrameSize[3] / 2);
+                    }
 
                 }
                 // Mid-Punch //
@@ -135,10 +142,17 @@ namespace CSCI_2941_Lab5
                     looping = false;
                     playerPosition = playerAnimation.playerPos;
                     if (playerAnimation.flipHorizontal)
-                        playerAnimation.playerPos = new Vector2(playerAnimation.playerPos.X - 45, playerAnimation.playerPos.Y - 3);
-                    else
-                        playerAnimation.playerPos = new Vector2(playerAnimation.playerPos.X, playerAnimation.playerPos.Y - 3);
+                    {
+                        playerAnimation.playerPos = new Vector2(playerAnimation.playerPos.X - 80, playerAnimation.playerPos.Y - 3);
+                        subZeroHitBox.HB(new Vector2(playerPosition.X - 70, playerPosition.Y), FrameSize[(int)Sprite.Mid_Punch]);
+                    }
 
+                    else
+                    {
+                        playerAnimation.playerPos = new Vector2(playerAnimation.playerPos.X, playerAnimation.playerPos.Y - 3);
+                        subZeroHitBox.HB(new Vector2(playerPosition.X + 40, playerPosition.Y), FrameSize[(int)Sprite.Mid_Punch]);
+                    }
+                       
                 }
                 // Kick //
                 else if (Keyboard.GetState().IsKeyDown(Keys.OemComma))
@@ -150,9 +164,17 @@ namespace CSCI_2941_Lab5
                     looping = false;
                     playerPosition = playerAnimation.playerPos;
                     if (playerAnimation.flipHorizontal)
-                        playerAnimation.playerPos = new Vector2(playerAnimation.playerPos.X - 60, playerAnimation.playerPos.Y - 9);
+                    {
+                        playerAnimation.playerPos = new Vector2(playerAnimation.playerPos.X - 120, playerAnimation.playerPos.Y - 15);
+                        subZeroHitBox.HB(new Vector2(playerPosition.X - 110, playerPosition.Y), FrameSize[(int)Sprite.Kick]);
+                    }
+
                     else
+                    {
                         playerAnimation.playerPos = new Vector2(playerAnimation.playerPos.X, playerAnimation.playerPos.Y - 10);
+                        subZeroHitBox.HB(new Vector2(playerPosition.X + 50, playerPosition.Y), FrameSize[(int)Sprite.Kick]);
+                    }
+                        
                 }
                 // Block //
                 else if (Keyboard.GetState().IsKeyDown(Keys.OemPeriod))
@@ -165,9 +187,16 @@ namespace CSCI_2941_Lab5
                     playerPosition = playerAnimation.playerPos;
 
                     if (playerAnimation.flipHorizontal)
-                        playerAnimation.playerPos = new Vector2(playerAnimation.playerPos.X + 10, playerAnimation.playerPos.Y - 2);
+                    {
+                        playerAnimation.playerPos = new Vector2(playerAnimation.playerPos.X + 20, playerAnimation.playerPos.Y - 2);
+                        subZeroHitBox.HB(new Vector2(playerPosition.X + 40, playerPosition.Y), FrameSize[(int)Sprite.Block]);
+                    }
+
                     else
+                    {
                         playerAnimation.playerPos = new Vector2(playerAnimation.playerPos.X - 2, playerAnimation.playerPos.Y - 2);
+                        subZeroHitBox.HB(new Vector2(playerPosition.X, playerPosition.Y), FrameSize[(int)Sprite.Block]);
+                    }
                 }
                 else
                 {
