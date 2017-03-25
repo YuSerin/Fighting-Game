@@ -114,7 +114,7 @@ namespace CSCI_2941_Lab5
             if (clock.isRunning == false)
             {
                 //count 10 seconds down 
-                clock.start(11);
+                clock.start(99);
             }
             else
             {

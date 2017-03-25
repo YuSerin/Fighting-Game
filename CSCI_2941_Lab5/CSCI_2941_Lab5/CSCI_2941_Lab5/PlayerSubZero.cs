@@ -15,6 +15,7 @@ namespace CSCI_2941_Lab5
         Animation playerAnimation = new Animation();
         Vector2[] FrameSize = new Vector2[(int)Sprite.Max];
         Vector2 playerPosition = new Vector2(1050f, 400f);
+        HitBox subZeroHitBox = new HitBox();
         float moveSpeed = 300f;
         bool looping = true;
         Keys lastKey;
@@ -41,6 +42,7 @@ namespace CSCI_2941_Lab5
             playerSprite[(int)Sprite.Kick] = Content.Load<Texture2D>("SubZero/Kick");
             playerSprite[(int)Sprite.Block] = Content.Load<Texture2D>("SubZero/Block");
 
+            subZeroHitBox.HB(playerPosition, FrameSize[0]);
             playerAnimation.playerImg = playerSprite;
         }
         public void Update(GameTime gameTime)
@@ -65,10 +67,24 @@ namespace CSCI_2941_Lab5
                     if (lastKey != Keys.OemSemicolon)
                         stateChange = true;
                     lastKey = Keys.OemSemicolon;
-                    playerAnimation.State = (int)Sprite.Run;
+
+                    if (playerPosition.X <= 1180)
+                        playerAnimation.State = (int)Sprite.Run;
+                    else
+                    {
+                        if (playerAnimation.State != (int)Sprite.Idle)
+                            stateChange = true;
+                        playerAnimation.State = (int)Sprite.Idle;
+                    }
                     playerAnimation.flipHorizontal = false;
                     //playerAnimation.currentState = playerAnimation.State;
-                    playerAnimation.playerPos.X += moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                    if (playerPosition.X <= 1180)
+                        playerPosition.X += moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                    playerAnimation.playerPos.X = playerPosition.X;
+                    if (playerPosition.X <= 1180)
+                        subZeroHitBox.HB(new Vector2(playerPosition.X + 30, playerPosition.Y), FrameSize[1]);
+                    else
+                        subZeroHitBox.HB(playerPosition, FrameSize[0]);
                 }
                 // Move Left //
                 else if (Keyboard.GetState().IsKeyDown(Keys.K))
@@ -76,9 +92,22 @@ namespace CSCI_2941_Lab5
                     if (lastKey != Keys.K)
                         stateChange = true;
                     lastKey = Keys.K;
-                    playerAnimation.State = (int)Sprite.Run;
+                    if (playerPosition.X >= -10)
+                        playerAnimation.State = (int)Sprite.Run;
+                    else
+                    {
+                        if (playerAnimation.State != (int)Sprite.Idle)
+                            stateChange = true;
+                        playerAnimation.State = (int)Sprite.Idle;
+                    }
                     playerAnimation.flipHorizontal = true;
-                    playerAnimation.playerPos.X -= moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                    if (playerPosition.X >= -10)
+                        playerPosition.X -= moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                    playerAnimation.playerPos.X = playerPosition.X;
+                    if (playerPosition.X >= -10)
+                        subZeroHitBox.HB(playerPosition, FrameSize[1]);
+                    else
+                        subZeroHitBox.HB(playerPosition, FrameSize[0]);
                 }
                 // Crouch down //
                 else if (Keyboard.GetState().IsKeyDown(Keys.L))
@@ -89,6 +118,7 @@ namespace CSCI_2941_Lab5
                     playerAnimation.State = (int)Sprite.Crouch;
                     looping = false;
                     playerPosition = playerAnimation.playerPos;
+                    subZeroHitBox.HB(new Vector2(playerPosition.X + 25, playerPosition.Y + 100), FrameSize[3] / 2);
                     if (playerAnimation.flipHorizontal)
                         playerAnimation.playerPos = new Vector2(playerAnimation.playerPos.X, playerAnimation.playerPos.Y + 16);
                     else
@@ -147,6 +177,10 @@ namespace CSCI_2941_Lab5
                     // playerAnimation.active = false;
                     playerAnimation.State = (int)Sprite.Idle;
                     //playerAnimation.currentState = (int)Sprite.Idle;
+                    if (playerAnimation.flipHorizontal)
+                        subZeroHitBox.HB(new Vector2(playerPosition.X+25, playerPosition.Y), FrameSize[0]);
+                    else
+                     subZeroHitBox.HB(playerPosition, FrameSize[0]);
                 }
 
                 playerAnimation.Update(gameTime, stateChange, looping);
@@ -157,6 +191,7 @@ namespace CSCI_2941_Lab5
         public void Draw(SpriteBatch spriteBatch)
         {
             playerAnimation.Draw(spriteBatch);
+            subZeroHitBox.Draw(spriteBatch);
         }
         public void Dispose()
         {

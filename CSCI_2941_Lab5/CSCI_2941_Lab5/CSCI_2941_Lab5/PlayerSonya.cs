@@ -120,7 +120,7 @@ namespace CSCI_2941_Lab5
 
                     playerPosition = playerAnimation.playerPos;
 
-                    sonyaHitBox.HB(new Vector2(playerPosition.X, playerPosition.Y + 70), FrameSize[3]/2);
+                    sonyaHitBox.HB(new Vector2(playerPosition.X+25, playerPosition.Y + 100), FrameSize[3]/2);
 
                     if (!playerAnimation.flipHorizontal)
                         playerAnimation.playerPos = new Vector2(playerAnimation.playerPos.X - 20, playerAnimation.playerPos.Y + 16);
@@ -174,7 +174,10 @@ namespace CSCI_2941_Lab5
                     // playerAnimation.active = false;
                     playerAnimation.State = (int)Sprite.Idle;
                     //playerAnimation.currentState = (int)Sprite.Idle;
-                    sonyaHitBox.HB(playerPosition, FrameSize[0]);
+                    if (playerAnimation.flipHorizontal)
+                        sonyaHitBox.HB(new Vector2(playerPosition.X + 25, playerPosition.Y), FrameSize[0]);
+                    else
+                        sonyaHitBox.HB(playerPosition, FrameSize[0]);
                 }
 
                 playerAnimation.Update(gameTime, stateChange, looping);
