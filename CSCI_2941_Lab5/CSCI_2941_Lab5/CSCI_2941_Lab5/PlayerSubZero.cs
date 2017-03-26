@@ -6,11 +6,13 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Audio;
 
 namespace CSCI_2941_Lab5
 {
     class PlayerSubZero
     {
+        SoundEffect kick, punch;
         Texture2D[] playerSprite = new Texture2D[(int)Sprite.Max];
         Animation playerAnimation = new Animation();
         Vector2[] FrameSize = new Vector2[(int)Sprite.Max];
@@ -44,6 +46,8 @@ namespace CSCI_2941_Lab5
             playerSprite[(int)Sprite.Kick] = Content.Load<Texture2D>("SubZero/Kick");
             playerSprite[(int)Sprite.Block] = Content.Load<Texture2D>("SubZero/Block");
 
+            punch = Content.Load<SoundEffect>("SubZero/punching");
+            kick = Content.Load<SoundEffect>("SubZero/kicking");
             subZeroHitBox.HB(playerPosition, FrameSize[0]);
             playerAnimation.playerImg = playerSprite;
         }
@@ -145,6 +149,7 @@ namespace CSCI_2941_Lab5
                 // Mid-Punch //
                 else if (Keyboard.GetState().IsKeyDown(Keys.OemQuestion))
                 {
+                    punch.Play(1f, .1f, .5f);
                     currentState = (int)Sprite.Mid_Punch;
                     if (lastKey != Keys.OemQuestion)
                         stateChange = true;
@@ -168,6 +173,7 @@ namespace CSCI_2941_Lab5
                 // Kick //
                 else if (Keyboard.GetState().IsKeyDown(Keys.OemComma))
                 {
+                    kick.Play(1f, .1f, .5f);
                     currentState = (int)Sprite.Kick;
                     if (lastKey != Keys.OemComma)
                         stateChange = true;
