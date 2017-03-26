@@ -16,7 +16,7 @@ namespace CSCI_2941_Lab5
     }
     class PlayerSonya
     {
-        SoundEffect kick, punch;
+        SoundEffect kick, punch;            //http://mkw.mortalkombatonline.com/umk3/sounds/#female
         Texture2D[] playerSprite = new Texture2D[(int)Sprite.Max];
         Animation playerAnimation = new Animation();
         Vector2[] FrameSize = new Vector2[(int)Sprite.Max];

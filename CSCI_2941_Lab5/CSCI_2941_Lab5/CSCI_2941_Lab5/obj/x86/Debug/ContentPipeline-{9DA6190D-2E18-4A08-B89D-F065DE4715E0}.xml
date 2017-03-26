@@ -181,6 +181,24 @@
       <Output>C:\Users\Christopher Corona\Documents\GitHub\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\Sonya\S_punching.xnb</Output>
       <Time>2017-03-26T11:51:18.6066359-06:00</Time>
     </Item>
+    <Item>
+      <Source>Instructions.png</Source>
+      <Name>Instructions</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Christopher Corona\Documents\GitHub\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\Instructions.xnb</Output>
+      <Time>2017-03-26T13:23:22.8689705-06:00</Time>
+    </Item>
+    <Item>
+      <Source>title.png</Source>
+      <Name>title</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Christopher Corona\Documents\GitHub\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\title.xnb</Output>
+      <Time>2017-03-26T12:52:16.1163584-06:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <ContentProjectGUID>{9DA6190D-2E18-4A08-B89D-F065DE4715E0}</ContentProjectGUID>

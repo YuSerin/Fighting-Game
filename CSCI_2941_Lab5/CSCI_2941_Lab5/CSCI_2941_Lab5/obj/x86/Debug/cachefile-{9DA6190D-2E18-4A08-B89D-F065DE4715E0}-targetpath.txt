@@ -18,3 +18,5 @@ Content\SubZero\kicking.xnb
 Content\SubZero\punching.xnb
 Content\Sonya\S_kicking.xnb
 Content\Sonya\S_punching.xnb
+Content\Instructions.xnb
+Content\title.xnb

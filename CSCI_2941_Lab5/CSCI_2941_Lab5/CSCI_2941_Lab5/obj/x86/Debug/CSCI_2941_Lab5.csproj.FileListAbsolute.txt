@@ -166,3 +166,5 @@ C:\Users\Christopher Corona\Documents\GitHub\Fighting-Game\CSCI_2941_Lab5\CSCI_2
 C:\Users\Christopher Corona\Documents\GitHub\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Microsoft.Xna.Framework.Xact.xml
 C:\Users\Christopher Corona\Documents\GitHub\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\Sonya\S_kicking.xnb
 C:\Users\Christopher Corona\Documents\GitHub\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\Sonya\S_punching.xnb
+C:\Users\Christopher Corona\Documents\GitHub\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\Instructions.xnb
+C:\Users\Christopher Corona\Documents\GitHub\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\title.xnb

@@ -21,7 +21,7 @@ namespace CSCI_2941_Lab5
         PlayerSonya Sonya = new PlayerSonya();
         PlayerSubZero SubZero = new PlayerSubZero();
 
-        Texture2D background;   //contain the background 
+        Texture2D background, instructions, title;   //contain the background 
         Rectangle mainFrame;        //conatin the mianFrme
 
         ClockTimer clock = new ClockTimer();
@@ -89,7 +89,9 @@ namespace CSCI_2941_Lab5
             Sonya.LoadContent(Content);
             SubZero.LoadContent(Content);
 
-            background = Content.Load<Texture2D>("background");     //load content for the background
+            background = Content.Load<Texture2D>("background");     //load content for the background   http://wallpapersafari.com/w/r4L80s/
+            instructions = Content.Load<Texture2D>("Instructions");     //load content for the background  http://wallpapersafari.com/w/Iy0UTt/
+            title = Content.Load<Texture2D>("title");     //https://cdn.gamerant.com/wp-content/uploads/mortal-kombat-web-series-header.jpg and https://i.ytimg.com/vi/DmxaSOD5XxY/maxresdefault.jpg
             mainFrame = new Rectangle(0, 0, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height);     //set the rectangle parameters
 
 
@@ -131,23 +133,23 @@ namespace CSCI_2941_Lab5
             {
                 if (game == 1)
                 {  //play
-                    if (new Rectangle((graphics.PreferredBackBufferWidth / 2), (2*graphics.PreferredBackBufferHeight / 5), 150, 30).Contains(mouseX, mouseY))
+                    if (new Rectangle((graphics.PreferredBackBufferWidth / 2)-200, (2*graphics.PreferredBackBufferHeight / 5), 150, 30).Contains(mouseX, mouseY))
                     {
                         timer = 99;
                         game = 3;
                     }
                     //instructions
-                    if (new Rectangle((graphics.PreferredBackBufferWidth / 2), (graphics.PreferredBackBufferHeight / 2), 150, 30).Contains(mouseX, mouseY))
+                    if (new Rectangle((graphics.PreferredBackBufferWidth / 2)-200, (graphics.PreferredBackBufferHeight / 2), 150, 30).Contains(mouseX, mouseY))
                     {
                         game = 2;
                     }
                     //quit
-                    if (new Rectangle((graphics.PreferredBackBufferWidth / 2), (2 * graphics.PreferredBackBufferHeight / 3), 150, 30).Contains(mouseX, mouseY))
+                    if (new Rectangle((graphics.PreferredBackBufferWidth / 2)-200, (2 * graphics.PreferredBackBufferHeight / 3), 150, 30).Contains(mouseX, mouseY))
                         this.Exit();
                 }
                 if (game == 2)
                 {  //return
-                    if (new Rectangle((graphics.PreferredBackBufferWidth / 8), (2 * graphics.PreferredBackBufferHeight / 5), 150, 30).Contains(mouseX, mouseY))
+                    if (new Rectangle((2*graphics.PreferredBackBufferWidth / 3), (graphics.PreferredBackBufferHeight / 30), 150, 30).Contains(mouseX, mouseY))
                     {
                         game = 1;
                     }
@@ -238,17 +240,18 @@ namespace CSCI_2941_Lab5
             //title
             if (game == 1)
             {
-                spriteBatch.DrawString(font, "title ... work in progess ", new Vector2((graphics.PreferredBackBufferWidth / 4), 50), Color.Red);
-                spriteBatch.DrawString(font, "Play", new Vector2((graphics.PreferredBackBufferWidth / 2), (2*graphics.PreferredBackBufferHeight / 5)), Color.Red);
-                spriteBatch.DrawString(font, "Instructions", new Vector2((graphics.PreferredBackBufferWidth / 2), (graphics.PreferredBackBufferHeight / 2)), Color.Red);
-                spriteBatch.DrawString(font, "Quit", new Vector2((graphics.PreferredBackBufferWidth / 2), (2*graphics.PreferredBackBufferHeight / 3)), Color.Red);
+                spriteBatch.Draw(title, mainFrame, Color.White);
+                spriteBatch.DrawString(font, "Play", new Vector2((graphics.PreferredBackBufferWidth / 2)-200, (2*graphics.PreferredBackBufferHeight / 5)), Color.Red);
+                spriteBatch.DrawString(font, "Instructions", new Vector2((graphics.PreferredBackBufferWidth / 2)-200, (graphics.PreferredBackBufferHeight / 2)), Color.Red);
+                spriteBatch.DrawString(font, "Quit", new Vector2((graphics.PreferredBackBufferWidth / 2)-200, (2*graphics.PreferredBackBufferHeight / 3)), Color.Red);
 
             }
             //instructions
             if (game == 2)
             {
-                spriteBatch.DrawString(font, "Instructions", new Vector2((graphics.PreferredBackBufferWidth / 4), 50), Color.Red);
-                spriteBatch.DrawString(font, "Return", new Vector2((graphics.PreferredBackBufferWidth / 8), (2 * graphics.PreferredBackBufferHeight / 5)), Color.Red);
+                spriteBatch.Draw(instructions, mainFrame, Color.White);
+
+                spriteBatch.DrawString(font, "Return", new Vector2((2 * graphics.PreferredBackBufferWidth / 3), (graphics.PreferredBackBufferHeight / 30)), Color.Red);
             }
             //gamePlay
             if (game == 3)
