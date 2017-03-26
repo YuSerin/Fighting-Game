@@ -14,8 +14,8 @@ namespace CSCI_2941_Lab5
         int HealthEffect = 0;
         int blockKick = 7;
         int blockPunch = 5;
-        int hitKick = 70;
-        int hitPunch = 50;
+        int hitKick = 35;
+        int hitPunch = 25;
         int dualAttack = 15;
 
         public int TestCollision(Rectangle HB1, Rectangle HB2, int State1, int State2)
@@ -31,7 +31,9 @@ namespace CSCI_2941_Lab5
                     else
                         HealthEffect = 0;
                 }
-                else if (State1 > (int)Sprite.Crouch && State2 > (int)Sprite.Crouch)
+                else if (State1 == (int)Sprite.Mid_Punch && State2 == (int)Sprite.Mid_Punch)
+                    HealthEffect = dualAttack;
+                else if (State1 == (int)Sprite.Kick && State2 == (int)Sprite.Kick)
                     HealthEffect = dualAttack;
                 else
                 {

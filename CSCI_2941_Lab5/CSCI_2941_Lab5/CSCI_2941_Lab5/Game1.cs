@@ -29,10 +29,10 @@ namespace CSCI_2941_Lab5
 
         healthBar SonyaGreenBar = new healthBar();
         healthBar SonyaRedBar = new healthBar();
-        int SonyaHealth = 400;
+        int SonyaHealth = 550;
         healthBar SubZGreenBar = new healthBar();
         healthBar SubZRedBar = new healthBar();
-        int SubZHealth = 400;
+        int SubZHealth = 550;
         int Health;
 
         Collision collision = new Collision();
@@ -62,9 +62,9 @@ namespace CSCI_2941_Lab5
             SonyaRedBar.health(new Vector2(graphics.PreferredBackBufferWidth / 45, 
                 graphics.PreferredBackBufferHeight / 30), SonyaHealth, Color.Red);
 
-            SubZGreenBar.health(new Vector2(2 * graphics.PreferredBackBufferWidth / 3,
+            SubZGreenBar.health(new Vector2(graphics.PreferredBackBufferWidth - 580,
                 graphics.PreferredBackBufferHeight / 30), SonyaHealth, Color.LimeGreen);
-            SubZRedBar.health(new Vector2(2 * graphics.PreferredBackBufferWidth / 3,
+            SubZRedBar.health(new Vector2(graphics.PreferredBackBufferWidth - 580,
                 graphics.PreferredBackBufferHeight / 30), SonyaHealth, Color.Red);
 
             base.Initialize();
