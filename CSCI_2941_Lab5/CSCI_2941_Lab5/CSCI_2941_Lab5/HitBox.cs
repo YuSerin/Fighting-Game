@@ -10,7 +10,7 @@ namespace CSCI_2941_Lab5
 {
     class HitBox
     {
-        Rectangle playerHB = new Rectangle();
+        public Rectangle playerHB = new Rectangle();
 
         public void HBwidth(int width)
         {
@@ -23,7 +23,6 @@ namespace CSCI_2941_Lab5
             playerHB.X = Convert.ToInt32(pos.X);
             playerHB.Y = Convert.ToInt32(pos.Y);
         }
-
         public void update(Vector2 pos)
         {
             playerHB.X = Convert.ToInt32(pos.X);

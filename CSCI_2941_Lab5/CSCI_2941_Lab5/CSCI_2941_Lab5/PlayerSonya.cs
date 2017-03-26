@@ -19,16 +19,16 @@ namespace CSCI_2941_Lab5
         Animation playerAnimation = new Animation();
         Vector2[] FrameSize = new Vector2[(int)Sprite.Max];
         Vector2 playerPosition = new Vector2(100f, 400f);
-        HitBox sonyaHitBox = new HitBox();
+        public HitBox sonyaHitBox = new HitBox();
         float moveSpeed = 300f;
         bool looping = true;
         Keys lastKey;
         bool stateChange;
         Vector2 screenSize;
-        //int currentState = (int)Sprite.Idle;
-        healthBar GreenBar = new healthBar();
-        healthBar RedBar = new healthBar();
-        int Health = 400;
+        public int currentState = (int)Sprite.Idle;
+        //healthBar GreenBar = new healthBar();
+        //healthBar RedBar = new healthBar();
+        //int Health = 400;
         public void Initialize(int screenWidth, int screenHeight)
         {
             FrameSize[(int)Sprite.Idle] = new Vector2(69f, 128f);
@@ -52,15 +52,18 @@ namespace CSCI_2941_Lab5
 
             sonyaHitBox.HB(playerPosition, FrameSize[0]);
             playerAnimation.playerImg = playerSprite;
-            GreenBar.health(new Vector2(screenSize.X / 45, screenSize.Y / 30), Health, Color.LimeGreen);
-            RedBar.health(new Vector2(screenSize.X / 45, screenSize.Y / 30), Health, Color.Red);
+            //GreenBar.health(new Vector2(screenSize.X / 45, screenSize.Y / 30), Health, Color.LimeGreen);
+            //RedBar.health(new Vector2(screenSize.X / 45, screenSize.Y / 30), Health, Color.Red);
         }
         public void Update(GameTime gameTime)
         {
             if (looping == false)
             {
                 playerAnimation.Update(gameTime, stateChange, looping);
-
+                if (currentState != (int)Sprite.Block)
+                    currentState = (int)Sprite.Idle;
+                else
+                    currentState = (int)Sprite.Block;
                 if (playerAnimation.currentFrame.X >= playerAnimation.playerImg[playerAnimation.State].Width)
                 {
                     looping = true;
@@ -74,6 +77,7 @@ namespace CSCI_2941_Lab5
                 // Move Right //
                 if (Keyboard.GetState().IsKeyDown(Keys.D))
                 {
+                    currentState = (int)Sprite.Run;
                     if (lastKey != Keys.D)
                         stateChange = true;
                     lastKey = Keys.D;
@@ -98,6 +102,7 @@ namespace CSCI_2941_Lab5
                 // Move Left //
                 else if (Keyboard.GetState().IsKeyDown(Keys.A))
                 {
+                    currentState = (int)Sprite.Run;
                     if (lastKey != Keys.A)
                         stateChange = true;
                     lastKey = Keys.A;
@@ -120,6 +125,7 @@ namespace CSCI_2941_Lab5
                 // Crouch down //
                 else if (Keyboard.GetState().IsKeyDown(Keys.S))
                 {
+                    currentState = (int)Sprite.Crouch;
                     if (lastKey != Keys.S)
                         stateChange = true;
                     lastKey = Keys.S;
@@ -146,6 +152,7 @@ namespace CSCI_2941_Lab5
                 // Mid-Punch //
                 else if (Keyboard.GetState().IsKeyDown(Keys.C))
                 {
+                    currentState = (int)Sprite.Mid_Punch;
                     if (lastKey != Keys.C)
                         stateChange = true;
                     lastKey = Keys.C;
@@ -168,6 +175,7 @@ namespace CSCI_2941_Lab5
                 // Kick //
                 else if (Keyboard.GetState().IsKeyDown(Keys.Z))
                 {
+                    currentState = (int)Sprite.Kick;
                     if (lastKey != Keys.Z)
                         stateChange = true;
                     lastKey = Keys.Z;
@@ -189,6 +197,7 @@ namespace CSCI_2941_Lab5
                 // Block //
                 else if (Keyboard.GetState().IsKeyDown(Keys.X))
                 {
+                    currentState = (int)Sprite.Block;
                     if (lastKey != Keys.X)
                         stateChange = true;
                     lastKey = Keys.X;
@@ -198,17 +207,18 @@ namespace CSCI_2941_Lab5
 
                     if (!playerAnimation.flipHorizontal)
                     {
-                        sonyaHitBox.HB(new Vector2(playerPosition.X + 10, playerPosition.Y), FrameSize[(int)Sprite.Block]);
+                        sonyaHitBox.HB(new Vector2(playerPosition.X - 17, playerPosition.Y), FrameSize[(int)Sprite.Block]);
                     }
                     else
                     {
                         playerAnimation.playerPos = new Vector2(playerAnimation.playerPos.X + 10, playerAnimation.playerPos.Y);
-                        sonyaHitBox.HB(new Vector2(playerPosition.X + 30, playerPosition.Y), FrameSize[(int)Sprite.Block]);
+                        sonyaHitBox.HB(new Vector2(playerPosition.X + 57, playerPosition.Y), FrameSize[(int)Sprite.Block]);
                     }
                         
                 }
                 else
                 {
+                    currentState = (int)Sprite.Idle;
                     if (lastKey != Keys.None)
                         stateChange = true;
                     lastKey = Keys.None;
@@ -230,8 +240,8 @@ namespace CSCI_2941_Lab5
         {
             playerAnimation.Draw(spriteBatch);
             sonyaHitBox.Draw(spriteBatch);
-            RedBar.Draw(spriteBatch);
-            GreenBar.Draw(spriteBatch);
+            //RedBar.Draw(spriteBatch);
+            //GreenBar.Draw(spriteBatch);
             
         }
         public void Dispose()

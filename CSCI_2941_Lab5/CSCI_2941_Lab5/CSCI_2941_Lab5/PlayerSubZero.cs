@@ -15,11 +15,12 @@ namespace CSCI_2941_Lab5
         Animation playerAnimation = new Animation();
         Vector2[] FrameSize = new Vector2[(int)Sprite.Max];
         Vector2 playerPosition = new Vector2(1050f, 400f);
-        HitBox subZeroHitBox = new HitBox();
+        public HitBox subZeroHitBox = new HitBox();
         float moveSpeed = 300f;
         bool looping = true;
         Keys lastKey;
         bool stateChange;
+        public int currentState = (int)Sprite.Idle;
        // int currentState = (int)Sprite.Idle;
         public void Initialize(int screenWidth, int screenHeight)
         {
@@ -51,12 +52,16 @@ namespace CSCI_2941_Lab5
             if (looping == false)
             {
                 playerAnimation.Update(gameTime, stateChange, looping);
-
+                if (currentState != (int)Sprite.Block)
+                    currentState = (int)Sprite.Idle;
+                else
+                    currentState = (int)Sprite.Block;
                 if (playerAnimation.currentFrame.X >= playerAnimation.playerImg[playerAnimation.State].Width)
                 {
                     looping = true;
                     playerAnimation.currentFrame = new Vector2(0, 0);
                     playerAnimation.playerPos = playerPosition;
+                    
                 }
             }
 
@@ -65,6 +70,7 @@ namespace CSCI_2941_Lab5
                 // Move Right //
                 if (Keyboard.GetState().IsKeyDown(Keys.OemSemicolon))
                 {
+                    currentState = (int)Sprite.Run;
                     if (lastKey != Keys.OemSemicolon)
                         stateChange = true;
                     lastKey = Keys.OemSemicolon;
@@ -90,6 +96,7 @@ namespace CSCI_2941_Lab5
                 // Move Left //
                 else if (Keyboard.GetState().IsKeyDown(Keys.K))
                 {
+                    currentState = (int)Sprite.Run;
                     if (lastKey != Keys.K)
                         stateChange = true;
                     lastKey = Keys.K;
@@ -113,6 +120,8 @@ namespace CSCI_2941_Lab5
                 // Crouch down //
                 else if (Keyboard.GetState().IsKeyDown(Keys.L))
                 {
+
+                    currentState = (int)Sprite.Crouch;
                     if (lastKey != Keys.L)
                         stateChange = true;
                     lastKey = Keys.L;
@@ -136,6 +145,7 @@ namespace CSCI_2941_Lab5
                 // Mid-Punch //
                 else if (Keyboard.GetState().IsKeyDown(Keys.OemQuestion))
                 {
+                    currentState = (int)Sprite.Mid_Punch;
                     if (lastKey != Keys.OemQuestion)
                         stateChange = true;
                     lastKey = Keys.OemQuestion;
@@ -158,6 +168,7 @@ namespace CSCI_2941_Lab5
                 // Kick //
                 else if (Keyboard.GetState().IsKeyDown(Keys.OemComma))
                 {
+                    currentState = (int)Sprite.Kick;
                     if (lastKey != Keys.OemComma)
                         stateChange = true;
                     lastKey = Keys.OemComma;
@@ -180,6 +191,7 @@ namespace CSCI_2941_Lab5
                 // Block //
                 else if (Keyboard.GetState().IsKeyDown(Keys.OemPeriod))
                 {
+                    currentState = (int)Sprite.Block;
                     if (lastKey != Keys.OemPeriod)
                         stateChange = true;
                     lastKey = Keys.OemPeriod;
@@ -190,17 +202,18 @@ namespace CSCI_2941_Lab5
                     if (playerAnimation.flipHorizontal)
                     {
                         playerAnimation.playerPos = new Vector2(playerAnimation.playerPos.X + 20, playerAnimation.playerPos.Y - 2);
-                        subZeroHitBox.HB(new Vector2(playerPosition.X + 40, playerPosition.Y), FrameSize[(int)Sprite.Block]);
+                        subZeroHitBox.HB(new Vector2(playerPosition.X + 70, playerPosition.Y), FrameSize[(int)Sprite.Block]);
                     }
 
                     else
                     {
                         playerAnimation.playerPos = new Vector2(playerAnimation.playerPos.X - 2, playerAnimation.playerPos.Y - 2);
-                        subZeroHitBox.HB(new Vector2(playerPosition.X, playerPosition.Y), FrameSize[(int)Sprite.Block]);
+                        subZeroHitBox.HB(new Vector2(playerPosition.X - 20, playerPosition.Y), FrameSize[(int)Sprite.Block]);
                     }
                 }
                 else
                 {
+                    currentState = (int)Sprite.Idle;
                     if (lastKey != Keys.None)
                         stateChange = true;
                     lastKey = Keys.None;

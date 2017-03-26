@@ -27,8 +27,15 @@ namespace CSCI_2941_Lab5
         ClockTimer clock = new ClockTimer();
         SpriteFont font;
 
+        healthBar SonyaGreenBar = new healthBar();
+        healthBar SonyaRedBar = new healthBar();
+        int SonyaHealth = 400;
+        healthBar SubZGreenBar = new healthBar();
+        healthBar SubZRedBar = new healthBar();
+        int SubZHealth = 400;
+        int Health;
 
-        //Texture2D leftHealthBar, rightHealthBar;             //for the health bar
+        Collision collision = new Collision();
 
         public Game1()
         {
@@ -50,6 +57,15 @@ namespace CSCI_2941_Lab5
         {
             Sonya.Initialize(graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight);
             SubZero.Initialize(graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight);
+            SonyaGreenBar.health(new Vector2(graphics.PreferredBackBufferWidth / 45,
+                graphics.PreferredBackBufferHeight / 30), SonyaHealth, Color.LimeGreen);
+            SonyaRedBar.health(new Vector2(graphics.PreferredBackBufferWidth / 45, 
+                graphics.PreferredBackBufferHeight / 30), SonyaHealth, Color.Red);
+
+            SubZGreenBar.health(new Vector2(2 * graphics.PreferredBackBufferWidth / 3,
+                graphics.PreferredBackBufferHeight / 30), SonyaHealth, Color.LimeGreen);
+            SubZRedBar.health(new Vector2(2 * graphics.PreferredBackBufferWidth / 3,
+                graphics.PreferredBackBufferHeight / 30), SonyaHealth, Color.Red);
 
             base.Initialize();
             this.IsMouseVisible = true;
@@ -110,6 +126,24 @@ namespace CSCI_2941_Lab5
             Sonya.Update(gameTime);
             SubZero.Update(gameTime);
 
+            // Test Sonya's collision //
+            Health = collision.TestCollision(Sonya.sonyaHitBox.playerHB, SubZero.subZeroHitBox.playerHB,
+                Sonya.currentState, SubZero.currentState);
+
+            if (Health != 0 && SonyaHealth != 0)
+            {
+                    SonyaHealth -= Health;
+                    SonyaGreenBar.update(SonyaHealth);
+            }
+            Health = collision.TestCollision(SubZero.subZeroHitBox.playerHB, Sonya.sonyaHitBox.playerHB,
+                SubZero.currentState, Sonya.currentState);
+
+            if (Health != 0 && SubZHealth != 0)
+            {
+                SubZHealth -= Health;
+                SubZGreenBar.update(SubZHealth);
+            }
+
             // clock start and update  
             if (clock.isRunning == false)
             {
@@ -143,12 +177,20 @@ namespace CSCI_2941_Lab5
             if (!clock.isFinished)
             {
                 Vector2 clockSize = font.MeasureString(clock.displayClock);
-                spriteBatch.DrawString(font, clock.displayClock, new Vector2(graphics.PreferredBackBufferWidth/2 - (clockSize.X / 2), graphics.PreferredBackBufferHeight / 30), Color.Yellow);
+                spriteBatch.DrawString(font, clock.displayClock, new Vector2(graphics.PreferredBackBufferWidth/2 - (clockSize.X / 2), 
+                    graphics.PreferredBackBufferHeight / 30), Color.Yellow);
             }
             //spriteBatch.Draw(leftHealthBar, leftCoor, Color.White);
             //spriteBatch.Draw(rightHealthBar, rightCoor, Color.White);
             Sonya.Draw(spriteBatch);
             SubZero.Draw(spriteBatch);
+
+            SonyaRedBar.Draw(spriteBatch);
+            SonyaGreenBar.Draw(spriteBatch);
+
+            SubZRedBar.Draw(spriteBatch);
+            SubZGreenBar.Draw(spriteBatch);
+
             spriteBatch.End();
 
             base.Draw(gameTime);
