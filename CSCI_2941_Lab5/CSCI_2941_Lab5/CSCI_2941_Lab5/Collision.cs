@@ -16,6 +16,7 @@ namespace CSCI_2941_Lab5
         int blockPunch = 5;
         int hitKick = 70;
         int hitPunch = 50;
+        int dualAttack = 15;
 
         public int TestCollision(Rectangle HB1, Rectangle HB2, int State1, int State2)
         {
@@ -30,6 +31,8 @@ namespace CSCI_2941_Lab5
                     else
                         HealthEffect = 0;
                 }
+                else if (State1 > (int)Sprite.Crouch && State2 > (int)Sprite.Crouch)
+                    HealthEffect = dualAttack;
                 else
                 {
                     if (State2 == (int)Sprite.Mid_Punch)
