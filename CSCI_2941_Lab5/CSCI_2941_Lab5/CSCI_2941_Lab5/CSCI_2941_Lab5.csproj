@@ -73,7 +73,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Animation.cs" />
+    <Compile Include="Collision.cs" />
     <Compile Include="gameTimercs.cs" />
+    <Compile Include="healthBar.cs" />
     <Compile Include="PlayerSonya.cs" />
     <Compile Include="PlayerSubZero.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

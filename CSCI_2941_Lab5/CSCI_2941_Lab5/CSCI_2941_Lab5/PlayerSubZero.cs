@@ -20,7 +20,8 @@ namespace CSCI_2941_Lab5
         bool looping = true;
         Keys lastKey;
         bool stateChange;
-        public void Initialize()
+       // int currentState = (int)Sprite.Idle;
+        public void Initialize(int screenWidth, int screenHeight)
         {
             FrameSize[(int)Sprite.Idle] = new Vector2(68f, 131f);
             FrameSize[(int)Sprite.Run] = new Vector2(95f, 134f);

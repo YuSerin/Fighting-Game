@@ -24,7 +24,12 @@ namespace CSCI_2941_Lab5
         bool looping = true;
         Keys lastKey;
         bool stateChange;
-        public void Initialize()
+        Vector2 screenSize;
+        //int currentState = (int)Sprite.Idle;
+        healthBar GreenBar = new healthBar();
+        healthBar RedBar = new healthBar();
+        int Health = 400;
+        public void Initialize(int screenWidth, int screenHeight)
         {
             FrameSize[(int)Sprite.Idle] = new Vector2(69f, 128f);
             FrameSize[(int)Sprite.Run] = new Vector2(95f, 133f);
@@ -34,6 +39,7 @@ namespace CSCI_2941_Lab5
             FrameSize[(int)Sprite.Block] = new Vector2(62f, 127f);
 
             playerAnimation.Initialize(playerPosition, FrameSize);
+            screenSize = new Vector2(screenWidth, screenHeight);
         }
         public void LoadContent(ContentManager Content)
         {
@@ -46,6 +52,8 @@ namespace CSCI_2941_Lab5
 
             sonyaHitBox.HB(playerPosition, FrameSize[0]);
             playerAnimation.playerImg = playerSprite;
+            GreenBar.health(new Vector2(screenSize.X / 45, screenSize.Y / 30), Health, Color.LimeGreen);
+            RedBar.health(new Vector2(screenSize.X / 45, screenSize.Y / 30), Health, Color.Red);
         }
         public void Update(GameTime gameTime)
         {
@@ -222,6 +230,9 @@ namespace CSCI_2941_Lab5
         {
             playerAnimation.Draw(spriteBatch);
             sonyaHitBox.Draw(spriteBatch);
+            RedBar.Draw(spriteBatch);
+            GreenBar.Draw(spriteBatch);
+            
         }
         public void Dispose()
         {

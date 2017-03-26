@@ -28,7 +28,7 @@ namespace CSCI_2941_Lab5
         SpriteFont font;
 
 
-        Texture2D leftHealthBar, rightHealthBar;             //for the health bar
+        //Texture2D leftHealthBar, rightHealthBar;             //for the health bar
 
         public Game1()
         {
@@ -48,8 +48,8 @@ namespace CSCI_2941_Lab5
         /// </summary>
         protected override void Initialize()
         {
-            Sonya.Initialize();
-            SubZero.Initialize();
+            Sonya.Initialize(graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight);
+            SubZero.Initialize(graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight);
 
             base.Initialize();
             this.IsMouseVisible = true;
@@ -74,12 +74,12 @@ namespace CSCI_2941_Lab5
             //timer font
             font = Content.Load<SpriteFont>("Courier New");
             //healthbars
-            leftHealthBar = new Texture2D(graphics.GraphicsDevice, 400, 30);
-            rightHealthBar = new Texture2D(graphics.GraphicsDevice, 400, 30);
-            Color[] data = new Color[400 * 30];
-            for (int i = 0; i < data.Length; ++i) data[i] = Color.LimeGreen;
-            leftHealthBar.SetData(data);
-            rightHealthBar.SetData(data);
+            //leftHealthBar = new Texture2D(graphics.GraphicsDevice, 400, 30);
+            //rightHealthBar = new Texture2D(graphics.GraphicsDevice, 400, 30);
+            //Color[] data = new Color[400 * 30];
+            //for (int i = 0; i < data.Length; ++i) data[i] = Color.LimeGreen;
+            //leftHealthBar.SetData(data);
+            //rightHealthBar.SetData(data);
         }
 
         /// <summary>
@@ -122,9 +122,6 @@ namespace CSCI_2941_Lab5
             }
 
             base.Update(gameTime);
-
-
-            base.Update(gameTime);
         }
 
         /// <summary>
@@ -133,8 +130,8 @@ namespace CSCI_2941_Lab5
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            Vector2 leftCoor = new Vector2(graphics.PreferredBackBufferWidth/45, graphics.PreferredBackBufferHeight/30);
-            Vector2 rightCoor = new Vector2(2*graphics.PreferredBackBufferWidth/3, graphics.PreferredBackBufferHeight / 30);
+            //Vector2 leftCoor = new Vector2(graphics.PreferredBackBufferWidth/45, graphics.PreferredBackBufferHeight/30);
+            //Vector2 rightCoor = new Vector2(2*graphics.PreferredBackBufferWidth/3, graphics.PreferredBackBufferHeight / 30);
 
             GraphicsDevice.Clear(Color.Purple);
 
@@ -148,8 +145,8 @@ namespace CSCI_2941_Lab5
                 Vector2 clockSize = font.MeasureString(clock.displayClock);
                 spriteBatch.DrawString(font, clock.displayClock, new Vector2(graphics.PreferredBackBufferWidth/2 - (clockSize.X / 2), graphics.PreferredBackBufferHeight / 30), Color.Yellow);
             }
-            spriteBatch.Draw(leftHealthBar, leftCoor, Color.White);
-            spriteBatch.Draw(rightHealthBar, rightCoor, Color.White);
+            //spriteBatch.Draw(leftHealthBar, leftCoor, Color.White);
+            //spriteBatch.Draw(rightHealthBar, rightCoor, Color.White);
             Sonya.Draw(spriteBatch);
             SubZero.Draw(spriteBatch);
             spriteBatch.End();
