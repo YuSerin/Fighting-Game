@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Audio;
 
 namespace CSCI_2941_Lab5
 {
@@ -15,6 +16,7 @@ namespace CSCI_2941_Lab5
     }
     class PlayerSonya
     {
+        SoundEffect kick, punch;            //http://mkw.mortalkombatonline.com/umk3/sounds/#female
         Texture2D[] playerSprite = new Texture2D[(int)Sprite.Max];
         Animation playerAnimation = new Animation();
         Vector2[] FrameSize = new Vector2[(int)Sprite.Max];
@@ -50,6 +52,8 @@ namespace CSCI_2941_Lab5
             playerSprite[(int)Sprite.Kick] = Content.Load<Texture2D>("Sonya/Kick");
             playerSprite[(int)Sprite.Block] = Content.Load<Texture2D>("Sonya/Block");
 
+            punch = Content.Load<SoundEffect>("Sonya/S_punching");
+            kick = Content.Load<SoundEffect>("Sonya/S_kicking");
             sonyaHitBox.HB(playerPosition, FrameSize[0]);
             playerAnimation.playerImg = playerSprite;
             //GreenBar.health(new Vector2(screenSize.X / 45, screenSize.Y / 30), Health, Color.LimeGreen);
@@ -152,6 +156,7 @@ namespace CSCI_2941_Lab5
                 // Mid-Punch //
                 else if (Keyboard.GetState().IsKeyDown(Keys.C))
                 {
+                    punch.Play(1f, .1f, .5f);
                     currentState = (int)Sprite.Mid_Punch;
                     if (lastKey != Keys.C)
                         stateChange = true;
@@ -175,6 +180,7 @@ namespace CSCI_2941_Lab5
                 // Kick //
                 else if (Keyboard.GetState().IsKeyDown(Keys.Z))
                 {
+                    kick.Play(1f, .1f, .5f);
                     currentState = (int)Sprite.Kick;
                     if (lastKey != Keys.Z)
                         stateChange = true;

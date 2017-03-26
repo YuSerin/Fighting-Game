@@ -137,6 +137,24 @@
       <Time>2017-03-25T15:39:47.2601614-06:00</Time>
     </Item>
     <Item>
+      <Source>Instructions.png</Source>
+      <Name>Instructions</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\yuser\OneDrive\Documents\GitHub\Lab_5\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\Instructions.xnb</Output>
+      <Time>2017-03-26T14:17:31.3974937-06:00</Time>
+    </Item>
+    <Item>
+      <Source>title.png</Source>
+      <Name>title</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\yuser\OneDrive\Documents\GitHub\Lab_5\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\title.xnb</Output>
+      <Time>2017-03-26T14:17:31.4665209-06:00</Time>
+    </Item>
+    <Item>
       <Source>Courier New.spritefont</Source>
       <Name>Courier New</Name>
       <Importer>FontDescriptionImporter</Importer>
@@ -144,6 +162,42 @@
       <Options>None</Options>
       <Output>C:\Users\yuser\OneDrive\Documents\GitHub\Lab_5\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\Courier New.xnb</Output>
       <Time>2017-03-25T15:39:47.1910737-06:00</Time>
+    </Item>
+    <Item>
+      <Source>SubZero\kicking.wav</Source>
+      <Name>SubZero\kicking</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\yuser\OneDrive\Documents\GitHub\Lab_5\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\SubZero\kicking.xnb</Output>
+      <Time>2017-03-26T14:17:31.3974937-06:00</Time>
+    </Item>
+    <Item>
+      <Source>SubZero\punching.wav</Source>
+      <Name>SubZero\punching</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\yuser\OneDrive\Documents\GitHub\Lab_5\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\SubZero\punching.xnb</Output>
+      <Time>2017-03-26T14:17:31.4131199-06:00</Time>
+    </Item>
+    <Item>
+      <Source>Sonya\S_kicking.wav</Source>
+      <Name>Sonya\S_kicking</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\yuser\OneDrive\Documents\GitHub\Lab_5\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\Sonya\S_kicking.xnb</Output>
+      <Time>2017-03-26T14:17:31.3974937-06:00</Time>
+    </Item>
+    <Item>
+      <Source>Sonya\S_punching.wav</Source>
+      <Name>Sonya\S_punching</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\yuser\OneDrive\Documents\GitHub\Lab_5\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\Sonya\S_punching.xnb</Output>
+      <Time>2017-03-26T14:17:31.3974937-06:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
