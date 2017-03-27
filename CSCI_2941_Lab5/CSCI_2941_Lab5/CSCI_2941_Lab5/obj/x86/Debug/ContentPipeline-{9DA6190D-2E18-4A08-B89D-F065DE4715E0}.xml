@@ -199,6 +199,24 @@
       <Output>C:\Users\yuser\OneDrive\Documents\GitHub\Lab_5\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\Sonya\S_punching.xnb</Output>
       <Time>2017-03-26T14:17:31.3974937-06:00</Time>
     </Item>
+    <Item>
+      <Source>SubZero\Jump2.png</Source>
+      <Name>SubZero\Jump2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\yuser\OneDrive\Documents\GitHub\Lab_5\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\SubZero\Jump2.xnb</Output>
+      <Time>2017-03-26T14:14:05.3001543-06:00</Time>
+    </Item>
+    <Item>
+      <Source>SubZero\Jump.png</Source>
+      <Name>SubZero\Jump</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\yuser\OneDrive\Documents\GitHub\Lab_5\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\SubZero\Jump.xnb</Output>
+      <Time>2017-03-26T16:09:19.9051796-06:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <ContentProjectGUID>{9DA6190D-2E18-4A08-B89D-F065DE4715E0}</ContentProjectGUID>

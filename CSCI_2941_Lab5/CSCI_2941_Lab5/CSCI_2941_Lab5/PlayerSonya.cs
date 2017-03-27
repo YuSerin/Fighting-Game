@@ -10,10 +10,6 @@ using Microsoft.Xna.Framework.Audio;
 
 namespace CSCI_2941_Lab5
 {
-    enum Sprite
-    {
-        Idle, Run, Crouch, Mid_Punch, Kick, Block, Max,
-    }
     class PlayerSonya
     {
         SoundEffect kick, punch;            //http://mkw.mortalkombatonline.com/umk3/sounds/#female
@@ -51,6 +47,7 @@ namespace CSCI_2941_Lab5
             playerSprite[(int)Sprite.Mid_Punch] = Content.Load<Texture2D>("Sonya/Mid-Punch");
             playerSprite[(int)Sprite.Kick] = Content.Load<Texture2D>("Sonya/Kick");
             playerSprite[(int)Sprite.Block] = Content.Load<Texture2D>("Sonya/Block");
+            playerSprite[(int)Sprite.Jump] = Content.Load<Texture2D>("Sonya/Block");
 
             punch = Content.Load<SoundEffect>("Sonya/S_punching");
             kick = Content.Load<SoundEffect>("Sonya/S_kicking");

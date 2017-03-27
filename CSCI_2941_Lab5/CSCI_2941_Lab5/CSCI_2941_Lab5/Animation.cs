@@ -11,8 +11,11 @@ namespace CSCI_2941_Lab5
     {
         public Texture2D[] playerImg = new Texture2D[(int)Sprite.Max];
         public Vector2 playerPos;
+        public Vector2 playerVelocity;
         public Vector2 currentFrame;
         public int State;
+        public bool hasJumped = false;
+        public float gravity = 80f;
         //public bool active;
         //public bool hasAttacked;
 
@@ -26,12 +29,14 @@ namespace CSCI_2941_Lab5
         {
             playerPos = newPos;
             FrameSize = newFrameSize;
+            playerVelocity = Vector2.Zero;
             //active = false;
         }
 
         public void Update(GameTime gameTime, bool stateChanged, bool looping)
         {
             frameTimer += (int)gameTime.ElapsedGameTime.TotalMilliseconds;
+            //playerPos += playerVelocity;
 
             if (stateChanged)
                 currentFrame = new Vector2(0, 0);

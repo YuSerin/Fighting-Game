@@ -11,6 +11,10 @@ using Microsoft.Xna.Framework.Media;
 
 namespace CSCI_2941_Lab5
 {
+    enum Sprite
+    {
+        Idle, Run, Crouch, Mid_Punch, Kick, Block, Jump, Max,
+    }
     /// <summary>
     /// This is the main type for your game
     /// </summary>
