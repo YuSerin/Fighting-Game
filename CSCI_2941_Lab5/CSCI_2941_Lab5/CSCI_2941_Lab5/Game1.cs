@@ -19,7 +19,8 @@ namespace CSCI_2941_Lab5
     /// This is the main type for your game
     /// </summary>
     public class Game1 : Microsoft.Xna.Framework.Game
-    {        
+    {
+        SoundEffect selection, S_hurt, SZ_hurt;
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         PlayerSonya Sonya = new PlayerSonya();
@@ -42,11 +43,16 @@ namespace CSCI_2941_Lab5
 
         Collision collision = new Collision();
 
+        //game winner
+        int player1 = 0;
+        int player2 = 0;
+        
+
         //menu
         int game = 1;
         private MouseState mouseState, previousMouseState;
         private int mouseX, mouseY;
-        int timer = 0;
+        int timer = 99;
 
         public Game1()
         {
@@ -93,7 +99,9 @@ namespace CSCI_2941_Lab5
 
             Sonya.LoadContent(Content);
             SubZero.LoadContent(Content);
-
+            S_hurt = Content.Load<SoundEffect>("Sonya/S_hurt");
+            SZ_hurt = Content.Load<SoundEffect>("SubZero/SZ_hurt");
+            selection = Content.Load<SoundEffect>("plop");
             background = Content.Load<Texture2D>("background");     //load content for the background   http://wallpapersafari.com/w/r4L80s/
             instructions = Content.Load<Texture2D>("Instructions");     //load content for the background  http://wallpapersafari.com/w/Iy0UTt/
             title = Content.Load<Texture2D>("title");     //https://cdn.gamerant.com/wp-content/uploads/mortal-kombat-web-series-header.jpg and https://i.ytimg.com/vi/DmxaSOD5XxY/maxresdefault.jpg
@@ -138,24 +146,33 @@ namespace CSCI_2941_Lab5
             {
                 if (game == 1)
                 {  //play
-                    if (new Rectangle((graphics.PreferredBackBufferWidth / 2)-200, (2*graphics.PreferredBackBufferHeight / 5), 150, 30).Contains(mouseX, mouseY))
+                    if (new Rectangle((graphics.PreferredBackBufferWidth / 2), (2 * graphics.PreferredBackBufferHeight / 5), 150, 30).Contains(mouseX, mouseY))
                     {
+                        selection.Play(1f, .1f, .5f);
                         timer = 99;
                         game = 3;
+                        SonyaHealth = 550;
+                        SubZHealth = 550;
+
                     }
                     //instructions
-                    if (new Rectangle((graphics.PreferredBackBufferWidth / 2)-200, (graphics.PreferredBackBufferHeight / 2), 150, 30).Contains(mouseX, mouseY))
+                    if (new Rectangle((graphics.PreferredBackBufferWidth / 2), (graphics.PreferredBackBufferHeight / 2), 150, 30).Contains(mouseX, mouseY))
                     {
+                        selection.Play(1f, .1f, .5f);
                         game = 2;
                     }
                     //quit
-                    if (new Rectangle((graphics.PreferredBackBufferWidth / 2)-200, (2 * graphics.PreferredBackBufferHeight / 3), 150, 30).Contains(mouseX, mouseY))
+                    if (new Rectangle((graphics.PreferredBackBufferWidth / 2), (2 * graphics.PreferredBackBufferHeight / 3), 150, 30).Contains(mouseX, mouseY))
+                    {
+                        selection.Play(1f, .1f, .5f);
                         this.Exit();
+                    }
                 }
                 if (game == 2)
                 {  //return
-                    if (new Rectangle((2*graphics.PreferredBackBufferWidth / 3), (graphics.PreferredBackBufferHeight / 30), 150, 30).Contains(mouseX, mouseY))
+                    if (new Rectangle((2 * graphics.PreferredBackBufferWidth / 3), (graphics.PreferredBackBufferHeight / 30), 150, 30).Contains(mouseX, mouseY))
                     {
+                        selection.Play(1f, .1f, .5f);
                         game = 1;
                     }
                 }
@@ -163,13 +180,36 @@ namespace CSCI_2941_Lab5
                 {  //play
                     if (new Rectangle((graphics.PreferredBackBufferWidth / 2), (graphics.PreferredBackBufferHeight / 2), 150, 30).Contains(mouseX, mouseY))
                     {
+                        selection.Play(1f, .1f, .5f);
                         game = 3;
                     }
                     //quit
                     if (new Rectangle((graphics.PreferredBackBufferWidth / 2), (2 * graphics.PreferredBackBufferHeight / 3), 150, 30).Contains(mouseX, mouseY))
+                    {
+                        selection.Play(1f, .1f, .5f);
                         this.Exit();
+                    }
                 }
+                if (game == 5)
+                {  //play
+                    if (new Rectangle((graphics.PreferredBackBufferWidth / 2)-300, (graphics.PreferredBackBufferHeight / 2), 150, 30).Contains(mouseX, mouseY))
+                    {
+                        selection.Play(1f, .1f, .5f);
+                        game = 1;
+                        player1 = 0;
+                        player2 = 0;
+                        SonyaHealth = 550;
+                        SubZHealth = 550;
 
+
+                    }
+                    //quit
+                    if (new Rectangle((graphics.PreferredBackBufferWidth / 2)-300, (2 * graphics.PreferredBackBufferHeight / 3), 150, 30).Contains(mouseX, mouseY))
+                    {
+                        selection.Play(1f, .1f, .5f);
+                        this.Exit();
+                    }
+                }
 
             }
             if (Keyboard.GetState().IsKeyDown(Keys.Escape))
@@ -214,7 +254,9 @@ namespace CSCI_2941_Lab5
 
             if (Health != 0 && SonyaHealth != 0)
             {
-                    SonyaHealth -= Health;
+                if (game ==3)
+               S_hurt.Play(1f, .1f, .5f);
+                SonyaHealth -= Health;
                     SonyaGreenBar.update(SonyaHealth);
             }
             Health = collision.TestCollision(SubZero.subZeroHitBox.playerHB, Sonya.sonyaHitBox.playerHB,
@@ -222,8 +264,34 @@ namespace CSCI_2941_Lab5
 
             if (Health != 0 && SubZHealth != 0)
             {
+                if (game == 3)
+                    SZ_hurt.Play(1f, .1f, .5f);
                 SubZHealth -= Health;
                 SubZGreenBar.update(SubZHealth);
+            }
+            if (game == 3)
+            {
+                //clock runs out 
+                if (clock.isFinished)
+                {
+                    if (SonyaHealth > SubZHealth)
+                        player1 = 1;
+                    if (SubZHealth > SonyaHealth)
+                        player2 = 1;
+
+                    game = 5;
+                }
+                if (SonyaHealth <= 0 || SubZHealth <= 0)
+                {
+                    if (SonyaHealth <= 0)
+                        player2 = 1;
+                    if (SubZHealth <= 0)
+                        player1 = 1;
+
+                    clock.reset();
+                    timer = 0;
+                    game = 5;
+                }
             }
 
             if (SonyaHealth <= 0 || SubZHealth <= 0)
@@ -249,9 +317,10 @@ namespace CSCI_2941_Lab5
             if (game == 1)
             {
                 spriteBatch.Draw(title, mainFrame, Color.White);
-                spriteBatch.DrawString(font, "Play", new Vector2((graphics.PreferredBackBufferWidth / 2)-200, (2*graphics.PreferredBackBufferHeight / 5)), Color.Red);
-                spriteBatch.DrawString(font, "Instructions", new Vector2((graphics.PreferredBackBufferWidth / 2)-200, (graphics.PreferredBackBufferHeight / 2)), Color.Red);
-                spriteBatch.DrawString(font, "Quit", new Vector2((graphics.PreferredBackBufferWidth / 2)-200, (2*graphics.PreferredBackBufferHeight / 3)), Color.Red);
+                spriteBatch.DrawString(font, "Normal Kombat", new Vector2((graphics.PreferredBackBufferWidth / 4), (graphics.PreferredBackBufferHeight) / 30), Color.White);
+                spriteBatch.DrawString(font, "Play", new Vector2((graphics.PreferredBackBufferWidth / 2), (2 * graphics.PreferredBackBufferHeight / 5)), Color.Blue);
+                spriteBatch.DrawString(font, "Instructions", new Vector2((graphics.PreferredBackBufferWidth / 2), (graphics.PreferredBackBufferHeight / 2)), Color.Blue);
+                spriteBatch.DrawString(font, "Quit", new Vector2((graphics.PreferredBackBufferWidth / 2), (2 * graphics.PreferredBackBufferHeight / 3)), Color.Blue);
 
             }
             //instructions
@@ -299,7 +368,19 @@ namespace CSCI_2941_Lab5
                 spriteBatch.DrawString(font, "Quit", new Vector2((graphics.PreferredBackBufferWidth / 2), (2 * graphics.PreferredBackBufferHeight / 3)), Color.Red);
             }
             //matchover
+            if (game == 5)
+            {
+                spriteBatch.DrawString(font, clock.displayClock, new Vector2(graphics.PreferredBackBufferWidth / 2 - (clockSize.X / 2), graphics.PreferredBackBufferHeight / 30), Color.Yellow);
+                spriteBatch.DrawString(font, "Play Again", new Vector2((graphics.PreferredBackBufferWidth / 2)-300, (graphics.PreferredBackBufferHeight / 2)), Color.Red);
+                spriteBatch.DrawString(font, "Quit", new Vector2((graphics.PreferredBackBufferWidth / 2)-300, (2 * graphics.PreferredBackBufferHeight / 3)), Color.Red);
+                if (player1 == 1)
+                    spriteBatch.DrawString(font, "Sonya Wins", new Vector2((graphics.PreferredBackBufferWidth / 2) - 300, 200), Color.Red);
+                if (player2 == 1)
+                    spriteBatch.DrawString(font, "Sub Zero Wins", new Vector2((graphics.PreferredBackBufferWidth / 2) - 300, 200), Color.Red);
+                if (player2 == 0 && player1 ==0)
+                    spriteBatch.DrawString(font, "Noobs, it is a tie", new Vector2((graphics.PreferredBackBufferWidth / 2) - 300, 200), Color.Red);
 
+            }
             spriteBatch.End();
 
             base.Draw(gameTime);

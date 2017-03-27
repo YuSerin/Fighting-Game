@@ -44,3 +44,33 @@ C:\Users\yuser\OneDrive\Documents\GitHub\Lab_5\Fighting-Game\CSCI_2941_Lab5\CSCI
 C:\Users\yuser\OneDrive\Documents\GitHub\Lab_5\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 C:\Users\yuser\OneDrive\Documents\GitHub\Lab_5\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\obj\x86\Debug\CSCI_2941_Lab5.exe
 C:\Users\yuser\OneDrive\Documents\GitHub\Lab_5\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\obj\x86\Debug\CSCI_2941_Lab5.pdb
+<<<<<<< HEAD
+=======
+C:\Users\Christopher Corona\Documents\GitHub\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\SubZero\kicking.xnb
+C:\Users\Christopher Corona\Documents\GitHub\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\SubZero\punching.xnb
+C:\Users\Christopher Corona\Documents\GitHub\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Microsoft.Xna.Framework.Net.dll
+C:\Users\Christopher Corona\Documents\GitHub\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Microsoft.Xna.Framework.Storage.dll
+C:\Users\Christopher Corona\Documents\GitHub\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Microsoft.Xna.Framework.Xact.dll
+C:\Users\Christopher Corona\Documents\GitHub\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Microsoft.Xna.Framework.Net.xml
+C:\Users\Christopher Corona\Documents\GitHub\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Microsoft.Xna.Framework.Storage.xml
+C:\Users\Christopher Corona\Documents\GitHub\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Microsoft.Xna.Framework.Xact.xml
+C:\Users\Christopher Corona\Documents\GitHub\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\Sonya\S_kicking.xnb
+C:\Users\Christopher Corona\Documents\GitHub\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\Sonya\S_punching.xnb
+C:\Users\Christopher Corona\Documents\GitHub\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\Instructions.xnb
+C:\Users\Christopher Corona\Documents\GitHub\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\title.xnb
+C:\Users\Taylor\Documents\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\Instructions.xnb
+C:\Users\Taylor\Documents\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\title.xnb
+C:\Users\Taylor\Documents\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\SubZero\kicking.xnb
+C:\Users\Taylor\Documents\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\SubZero\punching.xnb
+C:\Users\Taylor\Documents\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\Sonya\S_kicking.xnb
+C:\Users\Taylor\Documents\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\Sonya\S_punching.xnb
+C:\Users\Taylor\Documents\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Microsoft.Xna.Framework.Net.dll
+C:\Users\Taylor\Documents\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Microsoft.Xna.Framework.Storage.dll
+C:\Users\Taylor\Documents\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Microsoft.Xna.Framework.Xact.dll
+C:\Users\Taylor\Documents\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Microsoft.Xna.Framework.Net.xml
+C:\Users\Taylor\Documents\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Microsoft.Xna.Framework.Storage.xml
+C:\Users\Taylor\Documents\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Microsoft.Xna.Framework.Xact.xml
+C:\Users\Christopher Corona\Documents\GitHub\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\Sonya\S_hurt.xnb
+C:\Users\Christopher Corona\Documents\GitHub\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\SubZero\SZ_hurt.xnb
+C:\Users\Christopher Corona\Documents\GitHub\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\Plop.xnb
+>>>>>>> be67de8e4a33f41e3113eaed3281502e4847ca23
