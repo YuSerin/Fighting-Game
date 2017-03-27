@@ -199,61 +199,6 @@ namespace CSCI_2941_Lab5
                         subZeroHitBox.HB(new Vector2(playerPosition.X - 20, playerPosition.Y), FrameSize[(int)Sprite.Block]);
                     }
                 }
-<<<<<<< HEAD
-                // Jump //
-                /*
-                else if (Keyboard.GetState().IsKeyDown(Keys.O))
-                {
-                    currentState = (int)Sprite.Jump;
-                    
-                    if (lastKey != Keys.O)
-                    {
-                        stateChange = true;
-                        playerAnimation.hasJumped = true;
-                    }
-                    lastKey = Keys.O;
-                    playerAnimation.State = (int)Sprite.Jump;
-                    looping = false;
-                    playerPosition = playerAnimation.playerPos;
-
-                    if (playerAnimation.hasJumped)
-                    {
-                        if (playerAnimation.playerPos.Y > 100f)
-                            playerAnimation.playerPos.Y -= jumpSpeed * (float)gameTime.ElapsedGameTime.TotalMilliseconds;
-                        else
-                            playerAnimation.hasJumped = false;
-                    }
-
-                    if (playerAnimation.hasJumped == false)
-                    {
-                        playerAnimation.playerPos.Y += playerAnimation.gravity * (float)gameTime.ElapsedGameTime.TotalMilliseconds;
-                    }
-
-                    reachedGround = (playerAnimation.playerPos.Y >= 400f);
-
-                    if (reachedGround)
-                    {
-                        playerAnimation.playerPos.Y = 400f;
-                    }
-                        
-
-                    //playerAnimation.playerPos = playerPosition;
-
-                    if (playerAnimation.flipHorizontal)
-                    {
-                        //playerAnimation.playerPos = new Vector2(playerAnimation.playerPos.X, playerAnimation.playerPos.Y);
-                        subZeroHitBox.HB(new Vector2(playerPosition.X + 70, playerPosition.Y), FrameSize[(int)Sprite.Jump]);
-                    }
-
-                    else
-                    {
-                        //playerAnimation.playerPos = new Vector2(playerAnimation.playerPos.X - 2, playerAnimation.playerPos.Y - 2);
-                        subZeroHitBox.HB(new Vector2(playerPosition.X - 20, playerPosition.Y), FrameSize[(int)Sprite.Jump]);
-                    }
-                }
-                */
-                // Idle //
-=======
                 // Move Right //
                 else if (Keyboard.GetState().IsKeyDown(Keys.OemSemicolon))
                 {
@@ -310,7 +255,6 @@ namespace CSCI_2941_Lab5
                     else
                         subZeroHitBox.HB(playerPosition, FrameSize[0]);
                 }
->>>>>>> f7173449ac79fadfc8325334501f37c9e969bf27
                 else
                 {
                     //move attack hitbox off screen
