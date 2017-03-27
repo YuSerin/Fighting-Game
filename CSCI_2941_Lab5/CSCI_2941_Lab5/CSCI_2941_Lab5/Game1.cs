@@ -49,6 +49,13 @@ namespace CSCI_2941_Lab5
         private int mouseX, mouseY;
         int timer = 99;
 
+
+        //music
+        //AudioEngine audioEngine;
+        //SoundBank soundBank;
+        //WaveBank waveBank;        //WaveBank streamingWaveBank;
+        //Cue musicCue;
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -89,6 +96,18 @@ namespace CSCI_2941_Lab5
         /// </summary>
         protected override void LoadContent()
         {
+            //// Load files built from XACT project
+            //audioEngine = new AudioEngine("Content\\game music.xgs");
+            //waveBank = new WaveBank(audioEngine, "Content\\Wave Bank.xwb");
+            //soundBank = new SoundBank(audioEngine, "Content\\Sound Bank.xsb");
+            //// Load streaming wave bank
+            //streamingWaveBank = new WaveBank(audioEngine, "Content\\fighting background music.xwb", 0, 4);
+            //// The audio engine must be updated before the streaming cue is ready
+            //audioEngine.Update();
+            //// Get cue for streaming music
+            //musicCue = soundBank.GetCue("fighting background music");
+            //// Start the background music
+            //musicCue.Play();
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
@@ -290,6 +309,8 @@ namespace CSCI_2941_Lab5
                 }
             }
 
+            //// Update the audio engine
+            //audioEngine.Update();
             base.Update(gameTime);
         }
 
