@@ -15,7 +15,7 @@ namespace CSCI_2941_Lab5
     /// This is the main type for your game
     /// </summary>
     public class Game1 : Microsoft.Xna.Framework.Game
-    {
+    {        
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         PlayerSonya Sonya = new PlayerSonya();
