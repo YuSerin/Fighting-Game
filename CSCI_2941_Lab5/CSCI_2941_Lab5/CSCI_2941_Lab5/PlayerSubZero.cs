@@ -12,6 +12,8 @@ namespace CSCI_2941_Lab5
 {
     class PlayerSubZero
     {
+        KeyboardState oldState = Keyboard.GetState();
+        bool devMode = true;
         SoundEffect kick, punch;        //http://mkw.mortalkombatonline.com/umk3/sounds/#male
         Texture2D[] playerSprite = new Texture2D[(int)Sprite.Max];
         Animation playerAnimation = new Animation();
@@ -58,6 +60,20 @@ namespace CSCI_2941_Lab5
         }
         public void Update(GameTime gameTime)
         {
+            //Saving old and new keyboard state to tell if a key was just pressed or if it 
+            //is being held down
+            KeyboardState newState = Keyboard.GetState();
+
+            if (newState.IsKeyDown(Keys.OemPlus))
+            {
+                if (!oldState.IsKeyDown(Keys.OemPlus))
+                {
+                    if (devMode == true)
+                        devMode = false;
+                    else devMode = true;
+                }
+            }
+
             if (looping == false)
             {
                 playerAnimation.Update(gameTime, stateChange, looping);
@@ -291,14 +307,19 @@ namespace CSCI_2941_Lab5
 
                 playerAnimation.Update(gameTime, stateChange, looping);
                 stateChange = false;
+<<<<<<< HEAD
                 playerAnimation.hasJumped = false;
+=======
+                oldState = newState;
+>>>>>>> 6cd986c4168fe086f4fa8298a930cdb70fcdd091
             }
 
         }
         public void Draw(SpriteBatch spriteBatch)
         {
             playerAnimation.Draw(spriteBatch);
-            subZeroHitBox.Draw(spriteBatch);
+            if (devMode)
+                subZeroHitBox.Draw(spriteBatch);
         }
         public void Dispose()
         {

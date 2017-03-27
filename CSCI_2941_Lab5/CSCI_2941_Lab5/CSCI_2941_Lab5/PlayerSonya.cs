@@ -12,6 +12,8 @@ namespace CSCI_2941_Lab5
 {
     class PlayerSonya
     {
+        KeyboardState oldState = Keyboard.GetState();
+        bool devMode = true;
         SoundEffect kick, punch;            //http://mkw.mortalkombatonline.com/umk3/sounds/#female
         Texture2D[] playerSprite = new Texture2D[(int)Sprite.Max];
         Animation playerAnimation = new Animation();
@@ -58,6 +60,20 @@ namespace CSCI_2941_Lab5
         }
         public void Update(GameTime gameTime)
         {
+            //Saving old and new keyboard state to tell if a key was just pressed or if it 
+            //is being held down
+            KeyboardState newState = Keyboard.GetState();
+
+            if (newState.IsKeyDown(Keys.OemPlus))
+            {
+                if (!oldState.IsKeyDown(Keys.OemPlus))
+                {
+                    if (devMode == true)
+                        devMode = false;
+                    else devMode = true;
+                }
+            }
+
             if (looping == false)
             {
                 playerAnimation.Update(gameTime, stateChange, looping);
@@ -75,56 +91,8 @@ namespace CSCI_2941_Lab5
 
             if (looping)
             {
-                // Move Right //
-                if (Keyboard.GetState().IsKeyDown(Keys.D))
-                {
-                    currentState = (int)Sprite.Run;
-                    if (lastKey != Keys.D)
-                        stateChange = true;
-                    lastKey = Keys.D;
-                    if (playerPosition.X <= 1180)
-                        playerAnimation.State = (int)Sprite.Run;
-                    else
-                    {
-                        if (playerAnimation.State != (int)Sprite.Idle)
-                            stateChange = true;
-                        playerAnimation.State = (int)Sprite.Idle;
-                    }
-                    playerAnimation.flipHorizontal = false;
-                    //playerAnimation.currentState = playerAnimation.State;
-                    if (playerPosition.X <= 1180)
-                        playerPosition.X += moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
-                    playerAnimation.playerPos.X = playerPosition.X;
-                    if (playerPosition.X <= 1180)
-                        sonyaHitBox.HB(new Vector2(playerPosition.X + 40, playerPosition.Y), FrameSize[1]);
-                    else
-                        sonyaHitBox.HB(playerPosition, FrameSize[0]);
-                }
-                // Move Left //
-                else if (Keyboard.GetState().IsKeyDown(Keys.A))
-                {
-                    currentState = (int)Sprite.Run;
-                    if (lastKey != Keys.A)
-                        stateChange = true;
-                    lastKey = Keys.A;
-                    if (playerPosition.X >= -10)
-                        playerAnimation.State = (int)Sprite.Run;
-                    else {
-                        if (playerAnimation.State != (int)Sprite.Idle)
-                            stateChange = true;
-                        playerAnimation.State = (int)Sprite.Idle;
-                    }
-                    playerAnimation.flipHorizontal = true;
-                    if (playerPosition.X >= -10)
-                        playerPosition.X -= moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
-                    playerAnimation.playerPos.X = playerPosition.X;
-                    if (playerPosition.X >= -10)
-                        sonyaHitBox.HB(playerPosition, FrameSize[1]);
-                    else
-                        sonyaHitBox.HB(playerPosition, FrameSize[0]);
-                }
                 // Crouch down //
-                else if (Keyboard.GetState().IsKeyDown(Keys.S))
+                if (Keyboard.GetState().IsKeyDown(Keys.S))
                 {
                     currentState = (int)Sprite.Crouch;
                     if (lastKey != Keys.S)
@@ -219,6 +187,54 @@ namespace CSCI_2941_Lab5
                     }
                         
                 }
+                // Move Right //
+                else if (Keyboard.GetState().IsKeyDown(Keys.D))
+                {
+                    currentState = (int)Sprite.Run;
+                    if (lastKey != Keys.D)
+                        stateChange = true;
+                    lastKey = Keys.D;
+                    if (playerPosition.X <= 1180)
+                        playerAnimation.State = (int)Sprite.Run;
+                    else
+                    {
+                        if (playerAnimation.State != (int)Sprite.Idle)
+                            stateChange = true;
+                        playerAnimation.State = (int)Sprite.Idle;
+                    }
+                    playerAnimation.flipHorizontal = false;
+                    //playerAnimation.currentState = playerAnimation.State;
+                    if (playerPosition.X <= 1180)
+                        playerPosition.X += moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                    playerAnimation.playerPos.X = playerPosition.X;
+                    if (playerPosition.X <= 1180)
+                        sonyaHitBox.HB(new Vector2(playerPosition.X + 40, playerPosition.Y), FrameSize[1]);
+                    else
+                        sonyaHitBox.HB(playerPosition, FrameSize[0]);
+                }
+                // Move Left //
+                else if (Keyboard.GetState().IsKeyDown(Keys.A))
+                {
+                    currentState = (int)Sprite.Run;
+                    if (lastKey != Keys.A)
+                        stateChange = true;
+                    lastKey = Keys.A;
+                    if (playerPosition.X >= -10)
+                        playerAnimation.State = (int)Sprite.Run;
+                    else {
+                        if (playerAnimation.State != (int)Sprite.Idle)
+                            stateChange = true;
+                        playerAnimation.State = (int)Sprite.Idle;
+                    }
+                    playerAnimation.flipHorizontal = true;
+                    if (playerPosition.X >= -10)
+                        playerPosition.X -= moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                    playerAnimation.playerPos.X = playerPosition.X;
+                    if (playerPosition.X >= -10)
+                        sonyaHitBox.HB(playerPosition, FrameSize[1]);
+                    else
+                        sonyaHitBox.HB(new Vector2(playerPosition.X + 30, playerPosition.Y), FrameSize[0]);
+                }
                 else
                 {
                     currentState = (int)Sprite.Idle;
@@ -236,13 +252,15 @@ namespace CSCI_2941_Lab5
 
                 playerAnimation.Update(gameTime, stateChange, looping);
                 stateChange = false;
+                oldState = newState;
             }
             
         }
         public void Draw(SpriteBatch spriteBatch)
         {
             playerAnimation.Draw(spriteBatch);
-            sonyaHitBox.Draw(spriteBatch);
+            if (devMode)
+                sonyaHitBox.Draw(spriteBatch);
             //RedBar.Draw(spriteBatch);
             //GreenBar.Draw(spriteBatch);
             

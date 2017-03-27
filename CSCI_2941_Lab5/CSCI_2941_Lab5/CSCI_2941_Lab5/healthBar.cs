@@ -19,7 +19,6 @@ namespace CSCI_2941_Lab5
             playerHealth.X = Convert.ToInt32(pos.X);
             playerHealth.Y = Convert.ToInt32(pos.Y);
             barColor = color;
-
         }
 
         public void update(int newHealth)

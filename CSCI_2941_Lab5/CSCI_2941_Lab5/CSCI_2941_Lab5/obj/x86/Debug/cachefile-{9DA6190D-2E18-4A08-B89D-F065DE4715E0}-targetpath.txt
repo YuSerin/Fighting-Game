@@ -20,5 +20,8 @@ Content\SubZero\kicking.xnb
 Content\SubZero\punching.xnb
 Content\Sonya\S_kicking.xnb
 Content\Sonya\S_punching.xnb
+<<<<<<< HEAD
 Content\SubZero\Jump2.xnb
 Content\SubZero\Jump.xnb
+=======
+>>>>>>> 6cd986c4168fe086f4fa8298a930cdb70fcdd091
