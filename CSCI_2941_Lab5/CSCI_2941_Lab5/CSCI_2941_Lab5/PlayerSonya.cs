@@ -17,7 +17,7 @@ namespace CSCI_2941_Lab5
     class PlayerSonya
     {
         KeyboardState oldState = Keyboard.GetState();
-        bool devMode = true;
+        bool devMode = false;
         SoundEffect kick, punch;            //http://mkw.mortalkombatonline.com/umk3/sounds/#female
         Texture2D[] playerSprite = new Texture2D[(int)Sprite.Max];
         Animation playerAnimation = new Animation();
