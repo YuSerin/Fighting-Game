@@ -20,7 +20,7 @@ namespace CSCI_2941_Lab5
         bool devMode = false;
         SoundEffect kick, punch;            //http://mkw.mortalkombatonline.com/umk3/sounds/#female
         Texture2D[] playerSprite = new Texture2D[(int)Sprite.Max];
-        Animation playerAnimation = new Animation();
+        public Animation playerAnimation = new Animation();
         Vector2[] FrameSize = new Vector2[(int)Sprite.Max];
         public Vector2 playerPosition = new Vector2(100f, 400f);
         public HitBox sonyaHitBox = new HitBox();
@@ -65,7 +65,7 @@ namespace CSCI_2941_Lab5
         }
         public void Update(GameTime gameTime)
         {
-            playerAnimation.playerPos = playerPosition;
+            //playerAnimation.playerPos = playerPosition;
             if (Keyboard.GetState().IsKeyUp(Keys.S))
                 playerAnimation.holdFrame = false;
             //Saving old and new keyboard state to tell if a key was just pressed or if it 
