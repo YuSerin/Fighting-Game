@@ -15,7 +15,7 @@ namespace CSCI_2941_Lab5
         int blockKick = 7;
         int blockPunch = 5;
         int hitKick = 35;
-        int hitPunch = 25;
+        int hitPunch = 550;
         int dualAttack = 15;
 
         public int TestCollision(Rectangle HB1, Rectangle HB2, int State1, int State2)

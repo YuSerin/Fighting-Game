@@ -39,7 +39,6 @@ namespace CSCI_2941_Lab5
         healthBar SubZRedBar = new healthBar();
         int SubZHealth = 550;
         int Health;
-        bool DrawHealthBar = true;
 
         Collision collision = new Collision();
 
@@ -150,10 +149,13 @@ namespace CSCI_2941_Lab5
                     {
                         selection.Play(1f, .1f, .5f);
                         timer = 99;
-                        game = 3;
                         SonyaHealth = 550;
                         SubZHealth = 550;
-
+                        SonyaGreenBar.update(SonyaHealth);
+                        SubZGreenBar.update(SonyaHealth);
+                        Sonya.playerPosition = new Vector2(100f, 400f);
+                        SubZero.playerPosition = new Vector2(1050f, 400f);
+                        game = 3;
                     }
                     //instructions
                     if (new Rectangle((graphics.PreferredBackBufferWidth / 2), (graphics.PreferredBackBufferHeight / 2), 150, 30).Contains(mouseX, mouseY))
@@ -195,14 +197,12 @@ namespace CSCI_2941_Lab5
                     if (new Rectangle((graphics.PreferredBackBufferWidth / 2)-300, (graphics.PreferredBackBufferHeight / 2), 150, 30).Contains(mouseX, mouseY))
                     {
                         selection.Play(1f, .1f, .5f);
-                        game = 1;
                         player1 = 0;
                         player2 = 0;
-                        SonyaHealth = 550;
-                        SubZHealth = 550;
-
-
+                        game = 1;
+                       
                     }
+  
                     //quit
                     if (new Rectangle((graphics.PreferredBackBufferWidth / 2)-300, (2 * graphics.PreferredBackBufferHeight / 3), 150, 30).Contains(mouseX, mouseY))
                     {
@@ -294,9 +294,6 @@ namespace CSCI_2941_Lab5
                 }
             }
 
-            if (SonyaHealth <= 0 || SubZHealth <= 0)
-                DrawHealthBar = false;
-
             base.Update(gameTime);
         }
 
@@ -350,14 +347,11 @@ namespace CSCI_2941_Lab5
             Sonya.Draw(spriteBatch);
             SubZero.Draw(spriteBatch);
 
-            if (DrawHealthBar)
-            {
-                SonyaRedBar.Draw(spriteBatch);
-                SonyaGreenBar.Draw(spriteBatch);
+            SonyaRedBar.Draw(spriteBatch);
+            SonyaGreenBar.Draw(spriteBatch);
 
-                SubZRedBar.Draw(spriteBatch);
-                SubZGreenBar.Draw(spriteBatch);
-            }
+            SubZRedBar.Draw(spriteBatch);
+            SubZGreenBar.Draw(spriteBatch);
             
             }
             //pause

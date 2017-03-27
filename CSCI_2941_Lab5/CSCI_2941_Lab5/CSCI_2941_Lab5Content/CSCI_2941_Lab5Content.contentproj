@@ -172,7 +172,9 @@
       <Name>Jump</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
-
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="Sonya\S_hurt.wav">
       <Name>S_hurt</Name>
       <Importer>WavImporter</Importer>

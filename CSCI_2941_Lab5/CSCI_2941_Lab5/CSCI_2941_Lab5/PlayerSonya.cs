@@ -18,7 +18,7 @@ namespace CSCI_2941_Lab5
         Texture2D[] playerSprite = new Texture2D[(int)Sprite.Max];
         Animation playerAnimation = new Animation();
         Vector2[] FrameSize = new Vector2[(int)Sprite.Max];
-        Vector2 playerPosition = new Vector2(100f, 400f);
+        public Vector2 playerPosition = new Vector2(100f, 400f);
         public HitBox sonyaHitBox = new HitBox();
         float moveSpeed = 300f;
         bool looping = true;
