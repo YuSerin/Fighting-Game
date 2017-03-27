@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -19,6 +20,7 @@ namespace CSCI_2941_Lab5
         public bool flipHorizontal = false;
         public int nextFrameTime = 60;
         public int frameTimer = 0;
+        public bool holdFrame = false;
         private Vector2[] FrameSize = new Vector2[(int)Sprite.Max];
         private Rectangle sourceRect;
 
@@ -45,8 +47,14 @@ namespace CSCI_2941_Lab5
                 {
                     currentFrame = new Vector2(0, 0);     // Loop back to first frame //
                 }
+                else if (holdFrame && currentFrame.X == FrameSize[State].X * 4)
+                {
+                    currentFrame = new Vector2(FrameSize[State].X * 3, 0);
+                    //if (Keyboard.GetState().IsKeyUp(Keys.S))
+                    //    holdFrame = false;
+                }
                 else if (currentFrame.X >= playerImg[State].Width && looping == false)
-                    return;
+                        return;
             }
             sourceRect = new Rectangle((int)currentFrame.X, (int)currentFrame.Y, 
                 (int)FrameSize[State].X, (int)FrameSize[State].Y);

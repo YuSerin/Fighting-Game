@@ -249,6 +249,10 @@ namespace CSCI_2941_Lab5
 
             if (Health != 0 && SonyaHealth != 0)
             {
+                if (Sonya.playerPosition.X > SubZero.playerPosition.X)
+                    Sonya.playerPosition.X += 10;
+                else
+                    Sonya.playerPosition.X -= 10;
                 if (game ==3)
                S_hurt.Play(1f, .1f, .5f);
                 SonyaHealth -= Health;
@@ -260,6 +264,10 @@ namespace CSCI_2941_Lab5
 
             if (Health != 0 && SubZHealth != 0)
             {
+                if (Sonya.playerPosition.X > SubZero.playerPosition.X)
+                    SubZero.playerPosition.X -= 10;
+                else
+                    SubZero.playerPosition.X += 10;
                 if (game == 3)
                     SZ_hurt.Play(1f, .1f, .5f);
                 SubZHealth -= Health;

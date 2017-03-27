@@ -18,7 +18,7 @@ namespace CSCI_2941_Lab5
         Texture2D[] playerSprite = new Texture2D[(int)Sprite.Max];
         Animation playerAnimation = new Animation();
         Vector2[] FrameSize = new Vector2[(int)Sprite.Max];
-        Vector2 playerPosition = new Vector2(1050f, 400f);
+        public Vector2 playerPosition = new Vector2(1050f, 400f);
         public HitBox subZeroHitBox = new HitBox();
         public HitBox subZAttackHB = new HitBox();
         float moveSpeed = 300f;
@@ -57,6 +57,9 @@ namespace CSCI_2941_Lab5
         }
         public void Update(GameTime gameTime)
         {
+            playerAnimation.playerPos = playerPosition;
+            if (Keyboard.GetState().IsKeyUp(Keys.L))
+                playerAnimation.holdFrame = false;
             //Saving old and new keyboard state to tell if a key was just pressed or if it 
             //is being held down
             KeyboardState newState = Keyboard.GetState();
@@ -92,6 +95,7 @@ namespace CSCI_2941_Lab5
                 // Crouch down //
                 if (Keyboard.GetState().IsKeyDown(Keys.L))
                 {
+                    playerAnimation.holdFrame = true;
                     //move attack hitbox off screen
                     subZAttackHB.HB(new Vector2(playerPosition.X, playerPosition.Y + 10000), FrameSize[0]);
 

@@ -22,7 +22,7 @@ namespace CSCI_2941_Lab5
         Texture2D[] playerSprite = new Texture2D[(int)Sprite.Max];
         Animation playerAnimation = new Animation();
         Vector2[] FrameSize = new Vector2[(int)Sprite.Max];
-        Vector2 playerPosition = new Vector2(100f, 400f);
+        public Vector2 playerPosition = new Vector2(100f, 400f);
         public HitBox sonyaHitBox = new HitBox();
         public HitBox sonyaAttackHB = new HitBox();
         float moveSpeed = 300f;
@@ -65,6 +65,9 @@ namespace CSCI_2941_Lab5
         }
         public void Update(GameTime gameTime)
         {
+            playerAnimation.playerPos = playerPosition;
+            if (Keyboard.GetState().IsKeyUp(Keys.S))
+                playerAnimation.holdFrame = false;
             //Saving old and new keyboard state to tell if a key was just pressed or if it 
             //is being held down
             KeyboardState newState = Keyboard.GetState();
@@ -99,6 +102,7 @@ namespace CSCI_2941_Lab5
                 // Crouch down //
                 if (Keyboard.GetState().IsKeyDown(Keys.S))
                 {
+                    playerAnimation.holdFrame = true;
                     //move attack hitbox off screen
                     sonyaAttackHB.HB(new Vector2(playerPosition.X, playerPosition.Y + 10000), FrameSize[0]);
 
@@ -124,11 +128,12 @@ namespace CSCI_2941_Lab5
                         playerAnimation.playerPos = new Vector2(playerAnimation.playerPos.X + 30, playerAnimation.playerPos.Y + 25);
                         sonyaHitBox.HB(new Vector2(playerPosition.X + 40, playerPosition.Y + 105), FrameSize[3] / 2);
                     }
-                       
+
                 }
                 // Mid-Punch //
                 else if (Keyboard.GetState().IsKeyDown(Keys.C))
                 {
+                    playerAnimation.holdFrame = false;
                     punch.Play(1f, .1f, .5f);
                     currentState = (int)Sprite.Mid_Punch;
                     if (lastKey != Keys.C)
@@ -153,6 +158,7 @@ namespace CSCI_2941_Lab5
                 // Kick //
                 else if (Keyboard.GetState().IsKeyDown(Keys.Z))
                 {
+                    playerAnimation.holdFrame = false;
                     kick.Play(1f, .1f, .5f);
                     currentState = (int)Sprite.Kick;
                     if (lastKey != Keys.Z)
@@ -173,11 +179,12 @@ namespace CSCI_2941_Lab5
                         playerAnimation.playerPos = new Vector2(playerAnimation.playerPos.X - 40, playerAnimation.playerPos.Y);
                         sonyaHitBox.HB(new Vector2(playerPosition.X + 40, playerPosition.Y), FrameSize[(int)Sprite.Idle]);
                         sonyaAttackHB.HB(new Vector2(playerPosition.X - 40, playerPosition.Y + 50), new Vector2(110, 60));
-                    }    
+                    }
                 }
                 // Block //
                 else if (Keyboard.GetState().IsKeyDown(Keys.X))
                 {
+                    playerAnimation.holdFrame = false;
                     //move attack hitbox off screen
                     sonyaAttackHB.HB(new Vector2(playerPosition.X, playerPosition.Y + 10000), FrameSize[0]);
 
@@ -198,11 +205,12 @@ namespace CSCI_2941_Lab5
                         playerAnimation.playerPos = new Vector2(playerAnimation.playerPos.X + 10, playerAnimation.playerPos.Y);
                         sonyaHitBox.HB(new Vector2(playerPosition.X + 57, playerPosition.Y), FrameSize[(int)Sprite.Block]);
                     }
-                        
+
                 }
                 // Move Right //
                 else if (Keyboard.GetState().IsKeyDown(Keys.D))
                 {
+                    playerAnimation.holdFrame = false;
                     //move attack hitbox off screen
                     sonyaAttackHB.HB(new Vector2(playerPosition.X, playerPosition.Y + 10000), FrameSize[0]);
 
@@ -231,6 +239,7 @@ namespace CSCI_2941_Lab5
                 // Move Left //
                 else if (Keyboard.GetState().IsKeyDown(Keys.A))
                 {
+                    playerAnimation.holdFrame = false;
                     //move attack hitbox off screen
                     sonyaAttackHB.HB(new Vector2(playerPosition.X, playerPosition.Y + 10000), FrameSize[0]);
 
@@ -256,6 +265,7 @@ namespace CSCI_2941_Lab5
                 }
                 else
                 {
+                    playerAnimation.holdFrame = false;
                     //move attack hitbox off screen
                     sonyaAttackHB.HB(new Vector2(playerPosition.X, playerPosition.Y + 10000), FrameSize[0]);
 
@@ -271,7 +281,7 @@ namespace CSCI_2941_Lab5
                     else
                         sonyaHitBox.HB(new Vector2(playerPosition.X + 30, playerPosition.Y), FrameSize[0]);
                 }
-
+                                
                 playerAnimation.Update(gameTime, stateChange, looping);
                 stateChange = false;
                 oldState = newState;
