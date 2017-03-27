@@ -160,6 +160,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
 
     <Compile Include="SubZero\Jump2.png">
       <Name>Jump2</Name>
@@ -177,6 +178,24 @@
   <ItemGroup>
     <Compile Include="Sonya\S_hurt.wav">
       <Name>S_hurt</Name>
+=======
+    <Compile Include="Plop.wav">
+      <Name>Plop</Name>
+>>>>>>> 2dbd20e8a837163edc961cebc3126bdf55b4b0bd
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="game music.xap">
+      <Name>game music</Name>
+      <Importer>XactImporter</Importer>
+      <Processor>XactProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Sonya\S_hurt.wav">
+      <Name>S_hurt</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
@@ -184,13 +203,6 @@
   <ItemGroup>
     <Compile Include="SubZero\SZ_hurt.wav">
       <Name>SZ_hurt</Name>
-      <Importer>WavImporter</Importer>
-      <Processor>SoundEffectProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Plop.wav">
-      <Name>Plop</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
 
