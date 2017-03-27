@@ -151,8 +151,13 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
+<<<<<<< HEAD
       <Output>C:\Users\Taylor\Documents\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\title.xnb</Output>
       <Time>2017-03-26T21:13:19.5868301-06:00</Time>
+=======
+      <Output>C:\Users\Christopher Corona\Documents\GitHub\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\title.xnb</Output>
+      <Time>2017-03-26T21:12:17.7584079-06:00</Time>
+>>>>>>> 2dbd20e8a837163edc961cebc3126bdf55b4b0bd
     </Item>
     <Item>
       <Source>Courier New.spritefont</Source>
@@ -205,17 +210,13 @@
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
+<<<<<<< HEAD
       <Output>C:\Users\Taylor\Documents\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\Sonya\S_hurt.xnb</Output>
       <Time>2017-03-26T21:07:36.6136853-06:00</Time>
-    </Item>
-    <Item>
-      <Source>SubZero\SZ_hurt.wav</Source>
-      <Name>SubZero\SZ_hurt</Name>
-      <Importer>WavImporter</Importer>
-      <Processor>SoundEffectProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Taylor\Documents\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\SubZero\SZ_hurt.xnb</Output>
-      <Time>2017-03-26T21:07:36.6186988-06:00</Time>
+=======
+      <Output>C:\Users\Christopher Corona\Documents\GitHub\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\Sonya\S_hurt.xnb</Output>
+      <Time>2017-03-26T22:25:43.7139842-06:00</Time>
+>>>>>>> 2dbd20e8a837163edc961cebc3126bdf55b4b0bd
     </Item>
     <Item>
       <Source>Plop.wav</Source>
@@ -223,8 +224,27 @@
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
+<<<<<<< HEAD
+      <Output>C:\Users\Taylor\Documents\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\SubZero\SZ_hurt.xnb</Output>
+      <Time>2017-03-26T21:07:36.6186988-06:00</Time>
+=======
+      <Output>C:\Users\Christopher Corona\Documents\GitHub\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\Plop.xnb</Output>
+      <Time>2017-03-26T17:57:55.7540589-06:00</Time>
+>>>>>>> 2dbd20e8a837163edc961cebc3126bdf55b4b0bd
+    </Item>
+    <Item>
+      <Source>SubZero\SZ_hurt.wav</Source>
+      <Name>SubZero\SZ_hurt</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+<<<<<<< HEAD
       <Output>C:\Users\Taylor\Documents\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\Plop.xnb</Output>
       <Time>2017-03-26T21:07:36.6076693-06:00</Time>
+=======
+      <Output>C:\Users\Christopher Corona\Documents\GitHub\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\SubZero\SZ_hurt.xnb</Output>
+      <Time>2017-03-26T22:25:43.7139842-06:00</Time>
+>>>>>>> 2dbd20e8a837163edc961cebc3126bdf55b4b0bd
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
