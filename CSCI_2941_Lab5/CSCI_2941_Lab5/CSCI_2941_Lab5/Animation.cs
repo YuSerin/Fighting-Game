@@ -14,8 +14,8 @@ namespace CSCI_2941_Lab5
         public Vector2 playerVelocity;
         public Vector2 currentFrame;
         public int State;
-        public bool hasJumped = false;
-        public float gravity = 80f;
+        //public bool hasJumped = false;
+        //public float gravity = 80f;
         //public bool active;
         //public bool hasAttacked;
 

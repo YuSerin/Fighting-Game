@@ -21,11 +21,11 @@ namespace CSCI_2941_Lab5
         Vector2 playerPosition = new Vector2(1050f, 400f);
         public HitBox subZeroHitBox = new HitBox();
         float moveSpeed = 300f;
-        float jumpSpeed = 10f;
+        //float jumpSpeed = 10f;
         bool looping = true;
         Keys lastKey;
         bool stateChange;
-        bool reachedGround;
+       // bool reachedGround;
         public int currentState = (int)Sprite.Idle;
         Vector2 screenSize;
         public void Initialize(int screenWidth, int screenHeight)
@@ -36,7 +36,7 @@ namespace CSCI_2941_Lab5
             FrameSize[(int)Sprite.Mid_Punch] = new Vector2(113f, 134f);
             FrameSize[(int)Sprite.Kick] = new Vector2(126f, 138f);
             FrameSize[(int)Sprite.Block] = new Vector2(61f, 131f);
-            FrameSize[(int)Sprite.Jump] = new Vector2(70f, 136f);
+            //FrameSize[(int)Sprite.Jump] = new Vector2(70f, 136f);
 
             screenSize = new Vector2(screenWidth, screenHeight);
             playerAnimation.flipHorizontal = true;
@@ -51,7 +51,7 @@ namespace CSCI_2941_Lab5
             playerSprite[(int)Sprite.Mid_Punch] = Content.Load<Texture2D>("SubZero/Mid_Punch");
             playerSprite[(int)Sprite.Kick] = Content.Load<Texture2D>("SubZero/Kick");
             playerSprite[(int)Sprite.Block] = Content.Load<Texture2D>("SubZero/Block");
-            playerSprite[(int)Sprite.Jump] = Content.Load<Texture2D>("SubZero/Jump");
+            //playerSprite[(int)Sprite.Jump] = Content.Load<Texture2D>("SubZero/Jump");
 
             punch = Content.Load<SoundEffect>("SubZero/punching");
             kick = Content.Load<SoundEffect>("SubZero/kicking");
@@ -239,6 +239,7 @@ namespace CSCI_2941_Lab5
                     }
                 }
                 // Jump //
+                /*
                 else if (Keyboard.GetState().IsKeyDown(Keys.O))
                 {
                     currentState = (int)Sprite.Jump;
@@ -288,6 +289,7 @@ namespace CSCI_2941_Lab5
                         subZeroHitBox.HB(new Vector2(playerPosition.X - 20, playerPosition.Y), FrameSize[(int)Sprite.Jump]);
                     }
                 }
+                */
                 // Idle //
                 else
                 {
@@ -309,7 +311,7 @@ namespace CSCI_2941_Lab5
                 stateChange = false;
                 oldState = newState;
 
-                playerAnimation.hasJumped = false;
+                // playerAnimation.hasJumped = false;
             }
 
         }

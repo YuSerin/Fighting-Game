@@ -13,7 +13,7 @@ namespace CSCI_2941_Lab5
 {
     enum Sprite
     {
-        Idle, Run, Crouch, Mid_Punch, Kick, Block, Jump, Max,
+        Idle, Run, Crouch, Mid_Punch, Kick, Block, Max,
     }
     /// <summary>
     /// This is the main type for your game
@@ -38,6 +38,7 @@ namespace CSCI_2941_Lab5
         healthBar SubZRedBar = new healthBar();
         int SubZHealth = 550;
         int Health;
+        bool DrawHealthBar = true;
 
         Collision collision = new Collision();
 
@@ -225,6 +226,9 @@ namespace CSCI_2941_Lab5
                 SubZGreenBar.update(SubZHealth);
             }
 
+            if (SonyaHealth <= 0 || SubZHealth <= 0)
+                DrawHealthBar = false;
+
             base.Update(gameTime);
         }
 
@@ -277,11 +281,15 @@ namespace CSCI_2941_Lab5
             Sonya.Draw(spriteBatch);
             SubZero.Draw(spriteBatch);
 
-            SonyaRedBar.Draw(spriteBatch);
-            SonyaGreenBar.Draw(spriteBatch);
+            if (DrawHealthBar)
+            {
+                SonyaRedBar.Draw(spriteBatch);
+                SonyaGreenBar.Draw(spriteBatch);
 
-            SubZRedBar.Draw(spriteBatch);
-            SubZGreenBar.Draw(spriteBatch);
+                SubZRedBar.Draw(spriteBatch);
+                SubZGreenBar.Draw(spriteBatch);
+            }
+            
             }
             //pause
             if (game == 4)
