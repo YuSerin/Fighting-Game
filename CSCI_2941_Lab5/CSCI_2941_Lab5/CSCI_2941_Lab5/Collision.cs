@@ -45,6 +45,9 @@ namespace CSCI_2941_Lab5
                         HealthEffect = 0;
                 }
             }
+            else
+                HealthEffect = 0;
+
             return HealthEffect;
         }
     } 

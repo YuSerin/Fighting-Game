@@ -248,8 +248,8 @@ namespace CSCI_2941_Lab5
                 }
             }
 
-            // Test Sonya's collision //
-            Health = collision.TestCollision(Sonya.sonyaHitBox.playerHB, SubZero.subZeroHitBox.playerHB,
+            // Test if Sonya Gets Attacked //
+            Health = collision.TestCollision(Sonya.sonyaHitBox.playerHB, SubZero.subZAttackHB.playerHB,
                 Sonya.currentState, SubZero.currentState);
 
             if (Health != 0 && SonyaHealth != 0)
@@ -259,7 +259,8 @@ namespace CSCI_2941_Lab5
                 SonyaHealth -= Health;
                     SonyaGreenBar.update(SonyaHealth);
             }
-            Health = collision.TestCollision(SubZero.subZeroHitBox.playerHB, Sonya.sonyaHitBox.playerHB,
+            // Test is Sub Gets Attacked //
+            Health = collision.TestCollision(SubZero.subZeroHitBox.playerHB, Sonya.sonyaAttackHB.playerHB,
                 SubZero.currentState, Sonya.currentState);
 
             if (Health != 0 && SubZHealth != 0)

@@ -13,13 +13,14 @@ namespace CSCI_2941_Lab5
     class PlayerSonya
     {
         KeyboardState oldState = Keyboard.GetState();
-        bool devMode = true;
+        bool devMode = false;
         SoundEffect kick, punch;            //http://mkw.mortalkombatonline.com/umk3/sounds/#female
         Texture2D[] playerSprite = new Texture2D[(int)Sprite.Max];
         Animation playerAnimation = new Animation();
         Vector2[] FrameSize = new Vector2[(int)Sprite.Max];
         public Vector2 playerPosition = new Vector2(100f, 400f);
         public HitBox sonyaHitBox = new HitBox();
+        public HitBox sonyaAttackHB = new HitBox();
         float moveSpeed = 300f;
         bool looping = true;
         Keys lastKey;
@@ -31,6 +32,7 @@ namespace CSCI_2941_Lab5
         //int Health = 400;
         public void Initialize(int screenWidth, int screenHeight)
         {
+            sonyaAttackHB.HBColor(Color.LightGreen);
             FrameSize[(int)Sprite.Idle] = new Vector2(69f, 128f);
             FrameSize[(int)Sprite.Run] = new Vector2(95f, 133f);
             FrameSize[(int)Sprite.Crouch] = new Vector2(74f, 114f);
@@ -94,6 +96,9 @@ namespace CSCI_2941_Lab5
                 // Crouch down //
                 if (Keyboard.GetState().IsKeyDown(Keys.S))
                 {
+                    //move attack hitbox off screen
+                    sonyaAttackHB.HB(new Vector2(playerPosition.X, playerPosition.Y + 10000), FrameSize[0]);
+
                     currentState = (int)Sprite.Crouch;
                     if (lastKey != Keys.S)
                         stateChange = true;
@@ -132,15 +137,15 @@ namespace CSCI_2941_Lab5
                     if (!playerAnimation.flipHorizontal)
                     {
                         playerAnimation.playerPos = new Vector2(playerAnimation.playerPos.X - 10, playerAnimation.playerPos.Y + 5);
-                        sonyaHitBox.HB(new Vector2(playerPosition.X + 35, playerPosition.Y), FrameSize[(int)Sprite.Mid_Punch]);
+                        sonyaHitBox.HB(new Vector2(playerPosition.X + 20, playerPosition.Y), FrameSize[(int)Sprite.Idle]);
+                        sonyaAttackHB.HB(new Vector2(playerPosition.X + 123, playerPosition.Y + 50), new Vector2(70, 20));
                     }
-                        
                     else
                     {
-                        playerAnimation.playerPos = new Vector2(playerAnimation.playerPos.X - 30, playerAnimation.playerPos.Y + 5);
-                        sonyaHitBox.HB(new Vector2(playerPosition.X - 22, playerPosition.Y), FrameSize[(int)Sprite.Mid_Punch]);
+                        playerAnimation.playerPos = new Vector2(playerAnimation.playerPos.X - 60, playerAnimation.playerPos.Y + 5);
+                        sonyaHitBox.HB(new Vector2(playerPosition.X + 19, playerPosition.Y), FrameSize[(int)Sprite.Idle]);
+                        sonyaAttackHB.HB(new Vector2(playerPosition.X - 88, playerPosition.Y + 50), new Vector2(70, 20));
                     }
-
                 }
                 // Kick //
                 else if (Keyboard.GetState().IsKeyDown(Keys.Z))
@@ -156,18 +161,23 @@ namespace CSCI_2941_Lab5
                     if (!playerAnimation.flipHorizontal)
                     {
                         playerAnimation.playerPos = new Vector2(playerAnimation.playerPos.X - 10, playerAnimation.playerPos.Y);
-                        sonyaHitBox.HB(new Vector2(playerPosition.X + 40, playerPosition.Y), FrameSize[(int)Sprite.Kick]);
+                        sonyaHitBox.HB(new Vector2(playerPosition.X + 40, playerPosition.Y), FrameSize[(int)Sprite.Idle]);
+                        sonyaAttackHB.HB(new Vector2(playerPosition.X + 60, playerPosition.Y + 50), new Vector2(110, 60));
                     }
 
                     else
                     {
                         playerAnimation.playerPos = new Vector2(playerAnimation.playerPos.X - 40, playerAnimation.playerPos.Y);
-                        sonyaHitBox.HB(new Vector2(playerPosition.X - 35, playerPosition.Y), FrameSize[(int)Sprite.Kick]);
+                        sonyaHitBox.HB(new Vector2(playerPosition.X + 40, playerPosition.Y), FrameSize[(int)Sprite.Idle]);
+                        sonyaAttackHB.HB(new Vector2(playerPosition.X - 40, playerPosition.Y + 50), new Vector2(110, 60));
                     }    
                 }
                 // Block //
                 else if (Keyboard.GetState().IsKeyDown(Keys.X))
                 {
+                    //move attack hitbox off screen
+                    sonyaAttackHB.HB(new Vector2(playerPosition.X, playerPosition.Y + 10000), FrameSize[0]);
+
                     currentState = (int)Sprite.Block;
                     if (lastKey != Keys.X)
                         stateChange = true;
@@ -190,6 +200,9 @@ namespace CSCI_2941_Lab5
                 // Move Right //
                 else if (Keyboard.GetState().IsKeyDown(Keys.D))
                 {
+                    //move attack hitbox off screen
+                    sonyaAttackHB.HB(new Vector2(playerPosition.X, playerPosition.Y + 10000), FrameSize[0]);
+
                     currentState = (int)Sprite.Run;
                     if (lastKey != Keys.D)
                         stateChange = true;
@@ -215,6 +228,9 @@ namespace CSCI_2941_Lab5
                 // Move Left //
                 else if (Keyboard.GetState().IsKeyDown(Keys.A))
                 {
+                    //move attack hitbox off screen
+                    sonyaAttackHB.HB(new Vector2(playerPosition.X, playerPosition.Y + 10000), FrameSize[0]);
+
                     currentState = (int)Sprite.Run;
                     if (lastKey != Keys.A)
                         stateChange = true;
@@ -237,6 +253,9 @@ namespace CSCI_2941_Lab5
                 }
                 else
                 {
+                    //move attack hitbox off screen
+                    sonyaAttackHB.HB(new Vector2(playerPosition.X, playerPosition.Y + 10000), FrameSize[0]);
+
                     currentState = (int)Sprite.Idle;
                     if (lastKey != Keys.None)
                         stateChange = true;
@@ -260,7 +279,10 @@ namespace CSCI_2941_Lab5
         {
             playerAnimation.Draw(spriteBatch);
             if (devMode)
+            {
+                sonyaAttackHB.Draw(spriteBatch);
                 sonyaHitBox.Draw(spriteBatch);
+            }
             //RedBar.Draw(spriteBatch);
             //GreenBar.Draw(spriteBatch);
             
