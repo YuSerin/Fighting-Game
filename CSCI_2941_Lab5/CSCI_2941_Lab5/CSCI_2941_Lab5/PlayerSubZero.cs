@@ -20,6 +20,7 @@ namespace CSCI_2941_Lab5
         Vector2[] FrameSize = new Vector2[(int)Sprite.Max];
         Vector2 playerPosition = new Vector2(1050f, 400f);
         public HitBox subZeroHitBox = new HitBox();
+        public HitBox subZAttackHB = new HitBox();
         float moveSpeed = 300f;
         bool looping = true;
         Keys lastKey;
@@ -41,6 +42,7 @@ namespace CSCI_2941_Lab5
         }
         public void LoadContent(ContentManager Content)
         {
+            subZAttackHB.HBColor(Color.LightBlue);
             playerSprite[(int)Sprite.Idle] = Content.Load<Texture2D>("SubZero/Idle");
             playerSprite[(int)Sprite.Run] = Content.Load<Texture2D>("SubZero/Run");
             playerSprite[(int)Sprite.Crouch] = Content.Load<Texture2D>("SubZero/Crouch");
@@ -87,59 +89,11 @@ namespace CSCI_2941_Lab5
 
             if (looping)
             {
-                // Move Right //
-                if (Keyboard.GetState().IsKeyDown(Keys.OemSemicolon))
-                {
-                    currentState = (int)Sprite.Run;
-                    if (lastKey != Keys.OemSemicolon)
-                        stateChange = true;
-                    lastKey = Keys.OemSemicolon;
-
-                    if (playerPosition.X <= 1180)
-                        playerAnimation.State = (int)Sprite.Run;
-                    else
-                    {
-                        if (playerAnimation.State != (int)Sprite.Idle)
-                            stateChange = true;
-                        playerAnimation.State = (int)Sprite.Idle;
-                    }
-                    playerAnimation.flipHorizontal = false;
-                    //playerAnimation.currentState = playerAnimation.State;
-                    if (playerPosition.X <= 1180)
-                        playerPosition.X += moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
-                    playerAnimation.playerPos.X = playerPosition.X;
-                    if (playerPosition.X <= 1180)
-                        subZeroHitBox.HB(new Vector2(playerPosition.X + 30, playerPosition.Y), FrameSize[1]);
-                    else
-                        subZeroHitBox.HB(playerPosition, FrameSize[0]);
-                }
-                // Move Left //
-                else if (Keyboard.GetState().IsKeyDown(Keys.K))
-                {
-                    currentState = (int)Sprite.Run;
-                    if (lastKey != Keys.K)
-                        stateChange = true;
-                    lastKey = Keys.K;
-                    if (playerPosition.X >= -10)
-                        playerAnimation.State = (int)Sprite.Run;
-                    else
-                    {
-                        if (playerAnimation.State != (int)Sprite.Idle)
-                            stateChange = true;
-                        playerAnimation.State = (int)Sprite.Idle;
-                    }
-                    playerAnimation.flipHorizontal = true;
-                    if (playerPosition.X >= -10)
-                        playerPosition.X -= moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
-                    playerAnimation.playerPos.X = playerPosition.X;
-                    if (playerPosition.X >= -10)
-                        subZeroHitBox.HB(new Vector2(playerPosition.X + 20, playerPosition.Y), FrameSize[1]);
-                    else
-                        subZeroHitBox.HB(playerPosition, FrameSize[0]);
-                }
                 // Crouch down //
-                else if (Keyboard.GetState().IsKeyDown(Keys.L))
+                if (Keyboard.GetState().IsKeyDown(Keys.L))
                 {
+                    //move attack hitbox off screen
+                    subZAttackHB.HB(new Vector2(playerPosition.X, playerPosition.Y + 10000), FrameSize[0]);
 
                     currentState = (int)Sprite.Crouch;
                     if (lastKey != Keys.L)
@@ -176,13 +130,15 @@ namespace CSCI_2941_Lab5
                     if (playerAnimation.flipHorizontal)
                     {
                         playerAnimation.playerPos = new Vector2(playerAnimation.playerPos.X - 80, playerAnimation.playerPos.Y - 3);
-                        subZeroHitBox.HB(new Vector2(playerPosition.X - 70, playerPosition.Y), FrameSize[(int)Sprite.Mid_Punch]);
+                        subZeroHitBox.HB(new Vector2(playerPosition.X + 19, playerPosition.Y), FrameSize[(int)Sprite.Idle]);
+                        subZAttackHB.HB(new Vector2(playerPosition.X - 85, playerPosition.Y + 50), new Vector2(70, 20));
                     }
 
                     else
                     {
                         playerAnimation.playerPos = new Vector2(playerAnimation.playerPos.X, playerAnimation.playerPos.Y - 3);
-                        subZeroHitBox.HB(new Vector2(playerPosition.X + 40, playerPosition.Y), FrameSize[(int)Sprite.Mid_Punch]);
+                        subZeroHitBox.HB(new Vector2(playerPosition.X + 20, playerPosition.Y), FrameSize[(int)Sprite.Idle]);
+                        subZAttackHB.HB(new Vector2(playerPosition.X + 125, playerPosition.Y + 50), new Vector2(70, 20));
                     }
                        
                 }
@@ -199,20 +155,25 @@ namespace CSCI_2941_Lab5
                     playerPosition = playerAnimation.playerPos;
                     if (playerAnimation.flipHorizontal)
                     {
-                        playerAnimation.playerPos = new Vector2(playerAnimation.playerPos.X - 120, playerAnimation.playerPos.Y - 15);
-                        subZeroHitBox.HB(new Vector2(playerPosition.X - 110, playerPosition.Y), FrameSize[(int)Sprite.Kick]);
+                        playerAnimation.playerPos = new Vector2(playerAnimation.playerPos.X - 70, playerAnimation.playerPos.Y - 15);
+                        subZeroHitBox.HB(new Vector2(playerPosition.X + 50, playerPosition.Y), FrameSize[(int)Sprite.Idle]);
+                        subZAttackHB.HB(new Vector2(playerPosition.X - 60, playerPosition.Y + 50), new Vector2(110, 60));
                     }
-
+                    
                     else
                     {
                         playerAnimation.playerPos = new Vector2(playerAnimation.playerPos.X, playerAnimation.playerPos.Y - 10);
-                        subZeroHitBox.HB(new Vector2(playerPosition.X + 50, playerPosition.Y), FrameSize[(int)Sprite.Kick]);
+                        subZeroHitBox.HB(new Vector2(playerPosition.X + 20, playerPosition.Y), FrameSize[(int)Sprite.Idle]);
+                        subZAttackHB.HB(new Vector2(playerPosition.X + 60, playerPosition.Y + 50), new Vector2(110, 60));
                     }
                         
                 }
                 // Block //
                 else if (Keyboard.GetState().IsKeyDown(Keys.OemPeriod))
                 {
+                    //move attack hitbox off screen
+                    subZAttackHB.HB(new Vector2(playerPosition.X, playerPosition.Y + 10000), FrameSize[0]);
+
                     currentState = (int)Sprite.Block;
                     if (lastKey != Keys.OemPeriod)
                         stateChange = true;
@@ -233,8 +194,67 @@ namespace CSCI_2941_Lab5
                         subZeroHitBox.HB(new Vector2(playerPosition.X - 20, playerPosition.Y), FrameSize[(int)Sprite.Block]);
                     }
                 }
+                // Move Right //
+                else if (Keyboard.GetState().IsKeyDown(Keys.OemSemicolon))
+                {
+                    //move attack hitbox off screen
+                    subZAttackHB.HB(new Vector2(playerPosition.X, playerPosition.Y + 10000), FrameSize[0]);
+
+                    currentState = (int)Sprite.Run;
+                    if (lastKey != Keys.OemSemicolon)
+                        stateChange = true;
+                    lastKey = Keys.OemSemicolon;
+
+                    if (playerPosition.X <= 1180)
+                        playerAnimation.State = (int)Sprite.Run;
+                    else
+                    {
+                        if (playerAnimation.State != (int)Sprite.Idle)
+                            stateChange = true;
+                        playerAnimation.State = (int)Sprite.Idle;
+                    }
+                    playerAnimation.flipHorizontal = false;
+                    //playerAnimation.currentState = playerAnimation.State;
+                    if (playerPosition.X <= 1180)
+                        playerPosition.X += moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                    playerAnimation.playerPos.X = playerPosition.X;
+                    if (playerPosition.X <= 1180)
+                        subZeroHitBox.HB(new Vector2(playerPosition.X + 30, playerPosition.Y), FrameSize[1]);
+                    else
+                        subZeroHitBox.HB(playerPosition, FrameSize[0]);
+                }
+                // Move Left //
+                else if (Keyboard.GetState().IsKeyDown(Keys.K))
+                {
+                    //move attack hitbox off screen
+                    subZAttackHB.HB(new Vector2(playerPosition.X, playerPosition.Y + 10000), FrameSize[0]);
+
+                    currentState = (int)Sprite.Run;
+                    if (lastKey != Keys.K)
+                        stateChange = true;
+                    lastKey = Keys.K;
+                    if (playerPosition.X >= -10)
+                        playerAnimation.State = (int)Sprite.Run;
+                    else
+                    {
+                        if (playerAnimation.State != (int)Sprite.Idle)
+                            stateChange = true;
+                        playerAnimation.State = (int)Sprite.Idle;
+                    }
+                    playerAnimation.flipHorizontal = true;
+                    if (playerPosition.X >= -10)
+                        playerPosition.X -= moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                    playerAnimation.playerPos.X = playerPosition.X;
+                    if (playerPosition.X >= -10)
+                        subZeroHitBox.HB(new Vector2(playerPosition.X + 20, playerPosition.Y), FrameSize[1]);
+                    else
+                        subZeroHitBox.HB(playerPosition, FrameSize[0]);
+                }
                 else
                 {
+                    //move attack hitbox off screen
+                    subZAttackHB.HB(new Vector2(playerPosition.X, playerPosition.Y + 10000), FrameSize[0]);
+
                     currentState = (int)Sprite.Idle;
                     if (lastKey != Keys.None)
                         stateChange = true;
@@ -258,7 +278,10 @@ namespace CSCI_2941_Lab5
         {
             playerAnimation.Draw(spriteBatch);
             if (devMode)
+            {
                 subZeroHitBox.Draw(spriteBatch);
+                subZAttackHB.Draw(spriteBatch);
+            }
         }
         public void Dispose()
         {
