@@ -307,11 +307,9 @@ namespace CSCI_2941_Lab5
 
                 playerAnimation.Update(gameTime, stateChange, looping);
                 stateChange = false;
-<<<<<<< HEAD
-                playerAnimation.hasJumped = false;
-=======
                 oldState = newState;
->>>>>>> 6cd986c4168fe086f4fa8298a930cdb70fcdd091
+
+                playerAnimation.hasJumped = false;
             }
 
         }
