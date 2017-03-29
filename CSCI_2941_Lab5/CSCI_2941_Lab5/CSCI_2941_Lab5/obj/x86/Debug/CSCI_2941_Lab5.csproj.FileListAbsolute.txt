@@ -47,3 +47,4 @@ C:\Users\Taylor\Documents\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_
 C:\Users\Taylor\Documents\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 C:\Users\Taylor\Documents\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\obj\x86\Debug\CSCI_2941_Lab5.exe
 C:\Users\Taylor\Documents\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\obj\x86\Debug\CSCI_2941_Lab5.pdb
+C:\Users\Taylor\Documents\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\obj\x86\Debug\CSCI_2941_Lab5.csprojResolveAssemblyReference.cache

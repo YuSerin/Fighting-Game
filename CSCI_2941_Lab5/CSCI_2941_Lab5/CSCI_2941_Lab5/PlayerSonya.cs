@@ -131,81 +131,142 @@ namespace CSCI_2941_Lab5
 
                 }
                 // Mid-Punch //
-                else if (Keyboard.GetState().IsKeyDown(Keys.C))
+                else if (newState.IsKeyDown(Keys.C))
                 {
-                    playerAnimation.holdFrame = false;
-                    punch.Play(1f, .1f, .5f);
-                    currentState = (int)Sprite.Mid_Punch;
-                    if (lastKey != Keys.C)
-                        stateChange = true;
-                    lastKey = Keys.C;
-                    playerAnimation.State = (int)Sprite.Mid_Punch;
-                    looping = false;
-                    playerPosition = playerAnimation.playerPos;
-                    if (!playerAnimation.flipHorizontal)
+                    if (!oldState.IsKeyDown(Keys.C))
                     {
-                        playerAnimation.playerPos = new Vector2(playerAnimation.playerPos.X - 10, playerAnimation.playerPos.Y + 5);
-                        sonyaHitBox.HB(new Vector2(playerPosition.X + 20, playerPosition.Y), FrameSize[(int)Sprite.Idle]);
-                        sonyaAttackHB.HB(new Vector2(playerPosition.X + 123, playerPosition.Y + 50), new Vector2(70, 20));
+                        punch.Play(1f, .1f, .5f);
+                        currentState = (int)Sprite.Mid_Punch;
+                        if (lastKey != Keys.C)
+                            stateChange = true;
+                        lastKey = Keys.C;
+                        playerAnimation.State = (int)Sprite.Mid_Punch;
+                        looping = false;
+                        playerPosition = playerAnimation.playerPos;
+                        if (!playerAnimation.flipHorizontal)
+                        {
+                            playerAnimation.playerPos = new Vector2(playerAnimation.playerPos.X - 10, playerAnimation.playerPos.Y + 5);
+                            sonyaHitBox.HB(new Vector2(playerPosition.X + 20, playerPosition.Y), FrameSize[(int)Sprite.Idle]);
+                            sonyaAttackHB.HB(new Vector2(playerPosition.X + 123, playerPosition.Y + 50), new Vector2(70, 20));
+                        }
+                        else
+                        {
+                            playerAnimation.playerPos = new Vector2(playerAnimation.playerPos.X - 60, playerAnimation.playerPos.Y + 5);
+                            sonyaHitBox.HB(new Vector2(playerPosition.X + 19, playerPosition.Y), FrameSize[(int)Sprite.Idle]);
+                            sonyaAttackHB.HB(new Vector2(playerPosition.X - 88, playerPosition.Y + 50), new Vector2(70, 20));
+                        }
                     }
                     else
                     {
-                        playerAnimation.playerPos = new Vector2(playerAnimation.playerPos.X - 60, playerAnimation.playerPos.Y + 5);
-                        sonyaHitBox.HB(new Vector2(playerPosition.X + 19, playerPosition.Y), FrameSize[(int)Sprite.Idle]);
-                        sonyaAttackHB.HB(new Vector2(playerPosition.X - 88, playerPosition.Y + 50), new Vector2(70, 20));
+                        playerAnimation.holdFrame = false;
+                        //move attack hitbox off screen
+                        sonyaAttackHB.HB(new Vector2(playerPosition.X, playerPosition.Y + 10000), FrameSize[0]);
+
+                        currentState = (int)Sprite.Idle;
+                        if (lastKey != Keys.None)
+                            stateChange = true;
+                        lastKey = Keys.None;
+                        // playerAnimation.active = false;
+                        playerAnimation.State = (int)Sprite.Idle;
+                        //playerAnimation.currentState = (int)Sprite.Idle;
+                        if (!playerAnimation.flipHorizontal)
+                            sonyaHitBox.HB(playerPosition, FrameSize[0]);
+                        else
+                            sonyaHitBox.HB(new Vector2(playerPosition.X + 30, playerPosition.Y), FrameSize[0]);
                     }
                 }
                 // Kick //
-                else if (Keyboard.GetState().IsKeyDown(Keys.Z))
+                else if (newState.IsKeyDown(Keys.Z))
                 {
-                    playerAnimation.holdFrame = false;
-                    kick.Play(1f, .1f, .5f);
-                    currentState = (int)Sprite.Kick;
-                    if (lastKey != Keys.Z)
-                        stateChange = true;
-                    lastKey = Keys.Z;
-                    playerAnimation.State = (int)Sprite.Kick;
-                    looping = false;
-                    playerPosition = playerAnimation.playerPos;
-                    if (!playerAnimation.flipHorizontal)
+                    if (!oldState.IsKeyDown(Keys.Z))
                     {
-                        playerAnimation.playerPos = new Vector2(playerAnimation.playerPos.X - 10, playerAnimation.playerPos.Y);
-                        sonyaHitBox.HB(new Vector2(playerPosition.X + 40, playerPosition.Y), FrameSize[(int)Sprite.Idle]);
-                        sonyaAttackHB.HB(new Vector2(playerPosition.X + 60, playerPosition.Y + 50), new Vector2(110, 60));
-                    }
+                        playerAnimation.holdFrame = false;
+                        kick.Play(1f, .1f, .5f);
+                        currentState = (int)Sprite.Kick;
+                        if (lastKey != Keys.Z)
+                            stateChange = true;
+                        lastKey = Keys.Z;
+                        playerAnimation.State = (int)Sprite.Kick;
+                        looping = false;
+                        playerPosition = playerAnimation.playerPos;
+                        if (!playerAnimation.flipHorizontal)
+                        {
+                            playerAnimation.playerPos = new Vector2(playerAnimation.playerPos.X - 10, playerAnimation.playerPos.Y);
+                            sonyaHitBox.HB(new Vector2(playerPosition.X + 40, playerPosition.Y), FrameSize[(int)Sprite.Idle]);
+                            sonyaAttackHB.HB(new Vector2(playerPosition.X + 60, playerPosition.Y + 50), new Vector2(110, 60));
+                        }
 
+                        else
+                        {
+                            playerAnimation.playerPos = new Vector2(playerAnimation.playerPos.X - 40, playerAnimation.playerPos.Y);
+                            sonyaHitBox.HB(new Vector2(playerPosition.X + 40, playerPosition.Y), FrameSize[(int)Sprite.Idle]);
+                            sonyaAttackHB.HB(new Vector2(playerPosition.X - 40, playerPosition.Y + 50), new Vector2(110, 60));
+                        }
+                    }
                     else
                     {
-                        playerAnimation.playerPos = new Vector2(playerAnimation.playerPos.X - 40, playerAnimation.playerPos.Y);
-                        sonyaHitBox.HB(new Vector2(playerPosition.X + 40, playerPosition.Y), FrameSize[(int)Sprite.Idle]);
-                        sonyaAttackHB.HB(new Vector2(playerPosition.X - 40, playerPosition.Y + 50), new Vector2(110, 60));
+                        playerAnimation.holdFrame = false;
+                        //move attack hitbox off screen
+                        sonyaAttackHB.HB(new Vector2(playerPosition.X, playerPosition.Y + 10000), FrameSize[0]);
+
+                        currentState = (int)Sprite.Idle;
+                        if (lastKey != Keys.None)
+                            stateChange = true;
+                        lastKey = Keys.None;
+                        // playerAnimation.active = false;
+                        playerAnimation.State = (int)Sprite.Idle;
+                        //playerAnimation.currentState = (int)Sprite.Idle;
+                        if (!playerAnimation.flipHorizontal)
+                            sonyaHitBox.HB(playerPosition, FrameSize[0]);
+                        else
+                            sonyaHitBox.HB(new Vector2(playerPosition.X + 30, playerPosition.Y), FrameSize[0]);
                     }
                 }
                 // Block //
-                else if (Keyboard.GetState().IsKeyDown(Keys.X))
+                else if (newState.IsKeyDown(Keys.X))
                 {
-                    playerAnimation.holdFrame = false;
-                    //move attack hitbox off screen
-                    sonyaAttackHB.HB(new Vector2(playerPosition.X, playerPosition.Y + 10000), FrameSize[0]);
-
-                    currentState = (int)Sprite.Block;
-                    if (lastKey != Keys.X)
-                        stateChange = true;
-                    lastKey = Keys.X;
-                    playerAnimation.State = (int)Sprite.Block;
-                    looping = false;
-                    playerPosition = playerAnimation.playerPos;
-
-                    if (!playerAnimation.flipHorizontal)
+                    if (!oldState.IsKeyDown(Keys.X))
                     {
-                        sonyaHitBox.HB(new Vector2(playerPosition.X - 17, playerPosition.Y), FrameSize[(int)Sprite.Block]);
+                        playerAnimation.holdFrame = false;
+                        //move attack hitbox off screen
+                        sonyaAttackHB.HB(new Vector2(playerPosition.X, playerPosition.Y + 10000), FrameSize[0]);
+
+                        currentState = (int)Sprite.Block;
+                        if (lastKey != Keys.X)
+                            stateChange = true;
+                        lastKey = Keys.X;
+                        playerAnimation.State = (int)Sprite.Block;
+                        looping = false;
+                        playerPosition = playerAnimation.playerPos;
+
+                        if (!playerAnimation.flipHorizontal)
+                        {
+                            sonyaHitBox.HB(new Vector2(playerPosition.X - 17, playerPosition.Y), FrameSize[(int)Sprite.Block]);
+                        }
+                        else
+                        {
+                            playerAnimation.playerPos = new Vector2(playerAnimation.playerPos.X + 10, playerAnimation.playerPos.Y);
+                            sonyaHitBox.HB(new Vector2(playerPosition.X + 57, playerPosition.Y), FrameSize[(int)Sprite.Block]);
+                        }
                     }
                     else
                     {
-                        playerAnimation.playerPos = new Vector2(playerAnimation.playerPos.X + 10, playerAnimation.playerPos.Y);
-                        sonyaHitBox.HB(new Vector2(playerPosition.X + 57, playerPosition.Y), FrameSize[(int)Sprite.Block]);
-                    }
+                        playerAnimation.holdFrame = false;
+                        //move attack hitbox off screen
+                        sonyaAttackHB.HB(new Vector2(playerPosition.X, playerPosition.Y + 10000), FrameSize[0]);
 
+                        currentState = (int)Sprite.Idle;
+                        if (lastKey != Keys.None)
+                            stateChange = true;
+                        lastKey = Keys.None;
+                        // playerAnimation.active = false;
+                        playerAnimation.State = (int)Sprite.Idle;
+                        //playerAnimation.currentState = (int)Sprite.Idle;
+                        if (!playerAnimation.flipHorizontal)
+                            sonyaHitBox.HB(playerPosition, FrameSize[0]);
+                        else
+                            sonyaHitBox.HB(new Vector2(playerPosition.X + 30, playerPosition.Y), FrameSize[0]);
+                    }
                 }
                 // Move Right //
                 else if (Keyboard.GetState().IsKeyDown(Keys.D))
