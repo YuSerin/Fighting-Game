@@ -51,10 +51,11 @@ namespace CSCI_2941_Lab5
 
 
         //music
-        //AudioEngine audioEngine;
-        //SoundBank soundBank;
-        //WaveBank waveBank;        //WaveBank streamingWaveBank;
-        //Cue musicCue;
+        Cue musicCue;
+        AudioEngine audioEngine;
+        SoundBank soundBank;
+        WaveBank waveBank;
+
 
         public Game1()
         {
@@ -85,7 +86,11 @@ namespace CSCI_2941_Lab5
                 graphics.PreferredBackBufferHeight / 30), SonyaHealth, Color.LimeGreen);
             SubZRedBar.health(new Vector2(graphics.PreferredBackBufferWidth - 580,
                 graphics.PreferredBackBufferHeight / 30), SonyaHealth, Color.Red);
-
+            audioEngine = new AudioEngine("Content\\game music.xgs");
+            waveBank = new WaveBank(audioEngine, "Content\\Wave Bank.xwb");
+            soundBank = new SoundBank(audioEngine, "Content\\Sound Bank.xsb");
+            musicCue = soundBank.GetCue("fighting backgorund music");
+            musicCue.Play();
             base.Initialize();
             this.IsMouseVisible = true;
         }
@@ -96,16 +101,15 @@ namespace CSCI_2941_Lab5
         /// </summary>
         protected override void LoadContent()
         {
+            //soundEffect = Content.Load<SoundEffect>("fighting backgorund music");
             //// Load files built from XACT project
-            //audioEngine = new AudioEngine("Content\\game music.xgs");
-            //waveBank = new WaveBank(audioEngine, "Content\\Wave Bank.xwb");
-            //soundBank = new SoundBank(audioEngine, "Content\\Sound Bank.xsb");
+
             //// Load streaming wave bank
-            //streamingWaveBank = new WaveBank(audioEngine, "Content\\fighting background music.xwb", 0, 4);
+            //streamingWaveBank = new WaveBank(audioEngine, "Content\\fighting backgorund music.xwb", 0, 4);
             //// The audio engine must be updated before the streaming cue is ready
             //audioEngine.Update();
             //// Get cue for streaming music
-            //musicCue = soundBank.GetCue("fighting background music");
+            //musicCue = soundBank.GetCue("fighting backgorund music");
             //// Start the background music
             //musicCue.Play();
             // Create a new SpriteBatch, which can be used to draw textures.
@@ -162,11 +166,13 @@ namespace CSCI_2941_Lab5
                 {  //play
                     if (new Rectangle((graphics.PreferredBackBufferWidth / 2), (2 * graphics.PreferredBackBufferHeight / 5), 150, 30).Contains(mouseX, mouseY))
                     {
+                        
                         selection.Play(1f, .1f, .5f);
                         timer = 99;
-                        game = 3;
+                 
                         SonyaHealth = 550;
                         SubZHealth = 550;
+                        game = 3;
 
                     }
                     //instructions
@@ -209,12 +215,13 @@ namespace CSCI_2941_Lab5
                     if (new Rectangle((graphics.PreferredBackBufferWidth / 2)-300, (graphics.PreferredBackBufferHeight / 2), 150, 30).Contains(mouseX, mouseY))
                     {
                         selection.Play(1f, .1f, .5f);
-                        game = 1;
+                        
                         player1 = 0;
                         player2 = 0;
                         SonyaHealth = 550;
                         SubZHealth = 550;
-
+                        musicCue.Resume();
+                        game = 1;
 
                     }
                     //quit
@@ -313,7 +320,7 @@ namespace CSCI_2941_Lab5
                         player1 = 1;
                     if (SubZHealth > SonyaHealth)
                         player2 = 1;
-
+                    musicCue.Pause();
                     game = 5;
                 }
                 if (SonyaHealth <= 0 || SubZHealth <= 0)
@@ -322,7 +329,7 @@ namespace CSCI_2941_Lab5
                         player2 = 1;
                     if (SubZHealth <= 0)
                         player1 = 1;
-
+                    musicCue.Pause();
                     clock.reset();
                     timer = 0;
                     game = 5;
