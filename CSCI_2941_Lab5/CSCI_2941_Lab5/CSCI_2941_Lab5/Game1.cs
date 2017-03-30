@@ -164,7 +164,7 @@ namespace CSCI_2941_Lab5
             {
                 if (game == 1)
                 {  //play
-                    if (Keyboard.GetState().IsKeyDown(Keys.Enter) || (new Rectangle((graphics.PreferredBackBufferWidth / 2), (2 * graphics.PreferredBackBufferHeight / 5), 150, 30).Contains(mouseX, mouseY)))
+                    if (Keyboard.GetState().IsKeyDown(Keys.Enter) || (new Rectangle((graphics.PreferredBackBufferWidth / 2)-175, (2 * graphics.PreferredBackBufferHeight / 5), 250, 30).Contains(mouseX, mouseY)))
                     {
                         Sonya.playerPosition = new Vector2(100f, 400f);
                         SubZero.playerPosition = new Vector2(1050f, 400f);
@@ -178,13 +178,13 @@ namespace CSCI_2941_Lab5
 
                     }
                     //instructions
-                    if (new Rectangle((graphics.PreferredBackBufferWidth / 2), (graphics.PreferredBackBufferHeight / 2), 150, 30).Contains(mouseX, mouseY) || Keyboard.GetState().IsKeyDown(Keys.I))
+                    if (new Rectangle((graphics.PreferredBackBufferWidth / 2)-175, (graphics.PreferredBackBufferHeight / 2), 250, 30).Contains(mouseX, mouseY) || Keyboard.GetState().IsKeyDown(Keys.I))
                     {
                         selection.Play(1f, .1f, .5f);
                         game = 2;
                     }
                     //quit
-                    if (new Rectangle((graphics.PreferredBackBufferWidth / 2), (2 * graphics.PreferredBackBufferHeight / 3), 150, 30).Contains(mouseX, mouseY))
+                    if (new Rectangle((graphics.PreferredBackBufferWidth / 2)-175, (2 * graphics.PreferredBackBufferHeight / 3), 250, 30).Contains(mouseX, mouseY))
                     {
                         selection.Play(1f, .1f, .5f);
                         this.Exit();
@@ -192,7 +192,7 @@ namespace CSCI_2941_Lab5
                 }
                 if (game == 2)
                 {  //return
-                    if (new Rectangle((2 * graphics.PreferredBackBufferWidth / 3), (graphics.PreferredBackBufferHeight / 30), 150, 30).Contains(mouseX, mouseY))
+                    if (new Rectangle((2 * graphics.PreferredBackBufferWidth / 3)-175, (graphics.PreferredBackBufferHeight / 30), 250, 30).Contains(mouseX, mouseY))
                     {
                         selection.Play(1f, .1f, .5f);
                         game = 1;
@@ -200,13 +200,13 @@ namespace CSCI_2941_Lab5
                 }
                 if (game == 4)
                 {  //play
-                    if (new Rectangle((graphics.PreferredBackBufferWidth / 2), (graphics.PreferredBackBufferHeight / 2), 150, 30).Contains(mouseX, mouseY))
+                    if (new Rectangle((graphics.PreferredBackBufferWidth / 2), (graphics.PreferredBackBufferHeight / 2), 250, 30).Contains(mouseX, mouseY))
                     {
                         selection.Play(1f, .1f, .5f);
                         game = 3;
                     }
                     //quit
-                    if (new Rectangle((graphics.PreferredBackBufferWidth / 2), (2 * graphics.PreferredBackBufferHeight / 3), 150, 30).Contains(mouseX, mouseY))
+                    if (new Rectangle((graphics.PreferredBackBufferWidth / 2), (2 * graphics.PreferredBackBufferHeight / 3), 250, 30).Contains(mouseX, mouseY))
                     {
                         selection.Play(1f, .1f, .5f);
                         this.Exit();
@@ -214,7 +214,7 @@ namespace CSCI_2941_Lab5
                 }
                 if (game == 5)
                 {  //play
-                    if (Keyboard.GetState().IsKeyDown(Keys.Enter) || new Rectangle((graphics.PreferredBackBufferWidth / 2)-300, (graphics.PreferredBackBufferHeight / 2), 150, 30).Contains(mouseX, mouseY))
+                    if (Keyboard.GetState().IsKeyDown(Keys.Enter) || new Rectangle((graphics.PreferredBackBufferWidth / 2)-300, (graphics.PreferredBackBufferHeight / 2), 250, 30).Contains(mouseX, mouseY))
                     {
                         selection.Play(1f, .1f, .5f);
                         
@@ -228,7 +228,7 @@ namespace CSCI_2941_Lab5
 
                     }
                     //quit
-                    if (new Rectangle((graphics.PreferredBackBufferWidth / 2)-300, (2 * graphics.PreferredBackBufferHeight / 3), 150, 30).Contains(mouseX, mouseY))
+                    if (new Rectangle((graphics.PreferredBackBufferWidth / 2)-300, (2 * graphics.PreferredBackBufferHeight / 3), 250, 30).Contains(mouseX, mouseY))
                     {
                         selection.Play(1f, .1f, .5f);
                         this.Exit();
@@ -362,9 +362,9 @@ namespace CSCI_2941_Lab5
             {
                 spriteBatch.Draw(title, mainFrame, Color.White);
                 spriteBatch.DrawString(font, "Normal Kombat", new Vector2((graphics.PreferredBackBufferWidth / 4), (graphics.PreferredBackBufferHeight) / 30), Color.White);
-                spriteBatch.DrawString(font, "Play", new Vector2((graphics.PreferredBackBufferWidth / 2), (2 * graphics.PreferredBackBufferHeight / 5)), Color.Blue);
-                spriteBatch.DrawString(font, "Instructions", new Vector2((graphics.PreferredBackBufferWidth / 2), (graphics.PreferredBackBufferHeight / 2)), Color.Blue);
-                spriteBatch.DrawString(font, "Quit", new Vector2((graphics.PreferredBackBufferWidth / 2), (2 * graphics.PreferredBackBufferHeight / 3)), Color.Blue);
+                spriteBatch.DrawString(font, "Play", new Vector2((graphics.PreferredBackBufferWidth / 2)-175, (2 * graphics.PreferredBackBufferHeight / 5)), Color.Azure);
+                spriteBatch.DrawString(font, "keys", new Vector2((graphics.PreferredBackBufferWidth / 2)-175, (graphics.PreferredBackBufferHeight / 2)), Color.Azure);
+                spriteBatch.DrawString(font, "Quit", new Vector2((graphics.PreferredBackBufferWidth / 2)-175, (2 * graphics.PreferredBackBufferHeight / 3)), Color.Azure);
 
             }
             //instructions
