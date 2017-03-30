@@ -160,13 +160,15 @@ namespace CSCI_2941_Lab5
             mouseState = Mouse.GetState();                 //setting the getstate to the mousestate
             mouseX = mouseState.X;                      //setting the mouse X position
             mouseY = mouseState.Y;                      //setting the mouse Y position
-            if (mouseState.LeftButton == ButtonState.Pressed && previousMouseState.LeftButton == ButtonState.Pressed)
+            if (keyboardState.IsKeyDown(Keys.Enter) || (mouseState.LeftButton == ButtonState.Pressed && previousMouseState.LeftButton == ButtonState.Pressed))
             {
                 if (game == 1)
                 {  //play
-                    if (new Rectangle((graphics.PreferredBackBufferWidth / 2), (2 * graphics.PreferredBackBufferHeight / 5), 150, 30).Contains(mouseX, mouseY))
+                    if (Keyboard.GetState().IsKeyDown(Keys.Enter) || (new Rectangle((graphics.PreferredBackBufferWidth / 2), (2 * graphics.PreferredBackBufferHeight / 5), 150, 30).Contains(mouseX, mouseY)))
                     {
-                        
+                        Sonya.playerPosition = new Vector2(100f, 400f);
+                        SubZero.playerPosition = new Vector2(1050f, 400f);
+                       
                         selection.Play(1f, .1f, .5f);
                         timer = 99;
                  
@@ -176,7 +178,7 @@ namespace CSCI_2941_Lab5
 
                     }
                     //instructions
-                    if (new Rectangle((graphics.PreferredBackBufferWidth / 2), (graphics.PreferredBackBufferHeight / 2), 150, 30).Contains(mouseX, mouseY))
+                    if (new Rectangle((graphics.PreferredBackBufferWidth / 2), (graphics.PreferredBackBufferHeight / 2), 150, 30).Contains(mouseX, mouseY) || Keyboard.GetState().IsKeyDown(Keys.I))
                     {
                         selection.Play(1f, .1f, .5f);
                         game = 2;
@@ -212,7 +214,7 @@ namespace CSCI_2941_Lab5
                 }
                 if (game == 5)
                 {  //play
-                    if (new Rectangle((graphics.PreferredBackBufferWidth / 2)-300, (graphics.PreferredBackBufferHeight / 2), 150, 30).Contains(mouseX, mouseY))
+                    if (Keyboard.GetState().IsKeyDown(Keys.Enter) || new Rectangle((graphics.PreferredBackBufferWidth / 2)-300, (graphics.PreferredBackBufferHeight / 2), 150, 30).Contains(mouseX, mouseY))
                     {
                         selection.Play(1f, .1f, .5f);
                         
@@ -220,6 +222,7 @@ namespace CSCI_2941_Lab5
                         player2 = 0;
                         SonyaHealth = 550;
                         SubZHealth = 550;
+
                         musicCue.Resume();
                         game = 1;
 
