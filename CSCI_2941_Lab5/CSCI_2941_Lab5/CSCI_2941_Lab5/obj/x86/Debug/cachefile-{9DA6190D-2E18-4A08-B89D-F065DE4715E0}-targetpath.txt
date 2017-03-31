@@ -1,0 +1,30 @@
+Content\Sonya\Block.xnb
+Content\Sonya\Crouch.xnb
+Content\Sonya\Idle.xnb
+Content\Sonya\Mid-Punch.xnb
+Content\Sonya\Run.xnb
+Content\Sonya\Kick.xnb
+Content\SubZero\Block.xnb
+Content\SubZero\Crouch.xnb
+Content\SubZero\HIgh_Punch.xnb
+Content\SubZero\Idle.xnb
+Content\SubZero\Kick.xnb
+Content\SubZero\Mid_Punch.xnb
+Content\SubZero\Run.xnb
+Content\SubZero\Victory.xnb
+Content\background.xnb
+Content\Instructions.xnb
+Content\title.xnb
+Content\SubZero\Jump2.xnb
+Content\SubZero\Jump.xnb
+Content\Courier New.xnb
+Content\SubZero\kicking.xnb
+Content\SubZero\punching.xnb
+Content\Sonya\S_kicking.xnb
+Content\Sonya\S_punching.xnb
+Content\Plop.xnb
+Content\Sonya\S_hurt.xnb
+Content\SubZero\SZ_hurt.xnb
+Content\game music.xgs
+Content\Wave Bank.xwb
+Content\Sound Bank.xsb

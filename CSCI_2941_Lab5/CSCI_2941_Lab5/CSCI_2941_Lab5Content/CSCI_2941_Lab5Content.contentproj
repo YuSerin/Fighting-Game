@@ -160,8 +160,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
-
     <Compile Include="SubZero\Jump2.png">
       <Name>Jump2</Name>
       <Importer>TextureImporter</Importer>
@@ -176,12 +174,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Sonya\S_hurt.wav">
-      <Name>S_hurt</Name>
-=======
     <Compile Include="Plop.wav">
       <Name>Plop</Name>
->>>>>>> 2dbd20e8a837163edc961cebc3126bdf55b4b0bd
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
@@ -205,7 +199,6 @@
       <Name>SZ_hurt</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
-
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
