@@ -70,7 +70,7 @@ namespace CSCI_2941_Lab5
         {
             isRunning = false;
             isFinished = false;
-            displayClock = "None";
+            displayClock = "Game Over";
             countTimerRef = 0;
             endTimer = 0;
         }

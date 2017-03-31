@@ -335,6 +335,11 @@ namespace CSCI_2941_Lab5
             }
 
         }
+        public void resetPos()
+        {
+            playerPosition = new Vector2(1050f, 400f);
+            playerAnimation.Initialize(playerPosition, FrameSize);
+        }
         public void Draw(SpriteBatch spriteBatch)
         {
             playerAnimation.Draw(spriteBatch);

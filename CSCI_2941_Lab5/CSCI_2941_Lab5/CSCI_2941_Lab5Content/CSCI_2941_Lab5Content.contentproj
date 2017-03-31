@@ -112,6 +112,7 @@
       <Name>Courier New</Name>
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
+      <SubType>Designer</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -183,6 +184,13 @@
   <ItemGroup>
     <Compile Include="SubZero\SZ_hurt.wav">
       <Name>SZ_hurt</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="fighting backgorund music.wav">
+      <Name>fighting backgorund music</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>

@@ -51,10 +51,11 @@ namespace CSCI_2941_Lab5
 
 
         //music
-        //AudioEngine audioEngine;
-        //SoundBank soundBank;
-        //WaveBank waveBank;        //WaveBank streamingWaveBank;
-        //Cue musicCue;
+        Cue musicCue;
+        AudioEngine audioEngine;
+        SoundBank soundBank;
+        WaveBank waveBank;
+
 
         public Game1()
         {
@@ -63,7 +64,7 @@ namespace CSCI_2941_Lab5
 
             graphics.PreferredBackBufferWidth = 1280;
             graphics.PreferredBackBufferHeight = 720;
-            graphics.IsFullScreen = true;
+            //graphics.IsFullScreen = true;
         }
 
         /// <summary>
@@ -85,7 +86,11 @@ namespace CSCI_2941_Lab5
                 graphics.PreferredBackBufferHeight / 30), SonyaHealth, Color.LimeGreen);
             SubZRedBar.health(new Vector2(graphics.PreferredBackBufferWidth - 580,
                 graphics.PreferredBackBufferHeight / 30), SonyaHealth, Color.Red);
-
+            audioEngine = new AudioEngine("Content\\game music.xgs");
+            waveBank = new WaveBank(audioEngine, "Content\\Wave Bank.xwb");
+            soundBank = new SoundBank(audioEngine, "Content\\Sound Bank.xsb");
+            musicCue = soundBank.GetCue("fighting backgorund music");
+            musicCue.Play();
             base.Initialize();
             this.IsMouseVisible = true;
         }
@@ -96,16 +101,15 @@ namespace CSCI_2941_Lab5
         /// </summary>
         protected override void LoadContent()
         {
+            //soundEffect = Content.Load<SoundEffect>("fighting backgorund music");
             //// Load files built from XACT project
-            //audioEngine = new AudioEngine("Content\\game music.xgs");
-            //waveBank = new WaveBank(audioEngine, "Content\\Wave Bank.xwb");
-            //soundBank = new SoundBank(audioEngine, "Content\\Sound Bank.xsb");
+
             //// Load streaming wave bank
-            //streamingWaveBank = new WaveBank(audioEngine, "Content\\fighting background music.xwb", 0, 4);
+            //streamingWaveBank = new WaveBank(audioEngine, "Content\\fighting backgorund music.xwb", 0, 4);
             //// The audio engine must be updated before the streaming cue is ready
             //audioEngine.Update();
             //// Get cue for streaming music
-            //musicCue = soundBank.GetCue("fighting background music");
+            //musicCue = soundBank.GetCue("fighting backgorund music");
             //// Start the background music
             //musicCue.Play();
             // Create a new SpriteBatch, which can be used to draw textures.
@@ -156,27 +160,41 @@ namespace CSCI_2941_Lab5
             mouseState = Mouse.GetState();                 //setting the getstate to the mousestate
             mouseX = mouseState.X;                      //setting the mouse X position
             mouseY = mouseState.Y;                      //setting the mouse Y position
-            if (mouseState.LeftButton == ButtonState.Pressed && previousMouseState.LeftButton == ButtonState.Pressed)
+            if (keyboardState.IsKeyDown(Keys.Enter) || (mouseState.LeftButton == ButtonState.Pressed && previousMouseState.LeftButton == ButtonState.Pressed))
             {
                 if (game == 1)
                 {  //play
-                    if (new Rectangle((graphics.PreferredBackBufferWidth / 2), (2 * graphics.PreferredBackBufferHeight / 5), 150, 30).Contains(mouseX, mouseY))
+                    if (Keyboard.GetState().IsKeyDown(Keys.Enter) || (new Rectangle((graphics.PreferredBackBufferWidth / 2)-175, (2 * graphics.PreferredBackBufferHeight / 5), 250, 30).Contains(mouseX, mouseY)))
                     {
-                        selection.Play(1f, .1f, .5f);
-                        timer = 99;
-                        game = 3;
                         SonyaHealth = 550;
                         SubZHealth = 550;
+                        SonyaGreenBar.health(new Vector2(graphics.PreferredBackBufferWidth / 45,
+                            graphics.PreferredBackBufferHeight / 30), SonyaHealth, Color.LimeGreen);
+                        SonyaRedBar.health(new Vector2(graphics.PreferredBackBufferWidth / 45,
+                            graphics.PreferredBackBufferHeight / 30), SonyaHealth, Color.Red);
+                        SubZGreenBar.health(new Vector2(graphics.PreferredBackBufferWidth - 580,
+                            graphics.PreferredBackBufferHeight / 30), SonyaHealth, Color.LimeGreen);
+                        SubZRedBar.health(new Vector2(graphics.PreferredBackBufferWidth - 580,
+                            graphics.PreferredBackBufferHeight / 30), SonyaHealth, Color.Red);
+                        SubZero.resetPos();
+                        Sonya.resetPos();                        
+
+                        selection.Play(1f, .1f, .5f);
+                        timer = 99;
+
+                        //SubZGreenBar.update(0);
+                        //SonyaGreenBar.update(0);
+                        game = 3;
 
                     }
                     //instructions
-                    if (new Rectangle((graphics.PreferredBackBufferWidth / 2), (graphics.PreferredBackBufferHeight / 2), 150, 30).Contains(mouseX, mouseY))
+                    if (new Rectangle((graphics.PreferredBackBufferWidth / 2)-175, (graphics.PreferredBackBufferHeight / 2), 250, 30).Contains(mouseX, mouseY) || Keyboard.GetState().IsKeyDown(Keys.I))
                     {
                         selection.Play(1f, .1f, .5f);
                         game = 2;
                     }
                     //quit
-                    if (new Rectangle((graphics.PreferredBackBufferWidth / 2), (2 * graphics.PreferredBackBufferHeight / 3), 150, 30).Contains(mouseX, mouseY))
+                    if (new Rectangle((graphics.PreferredBackBufferWidth / 2)-175, (2 * graphics.PreferredBackBufferHeight / 3), 250, 30).Contains(mouseX, mouseY))
                     {
                         selection.Play(1f, .1f, .5f);
                         this.Exit();
@@ -184,7 +202,7 @@ namespace CSCI_2941_Lab5
                 }
                 if (game == 2)
                 {  //return
-                    if (new Rectangle((2 * graphics.PreferredBackBufferWidth / 3), (graphics.PreferredBackBufferHeight / 30), 150, 30).Contains(mouseX, mouseY))
+                    if (new Rectangle((2 * graphics.PreferredBackBufferWidth / 3)-175, (graphics.PreferredBackBufferHeight / 30), 250, 30).Contains(mouseX, mouseY))
                     {
                         selection.Play(1f, .1f, .5f);
                         game = 1;
@@ -192,13 +210,13 @@ namespace CSCI_2941_Lab5
                 }
                 if (game == 4)
                 {  //play
-                    if (new Rectangle((graphics.PreferredBackBufferWidth / 2), (graphics.PreferredBackBufferHeight / 2), 150, 30).Contains(mouseX, mouseY))
+                    if (new Rectangle((graphics.PreferredBackBufferWidth / 2), (graphics.PreferredBackBufferHeight / 2), 250, 30).Contains(mouseX, mouseY))
                     {
                         selection.Play(1f, .1f, .5f);
                         game = 3;
                     }
                     //quit
-                    if (new Rectangle((graphics.PreferredBackBufferWidth / 2), (2 * graphics.PreferredBackBufferHeight / 3), 150, 30).Contains(mouseX, mouseY))
+                    if (new Rectangle((graphics.PreferredBackBufferWidth / 2), (2 * graphics.PreferredBackBufferHeight / 3), 250, 30).Contains(mouseX, mouseY))
                     {
                         selection.Play(1f, .1f, .5f);
                         this.Exit();
@@ -206,19 +224,21 @@ namespace CSCI_2941_Lab5
                 }
                 if (game == 5)
                 {  //play
-                    if (new Rectangle((graphics.PreferredBackBufferWidth / 2)-300, (graphics.PreferredBackBufferHeight / 2), 150, 30).Contains(mouseX, mouseY))
+                    if (Keyboard.GetState().IsKeyDown(Keys.Enter) || new Rectangle((graphics.PreferredBackBufferWidth / 2)-300, (graphics.PreferredBackBufferHeight / 2), 250, 30).Contains(mouseX, mouseY))
                     {
                         selection.Play(1f, .1f, .5f);
-                        game = 1;
+                        
                         player1 = 0;
                         player2 = 0;
                         SonyaHealth = 550;
                         SubZHealth = 550;
 
+                        musicCue.Resume();
+                        game = 1;
 
                     }
                     //quit
-                    if (new Rectangle((graphics.PreferredBackBufferWidth / 2)-300, (2 * graphics.PreferredBackBufferHeight / 3), 150, 30).Contains(mouseX, mouseY))
+                    if (new Rectangle((graphics.PreferredBackBufferWidth / 2)-300, (2 * graphics.PreferredBackBufferHeight / 3), 250, 30).Contains(mouseX, mouseY))
                     {
                         selection.Play(1f, .1f, .5f);
                         this.Exit();
@@ -271,12 +291,12 @@ namespace CSCI_2941_Lab5
                 if (Sonya.playerPosition.X > SubZero.playerPosition.X)
                 {
                     Sonya.playerAnimation.playerPos.X += 10;
-                    Sonya.playerPosition.X += 10;//Sonya.playerAnimation.playerPos;
+                    Sonya.playerPosition.X += 10;
                 }
                 else
                 {
                     Sonya.playerAnimation.playerPos.X -= 10;
-                    Sonya.playerPosition.X -= 10;//Sonya.playerAnimation.playerPos;
+                    Sonya.playerPosition.X -= 10;
                 }
                     if (game == 3)
                     S_hurt.Play(1f, .1f, .5f);
@@ -313,7 +333,7 @@ namespace CSCI_2941_Lab5
                         player1 = 1;
                     if (SubZHealth > SonyaHealth)
                         player2 = 1;
-
+                    musicCue.Pause();
                     game = 5;
                 }
                 if (SonyaHealth <= 0 || SubZHealth <= 0)
@@ -322,7 +342,7 @@ namespace CSCI_2941_Lab5
                         player2 = 1;
                     if (SubZHealth <= 0)
                         player1 = 1;
-
+                    musicCue.Pause();
                     clock.reset();
                     timer = 0;
                     game = 5;
@@ -352,9 +372,9 @@ namespace CSCI_2941_Lab5
             {
                 spriteBatch.Draw(title, mainFrame, Color.White);
                 spriteBatch.DrawString(font, "Normal Kombat", new Vector2((graphics.PreferredBackBufferWidth / 4), (graphics.PreferredBackBufferHeight) / 30), Color.White);
-                spriteBatch.DrawString(font, "Play", new Vector2((graphics.PreferredBackBufferWidth / 2), (2 * graphics.PreferredBackBufferHeight / 5)), Color.Blue);
-                spriteBatch.DrawString(font, "Instructions", new Vector2((graphics.PreferredBackBufferWidth / 2), (graphics.PreferredBackBufferHeight / 2)), Color.Blue);
-                spriteBatch.DrawString(font, "Quit", new Vector2((graphics.PreferredBackBufferWidth / 2), (2 * graphics.PreferredBackBufferHeight / 3)), Color.Blue);
+                spriteBatch.DrawString(font, "Play", new Vector2((graphics.PreferredBackBufferWidth / 2)-175, (2 * graphics.PreferredBackBufferHeight / 5)), Color.Azure);
+                spriteBatch.DrawString(font, "keys", new Vector2((graphics.PreferredBackBufferWidth / 2)-175, (graphics.PreferredBackBufferHeight / 2)), Color.Azure);
+                spriteBatch.DrawString(font, "Quit", new Vector2((graphics.PreferredBackBufferWidth / 2)-175, (2 * graphics.PreferredBackBufferHeight / 3)), Color.Azure);
 
             }
             //instructions

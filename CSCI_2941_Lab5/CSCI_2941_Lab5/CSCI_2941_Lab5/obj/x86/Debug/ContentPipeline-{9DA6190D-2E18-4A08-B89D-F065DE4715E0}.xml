@@ -161,7 +161,7 @@
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Taylor\Documents\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\Courier New.xnb</Output>
-      <Time>2017-03-26T22:56:02.7248862-06:00</Time>
+      <Time>2017-03-30T23:36:52.945138-06:00</Time>
     </Item>
     <Item>
       <Source>SubZero\kicking.wav</Source>
@@ -225,6 +225,15 @@
       <Options>None</Options>
       <Output>C:\Users\Taylor\Documents\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\SubZero\SZ_hurt.xnb</Output>
       <Time>2017-03-26T22:56:02.7850469-06:00</Time>
+    </Item>
+    <Item>
+      <Source>fighting backgorund music.wav</Source>
+      <Name>fighting backgorund music</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Taylor\Documents\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\fighting backgorund music.xnb</Output>
+      <Time>2017-03-26T22:56:02.9223864-06:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
