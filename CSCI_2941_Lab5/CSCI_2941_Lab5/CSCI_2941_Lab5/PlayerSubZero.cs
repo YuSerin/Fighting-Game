@@ -362,6 +362,7 @@ namespace CSCI_2941_Lab5
                     {
                         currentState = (int)Sprite.Fall;
                         playerAnimation.State = (int)Sprite.Fall;
+                        playerAnimation.playerPos.Y += 10;
                     }
                 }
                 else
