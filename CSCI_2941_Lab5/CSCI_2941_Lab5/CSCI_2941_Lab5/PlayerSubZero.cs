@@ -16,7 +16,7 @@ namespace CSCI_2941_Lab5
         bool devMode = false;
         SoundEffect kick, punch;        //http://mkw.mortalkombatonline.com/umk3/sounds/#male
         Texture2D[] playerSprite = new Texture2D[(int)Sprite.Max];
-        Animation playerAnimation = new Animation();
+        public Animation playerAnimation = new Animation();
         Vector2[] FrameSize = new Vector2[(int)Sprite.Max];
         public Vector2 playerPosition = new Vector2(1050f, 400f);
         public HitBox subZeroHitBox = new HitBox();
@@ -62,6 +62,8 @@ namespace CSCI_2941_Lab5
         }
         public void Update(GameTime gameTime)
         {
+            if (Keyboard.GetState().IsKeyUp(Keys.L))
+                playerAnimation.holdFrame = false;
             //Saving old and new keyboard state to tell if a key was just pressed or if it 
             //is being held down
             KeyboardState newState = Keyboard.GetState();
@@ -97,6 +99,7 @@ namespace CSCI_2941_Lab5
                 // Crouch down //
                 if (Keyboard.GetState().IsKeyDown(Keys.L))
                 {
+                    playerAnimation.holdFrame = true;
                     //move attack hitbox off screen
                     subZAttackHB.HB(new Vector2(playerPosition.X, playerPosition.Y + 10000), FrameSize[0]);
 
@@ -122,81 +125,139 @@ namespace CSCI_2941_Lab5
 
                 }
                 // Mid-Punch //
-                else if (Keyboard.GetState().IsKeyDown(Keys.OemQuestion))
+                else if (newState.IsKeyDown(Keys.OemQuestion))
                 {
-                    punch.Play(1f, .1f, .5f);
-                    currentState = (int)Sprite.Mid_Punch;
-                    if (lastKey != Keys.OemQuestion)
-                        stateChange = true;
-                    lastKey = Keys.OemQuestion;
-                    playerAnimation.State = (int)Sprite.Mid_Punch;
-                    looping = false;
-                    playerPosition = playerAnimation.playerPos;
-                    if (playerAnimation.flipHorizontal)
+                    if (!oldState.IsKeyDown(Keys.OemQuestion))
                     {
-                        playerAnimation.playerPos = new Vector2(playerAnimation.playerPos.X - 80, playerAnimation.playerPos.Y - 3);
-                        subZeroHitBox.HB(new Vector2(playerPosition.X + 19, playerPosition.Y), FrameSize[(int)Sprite.Idle]);
-                        subZAttackHB.HB(new Vector2(playerPosition.X - 85, playerPosition.Y + 50), new Vector2(70, 20));
-                    }
+                        punch.Play(1f, .1f, .5f);
+                        currentState = (int)Sprite.Mid_Punch;
+                        if (lastKey != Keys.OemQuestion)
+                            stateChange = true;
+                        lastKey = Keys.OemQuestion;
+                        playerAnimation.State = (int)Sprite.Mid_Punch;
+                        looping = false;
+                        playerPosition = playerAnimation.playerPos;
+                        if (playerAnimation.flipHorizontal)
+                        {
+                            playerAnimation.playerPos = new Vector2(playerAnimation.playerPos.X - 80, playerAnimation.playerPos.Y - 3);
+                            subZeroHitBox.HB(new Vector2(playerPosition.X + 19, playerPosition.Y), FrameSize[(int)Sprite.Idle]);
+                            subZAttackHB.HB(new Vector2(playerPosition.X - 85, playerPosition.Y + 50), new Vector2(70, 20));
+                        }
 
+                        else
+                        {
+                            playerAnimation.playerPos = new Vector2(playerAnimation.playerPos.X, playerAnimation.playerPos.Y - 3);
+                            subZeroHitBox.HB(new Vector2(playerPosition.X + 20, playerPosition.Y), FrameSize[(int)Sprite.Idle]);
+                            subZAttackHB.HB(new Vector2(playerPosition.X + 125, playerPosition.Y + 50), new Vector2(70, 20));
+                        }
+                    }
                     else
                     {
-                        playerAnimation.playerPos = new Vector2(playerAnimation.playerPos.X, playerAnimation.playerPos.Y - 3);
-                        subZeroHitBox.HB(new Vector2(playerPosition.X + 20, playerPosition.Y), FrameSize[(int)Sprite.Idle]);
-                        subZAttackHB.HB(new Vector2(playerPosition.X + 125, playerPosition.Y + 50), new Vector2(70, 20));
+                        //move attack hitbox off screen
+                        subZAttackHB.HB(new Vector2(playerPosition.X, playerPosition.Y + 10000), FrameSize[0]);
+
+                        currentState = (int)Sprite.Idle;
+                        if (lastKey != Keys.None)
+                            stateChange = true;
+                        lastKey = Keys.None;
+                        // playerAnimation.active = false;
+                        playerAnimation.State = (int)Sprite.Idle;
+                        //playerAnimation.currentState = (int)Sprite.Idle;
+                        if (playerAnimation.flipHorizontal)
+                            subZeroHitBox.HB(new Vector2(playerPosition.X + 25, playerPosition.Y), FrameSize[0]);
+                        else
+                            subZeroHitBox.HB(playerPosition, FrameSize[0]);
                     }
-                       
                 }
                 // Kick //
-                else if (Keyboard.GetState().IsKeyDown(Keys.OemComma))
+                else if (newState.IsKeyDown(Keys.OemComma))
                 {
-                    kick.Play(1f, .1f, .5f);
-                    currentState = (int)Sprite.Kick;
-                    if (lastKey != Keys.OemComma)
-                        stateChange = true;
-                    lastKey = Keys.OemComma;
-                    playerAnimation.State = (int)Sprite.Kick;
-                    looping = false;
-                    playerPosition = playerAnimation.playerPos;
-                    if (playerAnimation.flipHorizontal)
+                    if (!oldState.IsKeyDown(Keys.OemComma))
                     {
-                        playerAnimation.playerPos = new Vector2(playerAnimation.playerPos.X - 70, playerAnimation.playerPos.Y - 15);
-                        subZeroHitBox.HB(new Vector2(playerPosition.X + 50, playerPosition.Y), FrameSize[(int)Sprite.Idle]);
-                        subZAttackHB.HB(new Vector2(playerPosition.X - 60, playerPosition.Y + 50), new Vector2(110, 60));
+                        kick.Play(1f, .1f, .5f);
+                        currentState = (int)Sprite.Kick;
+                        if (lastKey != Keys.OemComma)
+                            stateChange = true;
+                        lastKey = Keys.OemComma;
+                        playerAnimation.State = (int)Sprite.Kick;
+                        looping = false;
+                        playerPosition = playerAnimation.playerPos;
+                        if (playerAnimation.flipHorizontal)
+                        {
+                            playerAnimation.playerPos = new Vector2(playerAnimation.playerPos.X - 70, playerAnimation.playerPos.Y - 15);
+                            subZeroHitBox.HB(new Vector2(playerPosition.X + 50, playerPosition.Y), FrameSize[(int)Sprite.Idle]);
+                            subZAttackHB.HB(new Vector2(playerPosition.X - 60, playerPosition.Y + 50), new Vector2(110, 60));
+                        }
+
+                        else
+                        {
+                            playerAnimation.playerPos = new Vector2(playerAnimation.playerPos.X, playerAnimation.playerPos.Y - 10);
+                            subZeroHitBox.HB(new Vector2(playerPosition.X + 20, playerPosition.Y), FrameSize[(int)Sprite.Idle]);
+                            subZAttackHB.HB(new Vector2(playerPosition.X + 60, playerPosition.Y + 50), new Vector2(110, 60));
+                        }
                     }
-                    
                     else
                     {
-                        playerAnimation.playerPos = new Vector2(playerAnimation.playerPos.X, playerAnimation.playerPos.Y - 10);
-                        subZeroHitBox.HB(new Vector2(playerPosition.X + 20, playerPosition.Y), FrameSize[(int)Sprite.Idle]);
-                        subZAttackHB.HB(new Vector2(playerPosition.X + 60, playerPosition.Y + 50), new Vector2(110, 60));
+                        //move attack hitbox off screen
+                        subZAttackHB.HB(new Vector2(playerPosition.X, playerPosition.Y + 10000), FrameSize[0]);
+
+                        currentState = (int)Sprite.Idle;
+                        if (lastKey != Keys.None)
+                            stateChange = true;
+                        lastKey = Keys.None;
+                        // playerAnimation.active = false;
+                        playerAnimation.State = (int)Sprite.Idle;
+                        //playerAnimation.currentState = (int)Sprite.Idle;
+                        if (playerAnimation.flipHorizontal)
+                            subZeroHitBox.HB(new Vector2(playerPosition.X + 25, playerPosition.Y), FrameSize[0]);
+                        else
+                            subZeroHitBox.HB(playerPosition, FrameSize[0]);
                     }
-                        
                 }
                 // Block //
-                else if (Keyboard.GetState().IsKeyDown(Keys.OemPeriod))
+                else if (newState.IsKeyDown(Keys.OemPeriod))
                 {
-                    //move attack hitbox off screen
-                    subZAttackHB.HB(new Vector2(playerPosition.X, playerPosition.Y + 10000), FrameSize[0]);
-
-                    currentState = (int)Sprite.Block;
-                    if (lastKey != Keys.OemPeriod)
-                        stateChange = true;
-                    lastKey = Keys.OemPeriod;
-                    playerAnimation.State = (int)Sprite.Block;
-                    looping = false;
-                    playerPosition = playerAnimation.playerPos;
-
-                    if (playerAnimation.flipHorizontal)
+                    if (!oldState.IsKeyDown(Keys.OemPeriod))
                     {
-                        playerAnimation.playerPos = new Vector2(playerAnimation.playerPos.X + 20, playerAnimation.playerPos.Y - 2);
-                        subZeroHitBox.HB(new Vector2(playerPosition.X + 70, playerPosition.Y), FrameSize[(int)Sprite.Block]);
-                    }
+                        //move attack hitbox off screen
+                        subZAttackHB.HB(new Vector2(playerPosition.X, playerPosition.Y + 10000), FrameSize[0]);
 
+                        currentState = (int)Sprite.Block;
+                        if (lastKey != Keys.OemPeriod)
+                            stateChange = true;
+                        lastKey = Keys.OemPeriod;
+                        playerAnimation.State = (int)Sprite.Block;
+                        looping = false;
+                        playerPosition = playerAnimation.playerPos;
+
+                        if (playerAnimation.flipHorizontal)
+                        {
+                            playerAnimation.playerPos = new Vector2(playerAnimation.playerPos.X + 20, playerAnimation.playerPos.Y - 2);
+                            subZeroHitBox.HB(new Vector2(playerPosition.X + 70, playerPosition.Y), FrameSize[(int)Sprite.Block]);
+                        }
+
+                        else
+                        {
+                            playerAnimation.playerPos = new Vector2(playerAnimation.playerPos.X - 2, playerAnimation.playerPos.Y - 2);
+                            subZeroHitBox.HB(new Vector2(playerPosition.X - 20, playerPosition.Y), FrameSize[(int)Sprite.Block]);
+                        }
+                    }
                     else
                     {
-                        playerAnimation.playerPos = new Vector2(playerAnimation.playerPos.X - 2, playerAnimation.playerPos.Y - 2);
-                        subZeroHitBox.HB(new Vector2(playerPosition.X - 20, playerPosition.Y), FrameSize[(int)Sprite.Block]);
+                        //move attack hitbox off screen
+                        subZAttackHB.HB(new Vector2(playerPosition.X, playerPosition.Y + 10000), FrameSize[0]);
+
+                        currentState = (int)Sprite.Idle;
+                        if (lastKey != Keys.None)
+                            stateChange = true;
+                        lastKey = Keys.None;
+                        // playerAnimation.active = false;
+                        playerAnimation.State = (int)Sprite.Idle;
+                        //playerAnimation.currentState = (int)Sprite.Idle;
+                        if (playerAnimation.flipHorizontal)
+                            subZeroHitBox.HB(new Vector2(playerPosition.X + 25, playerPosition.Y), FrameSize[0]);
+                        else
+                            subZeroHitBox.HB(playerPosition, FrameSize[0]);
                     }
                 }
                 // Move Right //
