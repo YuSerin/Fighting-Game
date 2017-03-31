@@ -35,36 +35,68 @@ namespace CSCI_2941_Lab5
             //active = false;
         }
 
-        public void Update(GameTime gameTime, bool stateChanged, bool looping)
+        public void Update(GameTime gameTime, bool stateChanged, bool looping, bool freeze)
+        {
+            if (stateChanged)
+                currentFrame = new Vector2(0, 0);
+
+            if (!freeze)
+            {
+                frameTimer += (int)gameTime.ElapsedGameTime.TotalMilliseconds;
+
+                if (frameTimer >= nextFrameTime)
+                {
+                    frameTimer = 0;     // Reset Frame Time //
+
+                    currentFrame = new Vector2(currentFrame.X + FrameSize[State].X, 0);
+
+                    if (currentFrame.X >= playerImg[State].Width && looping == true)
+                    {
+                        currentFrame = new Vector2(0, 0);     // Loop back to first frame //
+                    }
+                    else if (holdFrame && currentFrame.X == FrameSize[State].X * 4)
+                    {
+                        currentFrame = new Vector2(FrameSize[State].X * 3, 0);
+                        //if (Keyboard.GetState().IsKeyUp(Keys.S))
+                        //    holdFrame = false;
+                    }
+                    else if (currentFrame.X >= playerImg[State].Width && looping == false)
+                        return;
+                }
+                sourceRect = new Rectangle((int)currentFrame.X, (int)currentFrame.Y,
+                    (int)FrameSize[State].X, (int)FrameSize[State].Y);
+            }
+            else
+            {
+                this.FreezeFrame(gameTime);
+            }
+
+            
+        }
+
+        public void FreezeFrame(GameTime gameTime)
         {
             frameTimer += (int)gameTime.ElapsedGameTime.TotalMilliseconds;
             //playerPos += playerVelocity;
 
-            if (stateChanged)
-                currentFrame = new Vector2(0, 0);
-
             if (frameTimer >= nextFrameTime)
             {
                 frameTimer = 0;     // Reset Frame Time //
-                currentFrame = new Vector2(currentFrame.X + FrameSize[State].X, 0);
 
-                if (currentFrame.X >= playerImg[State].Width && looping == true)
+                if (currentFrame.X < (playerImg[State].Width - FrameSize[State].X))
                 {
-                    currentFrame = new Vector2(0, 0);     // Loop back to first frame //
+                    sourceRect = new Rectangle((int)currentFrame.X, (int)currentFrame.Y,
+                    (int)FrameSize[State].X, (int)FrameSize[State].Y);
+                    currentFrame = new Vector2(currentFrame.X + FrameSize[State].X, 0);
                 }
-                else if (holdFrame && currentFrame.X == FrameSize[State].X * 4)
+                else
                 {
-                    currentFrame = new Vector2(FrameSize[State].X * 3, 0);
-                    //if (Keyboard.GetState().IsKeyUp(Keys.S))
-                    //    holdFrame = false;
-                }
-                else if (currentFrame.X >= playerImg[State].Width && looping == false)
-                        return;
+                    sourceRect = new Rectangle((int)currentFrame.X, (int)currentFrame.Y,
+                    (int)FrameSize[State].X, (int)FrameSize[State].Y);
+                }   
             }
-            sourceRect = new Rectangle((int)currentFrame.X, (int)currentFrame.Y, 
-                (int)FrameSize[State].X, (int)FrameSize[State].Y);
         }
-        
+
         public void Draw(SpriteBatch spriteBatch)
         {
             if (!flipHorizontal)

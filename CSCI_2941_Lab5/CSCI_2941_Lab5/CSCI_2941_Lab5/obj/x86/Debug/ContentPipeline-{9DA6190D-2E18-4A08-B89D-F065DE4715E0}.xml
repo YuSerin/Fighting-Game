@@ -7,13 +7,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-<<<<<<< HEAD
       <Output>C:\Users\yuser\OneDrive\Documents\GitHub\Lab_5\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\Sonya\Block.xnb</Output>
       <Time>2017-03-25T15:39:47.1910737-06:00</Time>
-=======
-      <Output>C:\Users\Christopher Corona\Documents\GitHub\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\Sonya\Block.xnb</Output>
-      <Time>2017-03-30T12:18:52.4040446-06:00</Time>
->>>>>>> ec44edbf776c8a246973bfe9e9bd482b7010e292
     </Item>
     <Item>
       <Source>Sonya\Crouch.png</Source>
@@ -21,13 +16,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-<<<<<<< HEAD
       <Output>C:\Users\yuser\OneDrive\Documents\GitHub\Lab_5\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\Sonya\Crouch.xnb</Output>
       <Time>2017-03-25T15:39:47.1910737-06:00</Time>
-=======
-      <Output>C:\Users\Christopher Corona\Documents\GitHub\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\Sonya\Crouch.xnb</Output>
-      <Time>2017-03-30T12:18:52.4060449-06:00</Time>
->>>>>>> ec44edbf776c8a246973bfe9e9bd482b7010e292
     </Item>
     <Item>
       <Source>Sonya\Idle.png</Source>
@@ -35,13 +25,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-<<<<<<< HEAD
       <Output>C:\Users\yuser\OneDrive\Documents\GitHub\Lab_5\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\Sonya\Idle.xnb</Output>
       <Time>2017-03-25T15:39:47.1910737-06:00</Time>
-=======
-      <Output>C:\Users\Christopher Corona\Documents\GitHub\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\Sonya\Idle.xnb</Output>
-      <Time>2017-03-30T12:18:52.4070488-06:00</Time>
->>>>>>> ec44edbf776c8a246973bfe9e9bd482b7010e292
     </Item>
     <Item>
       <Source>Sonya\Mid-Punch.png</Source>
@@ -49,13 +34,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-<<<<<<< HEAD
       <Output>C:\Users\yuser\OneDrive\Documents\GitHub\Lab_5\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\Sonya\Mid-Punch.xnb</Output>
       <Time>2017-03-25T15:39:47.1910737-06:00</Time>
-=======
-      <Output>C:\Users\Christopher Corona\Documents\GitHub\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\Sonya\Mid-Punch.xnb</Output>
-      <Time>2017-03-30T12:18:52.4110488-06:00</Time>
->>>>>>> ec44edbf776c8a246973bfe9e9bd482b7010e292
     </Item>
     <Item>
       <Source>Sonya\Run.png</Source>
@@ -63,13 +43,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-<<<<<<< HEAD
       <Output>C:\Users\yuser\OneDrive\Documents\GitHub\Lab_5\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\Sonya\Run.xnb</Output>
       <Time>2017-03-25T15:39:47.2067304-06:00</Time>
-=======
-      <Output>C:\Users\Christopher Corona\Documents\GitHub\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\Sonya\Run.xnb</Output>
-      <Time>2017-03-30T12:18:52.4120488-06:00</Time>
->>>>>>> ec44edbf776c8a246973bfe9e9bd482b7010e292
     </Item>
     <Item>
       <Source>Sonya\Kick.png</Source>
@@ -77,13 +52,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-<<<<<<< HEAD
       <Output>C:\Users\yuser\OneDrive\Documents\GitHub\Lab_5\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\Sonya\Kick.xnb</Output>
       <Time>2017-03-25T15:39:47.1910737-06:00</Time>
-=======
-      <Output>C:\Users\Christopher Corona\Documents\GitHub\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\Sonya\Kick.xnb</Output>
-      <Time>2017-03-30T12:18:52.4090478-06:00</Time>
->>>>>>> ec44edbf776c8a246973bfe9e9bd482b7010e292
     </Item>
     <Item>
       <Source>SubZero\Block.png</Source>
@@ -91,13 +61,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-<<<<<<< HEAD
       <Output>C:\Users\yuser\OneDrive\Documents\GitHub\Lab_5\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\SubZero\Block.xnb</Output>
       <Time>2017-03-25T15:39:47.2067304-06:00</Time>
-=======
-      <Output>C:\Users\Christopher Corona\Documents\GitHub\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\SubZero\Block.xnb</Output>
-      <Time>2017-03-30T12:18:52.4180538-06:00</Time>
->>>>>>> ec44edbf776c8a246973bfe9e9bd482b7010e292
     </Item>
     <Item>
       <Source>SubZero\Crouch.png</Source>
@@ -105,13 +70,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-<<<<<<< HEAD
       <Output>C:\Users\yuser\OneDrive\Documents\GitHub\Lab_5\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\SubZero\Crouch.xnb</Output>
       <Time>2017-03-25T15:39:47.2067304-06:00</Time>
-=======
-      <Output>C:\Users\Christopher Corona\Documents\GitHub\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\SubZero\Crouch.xnb</Output>
-      <Time>2017-03-30T12:18:52.4190541-06:00</Time>
->>>>>>> ec44edbf776c8a246973bfe9e9bd482b7010e292
     </Item>
     <Item>
       <Source>SubZero\HIgh_Punch.png</Source>
@@ -119,13 +79,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-<<<<<<< HEAD
       <Output>C:\Users\yuser\OneDrive\Documents\GitHub\Lab_5\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\SubZero\HIgh_Punch.xnb</Output>
       <Time>2017-03-25T15:39:47.2067304-06:00</Time>
-=======
-      <Output>C:\Users\Christopher Corona\Documents\GitHub\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\SubZero\HIgh_Punch.xnb</Output>
-      <Time>2017-03-30T12:18:52.4210563-06:00</Time>
->>>>>>> ec44edbf776c8a246973bfe9e9bd482b7010e292
     </Item>
     <Item>
       <Source>SubZero\Idle.png</Source>
@@ -133,13 +88,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-<<<<<<< HEAD
       <Output>C:\Users\yuser\OneDrive\Documents\GitHub\Lab_5\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\SubZero\Idle.xnb</Output>
       <Time>2017-03-25T15:39:47.2067304-06:00</Time>
-=======
-      <Output>C:\Users\Christopher Corona\Documents\GitHub\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\SubZero\Idle.xnb</Output>
-      <Time>2017-03-30T12:18:52.4220563-06:00</Time>
->>>>>>> ec44edbf776c8a246973bfe9e9bd482b7010e292
     </Item>
     <Item>
       <Source>SubZero\Kick.png</Source>
@@ -147,13 +97,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-<<<<<<< HEAD
       <Output>C:\Users\yuser\OneDrive\Documents\GitHub\Lab_5\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\SubZero\Kick.xnb</Output>
       <Time>2017-03-25T15:39:47.2067304-06:00</Time>
-=======
-      <Output>C:\Users\Christopher Corona\Documents\GitHub\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\SubZero\Kick.xnb</Output>
-      <Time>2017-03-30T12:18:52.4230566-06:00</Time>
->>>>>>> ec44edbf776c8a246973bfe9e9bd482b7010e292
     </Item>
     <Item>
       <Source>SubZero\Mid_Punch.png</Source>
@@ -161,13 +106,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-<<<<<<< HEAD
       <Output>C:\Users\yuser\OneDrive\Documents\GitHub\Lab_5\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\SubZero\Mid_Punch.xnb</Output>
       <Time>2017-03-25T15:39:47.2067304-06:00</Time>
-=======
-      <Output>C:\Users\Christopher Corona\Documents\GitHub\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\SubZero\Mid_Punch.xnb</Output>
-      <Time>2017-03-30T12:18:52.4250592-06:00</Time>
->>>>>>> ec44edbf776c8a246973bfe9e9bd482b7010e292
     </Item>
     <Item>
       <Source>SubZero\Run.png</Source>
@@ -175,13 +115,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-<<<<<<< HEAD
       <Output>C:\Users\yuser\OneDrive\Documents\GitHub\Lab_5\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\SubZero\Run.xnb</Output>
       <Time>2017-03-25T15:39:47.2067304-06:00</Time>
-=======
-      <Output>C:\Users\Christopher Corona\Documents\GitHub\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\SubZero\Run.xnb</Output>
-      <Time>2017-03-30T12:18:52.4270598-06:00</Time>
->>>>>>> ec44edbf776c8a246973bfe9e9bd482b7010e292
     </Item>
     <Item>
       <Source>SubZero\Victory.png</Source>
@@ -189,13 +124,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-<<<<<<< HEAD
       <Output>C:\Users\yuser\OneDrive\Documents\GitHub\Lab_5\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\SubZero\Victory.xnb</Output>
-      <Time>2017-03-25T15:39:47.2067304-06:00</Time>
-=======
-      <Output>C:\Users\Christopher Corona\Documents\GitHub\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\SubZero\Victory.xnb</Output>
-      <Time>2017-03-30T12:18:52.4290612-06:00</Time>
->>>>>>> ec44edbf776c8a246973bfe9e9bd482b7010e292
+      <Time>2017-03-31T02:40:08.9506827-06:00</Time>
     </Item>
     <Item>
       <Source>background.png</Source>
@@ -203,13 +133,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-<<<<<<< HEAD
       <Output>C:\Users\yuser\OneDrive\Documents\GitHub\Lab_5\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\background.xnb</Output>
       <Time>2017-03-25T15:39:47.2601614-06:00</Time>
-=======
-      <Output>C:\Users\Christopher Corona\Documents\GitHub\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\background.xnb</Output>
-      <Time>2017-03-30T12:18:52.4670882-06:00</Time>
->>>>>>> ec44edbf776c8a246973bfe9e9bd482b7010e292
     </Item>
     <Item>
       <Source>Instructions.png</Source>
@@ -217,13 +142,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-<<<<<<< HEAD
       <Output>C:\Users\yuser\OneDrive\Documents\GitHub\Lab_5\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\Instructions.xnb</Output>
       <Time>2017-03-26T14:17:31.3974937-06:00</Time>
-=======
-      <Output>C:\Users\Christopher Corona\Documents\GitHub\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\Instructions.xnb</Output>
-      <Time>2017-03-30T12:18:52.4010449-06:00</Time>
->>>>>>> ec44edbf776c8a246973bfe9e9bd482b7010e292
     </Item>
     <Item>
       <Source>title.png</Source>
@@ -231,31 +151,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-<<<<<<< HEAD
       <Output>C:\Users\yuser\OneDrive\Documents\GitHub\Lab_5\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\title.xnb</Output>
       <Time>2017-03-26T21:59:20.5718661-06:00</Time>
-    </Item>
-    <Item>
-      <Source>SubZero\Jump2.png</Source>
-      <Name>SubZero\Jump2</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\yuser\OneDrive\Documents\GitHub\Lab_5\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\SubZero\Jump2.xnb</Output>
-      <Time>2017-03-26T14:14:05.3001543-06:00</Time>
-    </Item>
-    <Item>
-      <Source>SubZero\Jump.png</Source>
-      <Name>SubZero\Jump</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\yuser\OneDrive\Documents\GitHub\Lab_5\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\SubZero\Jump.xnb</Output>
-      <Time>2017-03-26T16:09:19.9051796-06:00</Time>
-=======
-      <Output>C:\Users\Christopher Corona\Documents\GitHub\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\title.xnb</Output>
-      <Time>2017-03-30T12:18:52.5609632-06:00</Time>
->>>>>>> ec44edbf776c8a246973bfe9e9bd482b7010e292
     </Item>
     <Item>
       <Source>Courier New.spritefont</Source>
@@ -263,13 +160,8 @@
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
-<<<<<<< HEAD
       <Output>C:\Users\yuser\OneDrive\Documents\GitHub\Lab_5\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\Courier New.xnb</Output>
-      <Time>2017-03-25T15:39:47.1910737-06:00</Time>
-=======
-      <Output>C:\Users\Christopher Corona\Documents\GitHub\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\Courier New.xnb</Output>
-      <Time>2017-03-30T16:51:06.2585272-06:00</Time>
->>>>>>> ec44edbf776c8a246973bfe9e9bd482b7010e292
+      <Time>2017-03-30T21:12:41.9187658-06:00</Time>
     </Item>
     <Item>
       <Source>SubZero\kicking.wav</Source>
@@ -277,13 +169,8 @@
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
-<<<<<<< HEAD
       <Output>C:\Users\yuser\OneDrive\Documents\GitHub\Lab_5\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\SubZero\kicking.xnb</Output>
       <Time>2017-03-26T14:17:31.3974937-06:00</Time>
-=======
-      <Output>C:\Users\Christopher Corona\Documents\GitHub\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\SubZero\kicking.xnb</Output>
-      <Time>2017-03-30T12:18:52.4310634-06:00</Time>
->>>>>>> ec44edbf776c8a246973bfe9e9bd482b7010e292
     </Item>
     <Item>
       <Source>SubZero\punching.wav</Source>
@@ -291,13 +178,8 @@
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
-<<<<<<< HEAD
       <Output>C:\Users\yuser\OneDrive\Documents\GitHub\Lab_5\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\SubZero\punching.xnb</Output>
       <Time>2017-03-26T14:17:31.4131199-06:00</Time>
-=======
-      <Output>C:\Users\Christopher Corona\Documents\GitHub\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\SubZero\punching.xnb</Output>
-      <Time>2017-03-30T12:18:52.4320638-06:00</Time>
->>>>>>> ec44edbf776c8a246973bfe9e9bd482b7010e292
     </Item>
     <Item>
       <Source>Sonya\S_kicking.wav</Source>
@@ -305,13 +187,8 @@
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
-<<<<<<< HEAD
       <Output>C:\Users\yuser\OneDrive\Documents\GitHub\Lab_5\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\Sonya\S_kicking.xnb</Output>
       <Time>2017-03-26T14:17:31.3974937-06:00</Time>
-=======
-      <Output>C:\Users\Christopher Corona\Documents\GitHub\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\Sonya\S_kicking.xnb</Output>
-      <Time>2017-03-30T12:18:52.4140506-06:00</Time>
->>>>>>> ec44edbf776c8a246973bfe9e9bd482b7010e292
     </Item>
     <Item>
       <Source>Sonya\S_punching.wav</Source>
@@ -319,13 +196,8 @@
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
-<<<<<<< HEAD
       <Output>C:\Users\yuser\OneDrive\Documents\GitHub\Lab_5\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\Sonya\S_punching.xnb</Output>
       <Time>2017-03-26T14:17:31.3974937-06:00</Time>
-=======
-      <Output>C:\Users\Christopher Corona\Documents\GitHub\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\Sonya\S_punching.xnb</Output>
-      <Time>2017-03-30T12:18:52.4150517-06:00</Time>
->>>>>>> ec44edbf776c8a246973bfe9e9bd482b7010e292
     </Item>
     <Item>
       <Source>Plop.wav</Source>
@@ -333,13 +205,8 @@
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
-<<<<<<< HEAD
       <Output>C:\Users\yuser\OneDrive\Documents\GitHub\Lab_5\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\Plop.xnb</Output>
       <Time>2017-03-26T20:47:47.9298144-06:00</Time>
-=======
-      <Output>C:\Users\Christopher Corona\Documents\GitHub\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\Plop.xnb</Output>
-      <Time>2017-03-30T12:18:52.4030428-06:00</Time>
->>>>>>> ec44edbf776c8a246973bfe9e9bd482b7010e292
     </Item>
     <Item>
       <Source>Sonya\S_hurt.wav</Source>
@@ -347,13 +214,8 @@
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
-<<<<<<< HEAD
       <Output>C:\Users\yuser\OneDrive\Documents\GitHub\Lab_5\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\Sonya\S_hurt.xnb</Output>
       <Time>2017-03-26T22:34:19.5213882-06:00</Time>
-=======
-      <Output>C:\Users\Christopher Corona\Documents\GitHub\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\Sonya\S_hurt.xnb</Output>
-      <Time>2017-03-30T12:18:52.4130526-06:00</Time>
->>>>>>> ec44edbf776c8a246973bfe9e9bd482b7010e292
     </Item>
     <Item>
       <Source>SubZero\SZ_hurt.wav</Source>
@@ -361,12 +223,8 @@
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
-<<<<<<< HEAD
       <Output>C:\Users\yuser\OneDrive\Documents\GitHub\Lab_5\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\SubZero\SZ_hurt.xnb</Output>
       <Time>2017-03-26T22:34:19.523394-06:00</Time>
-=======
-      <Output>C:\Users\Christopher Corona\Documents\GitHub\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\SubZero\SZ_hurt.xnb</Output>
-      <Time>2017-03-30T12:18:52.4280617-06:00</Time>
     </Item>
     <Item>
       <Source>fighting backgorund music.wav</Source>
@@ -374,9 +232,62 @@
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Christopher Corona\Documents\GitHub\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\fighting backgorund music.xnb</Output>
-      <Time>2017-03-30T12:18:52.5411408-06:00</Time>
->>>>>>> ec44edbf776c8a246973bfe9e9bd482b7010e292
+      <Output>C:\Users\yuser\OneDrive\Documents\GitHub\Lab_5\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\fighting backgorund music.xnb</Output>
+      <Time>2017-03-26T22:34:19.603607-06:00</Time>
+    </Item>
+    <Item>
+      <Source>MenuBG.png</Source>
+      <Name>MenuBG</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\yuser\OneDrive\Documents\GitHub\Lab_5\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\MenuBG.xnb</Output>
+      <Time>2017-03-30T21:28:03.8738784-06:00</Time>
+    </Item>
+    <Item>
+      <Source>Sonya\Hit.png</Source>
+      <Name>Sonya\Hit</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\yuser\OneDrive\Documents\GitHub\Lab_5\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\Sonya\Hit.xnb</Output>
+      <Time>2017-03-30T22:06:53.277633-06:00</Time>
+    </Item>
+    <Item>
+      <Source>SubZero\Hit.png</Source>
+      <Name>SubZero\Hit</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\yuser\OneDrive\Documents\GitHub\Lab_5\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\SubZero\Hit.xnb</Output>
+      <Time>2017-03-30T22:07:29.0645279-06:00</Time>
+    </Item>
+    <Item>
+      <Source>Sonya\Fall.png</Source>
+      <Name>Sonya\Fall</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\yuser\OneDrive\Documents\GitHub\Lab_5\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\Sonya\Fall.xnb</Output>
+      <Time>2017-03-31T02:57:57.3892656-06:00</Time>
+    </Item>
+    <Item>
+      <Source>Sonya\Victory.png</Source>
+      <Name>Sonya\Victory</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\yuser\OneDrive\Documents\GitHub\Lab_5\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\Sonya\Victory.xnb</Output>
+      <Time>2017-03-31T02:39:17.058391-06:00</Time>
+    </Item>
+    <Item>
+      <Source>SubZero\Fall.png</Source>
+      <Name>SubZero\Fall</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\yuser\OneDrive\Documents\GitHub\Lab_5\Fighting-Game\CSCI_2941_Lab5\CSCI_2941_Lab5\CSCI_2941_Lab5\bin\x86\Debug\Content\SubZero\Fall.xnb</Output>
+      <Time>2017-03-31T02:40:22.5197994-06:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>

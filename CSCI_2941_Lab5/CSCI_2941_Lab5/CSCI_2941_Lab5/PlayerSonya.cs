@@ -15,18 +15,22 @@ namespace CSCI_2941_Lab5
         KeyboardState oldState = Keyboard.GetState();
         bool devMode = false;
         SoundEffect kick, punch;            //http://mkw.mortalkombatonline.com/umk3/sounds/#female
-        Texture2D[] playerSprite = new Texture2D[(int)Sprite.Max];
+        public Texture2D[] playerSprite = new Texture2D[(int)Sprite.Max];
         public Animation playerAnimation = new Animation();
-        Vector2[] FrameSize = new Vector2[(int)Sprite.Max];
+        public Vector2[] FrameSize = new Vector2[(int)Sprite.Max];
         public Vector2 playerPosition = new Vector2(100f, 400f);
         public HitBox sonyaHitBox = new HitBox();
         public HitBox sonyaAttackHB = new HitBox();
         float moveSpeed = 300f;
-        bool looping = true;
+        public bool looping = true;
         Keys lastKey;
         bool stateChange;
         Vector2 screenSize;
         public int currentState = (int)Sprite.Idle;
+        public bool beenHit = false;
+        public bool gameEnded;
+        public bool winGame;
+        public bool freezeFrame;
         //healthBar GreenBar = new healthBar();
         //healthBar RedBar = new healthBar();
         //int Health = 400;
@@ -39,6 +43,9 @@ namespace CSCI_2941_Lab5
             FrameSize[(int)Sprite.Mid_Punch] = new Vector2(109f, 123f);
             FrameSize[(int)Sprite.Kick] = new Vector2(120f, 131f);
             FrameSize[(int)Sprite.Block] = new Vector2(62f, 127f);
+            FrameSize[(int)Sprite.Hit] = new Vector2(78f, 125f);
+            FrameSize[(int)Sprite.Victory] = new Vector2(75f, 133f);
+            FrameSize[(int)Sprite.Fall] = new Vector2(146f, 126f);
 
             playerAnimation.Initialize(playerPosition, FrameSize);
             screenSize = new Vector2(screenWidth, screenHeight);
@@ -51,7 +58,9 @@ namespace CSCI_2941_Lab5
             playerSprite[(int)Sprite.Mid_Punch] = Content.Load<Texture2D>("Sonya/Mid-Punch");
             playerSprite[(int)Sprite.Kick] = Content.Load<Texture2D>("Sonya/Kick");
             playerSprite[(int)Sprite.Block] = Content.Load<Texture2D>("Sonya/Block");
-            //playerSprite[(int)Sprite.Jump] = Content.Load<Texture2D>("Sonya/Block");
+            playerSprite[(int)Sprite.Hit] = Content.Load<Texture2D>("Sonya/Hit");
+            playerSprite[(int)Sprite.Victory] = Content.Load<Texture2D>("Sonya/Victory");
+            playerSprite[(int)Sprite.Fall] = Content.Load<Texture2D>("Sonya/Fall");
 
             punch = Content.Load<SoundEffect>("Sonya/S_punching");
             kick = Content.Load<SoundEffect>("Sonya/S_kicking");
@@ -81,16 +90,21 @@ namespace CSCI_2941_Lab5
 
             if (looping == false)
             {
-                playerAnimation.Update(gameTime, stateChange, looping);
+                playerAnimation.Update(gameTime, stateChange, looping, freezeFrame);
                 if (currentState != (int)Sprite.Block)
+                {
                     currentState = (int)Sprite.Idle;
+                } 
                 else
                     currentState = (int)Sprite.Block;
-                if (playerAnimation.currentFrame.X >= playerAnimation.playerImg[playerAnimation.State].Width)
+
+                // Reached end of sprite sheet //
+                if (playerAnimation.currentFrame.X >= playerAnimation.playerImg[playerAnimation.State].Width && !freezeFrame)
                 {
-                    looping = true;
-                    playerAnimation.currentFrame = new Vector2(0, 0);
                     playerAnimation.playerPos = playerPosition;
+                    beenHit = false;
+                    playerAnimation.currentFrame = new Vector2(0, 0);
+                    looping = true;
                 }
             }
 
@@ -102,7 +116,7 @@ namespace CSCI_2941_Lab5
                     playerAnimation.holdFrame = true;
                     //move attack hitbox off screen
                     sonyaAttackHB.HB(new Vector2(playerPosition.X, playerPosition.Y + 10000), FrameSize[0]);
-
+                    freezeFrame = false;
                     currentState = (int)Sprite.Crouch;
                     if (lastKey != Keys.S)
                         stateChange = true;
@@ -130,6 +144,7 @@ namespace CSCI_2941_Lab5
                 // Mid-Punch //
                 else if (newState.IsKeyDown(Keys.C))
                 {
+                    freezeFrame = false;
                     if (!oldState.IsKeyDown(Keys.C))
                     {
                         punch.Play(1f, .1f, .5f);
@@ -175,6 +190,7 @@ namespace CSCI_2941_Lab5
                 // Kick //
                 else if (newState.IsKeyDown(Keys.Z))
                 {
+                    freezeFrame = false;
                     if (!oldState.IsKeyDown(Keys.Z))
                     {
                         playerAnimation.holdFrame = false;
@@ -222,6 +238,7 @@ namespace CSCI_2941_Lab5
                 // Block //
                 else if (newState.IsKeyDown(Keys.X))
                 {
+                    freezeFrame = false;
                     if (!oldState.IsKeyDown(Keys.X))
                     {
                         playerAnimation.holdFrame = false;
@@ -268,10 +285,10 @@ namespace CSCI_2941_Lab5
                 // Move Right //
                 else if (Keyboard.GetState().IsKeyDown(Keys.D))
                 {
+                    freezeFrame = false;
                     playerAnimation.holdFrame = false;
                     //move attack hitbox off screen
                     sonyaAttackHB.HB(new Vector2(playerPosition.X, playerPosition.Y + 10000), FrameSize[0]);
-
                     currentState = (int)Sprite.Run;
                     if (lastKey != Keys.D)
                         stateChange = true;
@@ -297,17 +314,18 @@ namespace CSCI_2941_Lab5
                 // Move Left //
                 else if (Keyboard.GetState().IsKeyDown(Keys.A))
                 {
+                    freezeFrame = false;
                     playerAnimation.holdFrame = false;
                     //move attack hitbox off screen
                     sonyaAttackHB.HB(new Vector2(playerPosition.X, playerPosition.Y + 10000), FrameSize[0]);
-
                     currentState = (int)Sprite.Run;
                     if (lastKey != Keys.A)
                         stateChange = true;
                     lastKey = Keys.A;
                     if (playerPosition.X >= -10)
                         playerAnimation.State = (int)Sprite.Run;
-                    else {
+                    else
+                    {
                         if (playerAnimation.State != (int)Sprite.Idle)
                             stateChange = true;
                         playerAnimation.State = (int)Sprite.Idle;
@@ -321,12 +339,43 @@ namespace CSCI_2941_Lab5
                     else
                         sonyaHitBox.HB(new Vector2(playerPosition.X + 30, playerPosition.Y), FrameSize[0]);
                 }
+                // Hit //
+                else if (beenHit == true)
+                {
+                    freezeFrame = false;
+                    playerAnimation.holdFrame = false;
+                    currentState = (int)Sprite.Hit;
+                    stateChange = true;
+                    playerAnimation.State = (int)Sprite.Hit;
+                    looping = false;
+                    playerPosition = playerAnimation.playerPos;
+                }
+                // Game Over //
+                else if (gameEnded)
+                {
+                    freezeFrame = true;
+                    playerAnimation.holdFrame = false;
+                    stateChange = true;
+                    looping = false;
+                    playerPosition = playerAnimation.playerPos;
+
+                    if (winGame)
+                    {
+                        currentState = (int)Sprite.Victory;
+                        playerAnimation.State = (int)Sprite.Victory;
+                    }
+                    else
+                    {
+                        currentState = (int)Sprite.Fall;
+                        playerAnimation.State = (int)Sprite.Fall;
+                    }
+                }
                 else
                 {
+                    freezeFrame = false;
                     playerAnimation.holdFrame = false;
                     //move attack hitbox off screen
                     sonyaAttackHB.HB(new Vector2(playerPosition.X, playerPosition.Y + 10000), FrameSize[0]);
-
                     currentState = (int)Sprite.Idle;
                     if (lastKey != Keys.None)
                         stateChange = true;
@@ -339,12 +388,11 @@ namespace CSCI_2941_Lab5
                     else
                         sonyaHitBox.HB(new Vector2(playerPosition.X + 30, playerPosition.Y), FrameSize[0]);
                 }
-                                
-                playerAnimation.Update(gameTime, stateChange, looping);
+
+                playerAnimation.Update(gameTime, stateChange, looping, freezeFrame);
                 stateChange = false;
                 oldState = newState;
             }
-            
         }
         public void Draw(SpriteBatch spriteBatch)
         {

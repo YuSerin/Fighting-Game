@@ -14,7 +14,7 @@ namespace CSCI_2941_Lab5
 {
     enum Sprite
     {
-        Idle, Run, Crouch, Mid_Punch, Kick, Block, Max,
+        Idle, Run, Crouch, Mid_Punch, Kick, Block, Hit, Victory, Fall, Max,
     }
     /// <summary>
     /// This is the main type for your game
@@ -39,7 +39,11 @@ namespace CSCI_2941_Lab5
         healthBar SubZGreenBar = new healthBar();
         healthBar SubZRedBar = new healthBar();
         int SubZHealth = 550;
-        int Health;
+        int SonyaHealthEffect, SubZeroHealthEffect;
+        int endMenuTimer;
+        bool drawBars = true;
+        int pushBack = 30;
+        bool gameEnded = false;
 
         Collision collision = new Collision();
 
@@ -54,17 +58,12 @@ namespace CSCI_2941_Lab5
         private int mouseX, mouseY;
         int timer = 99;
 
-<<<<<<< HEAD
-=======
-
         //music
         Cue musicCue;
         AudioEngine audioEngine;
         SoundBank soundBank;
         WaveBank waveBank;
 
-
->>>>>>> ec44edbf776c8a246973bfe9e9bd482b7010e292
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -109,8 +108,7 @@ namespace CSCI_2941_Lab5
         /// </summary>
         protected override void LoadContent()
         {
-<<<<<<< HEAD
-=======
+
             //soundEffect = Content.Load<SoundEffect>("fighting backgorund music");
             //// Load files built from XACT project
 
@@ -122,7 +120,6 @@ namespace CSCI_2941_Lab5
             //musicCue = soundBank.GetCue("fighting backgorund music");
             //// Start the background music
             //musicCue.Play();
->>>>>>> ec44edbf776c8a246973bfe9e9bd482b7010e292
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
@@ -133,7 +130,7 @@ namespace CSCI_2941_Lab5
             selection = Content.Load<SoundEffect>("plop");
             background = Content.Load<Texture2D>("background");     //load content for the background   http://wallpapersafari.com/w/r4L80s/
             instructions = Content.Load<Texture2D>("Instructions");     //load content for the background  http://wallpapersafari.com/w/Iy0UTt/
-            title = Content.Load<Texture2D>("title");     //https://cdn.gamerant.com/wp-content/uploads/mortal-kombat-web-series-header.jpg and https://i.ytimg.com/vi/DmxaSOD5XxY/maxresdefault.jpg
+            title = Content.Load<Texture2D>("MenuBG");     //https://cdn.gamerant.com/wp-content/uploads/mortal-kombat-web-series-header.jpg and https://i.ytimg.com/vi/DmxaSOD5XxY/maxresdefault.jpg
             mainFrame = new Rectangle(0, 0, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height);     //set the rectangle parameters
 
 
@@ -182,21 +179,25 @@ namespace CSCI_2941_Lab5
                        
                         selection.Play(1f, .1f, .5f);
                         timer = 99;
-<<<<<<< HEAD
+
                         SonyaHealth = 550;
                         SubZHealth = 550;
                         SonyaGreenBar.update(SonyaHealth);
                         SubZGreenBar.update(SonyaHealth);
-                        Sonya.playerPosition = new Vector2(100f, 400f);
-                        SubZero.playerPosition = new Vector2(1050f, 400f);
+                        Sonya.playerAnimation.playerPos = new Vector2(100f, 400f);
+                        SubZero.playerAnimation.playerPos = new Vector2(1050f, 400f);
+                        Sonya.looping = true;
+                        SubZero.looping = true;
+                        Sonya.playerAnimation.flipHorizontal = false;
+                        SubZero.playerAnimation.flipHorizontal = true;
+                        endMenuTimer = 100;
+                        drawBars = true;
+                        gameEnded = false;
+                        Sonya.gameEnded = false;
+                        SubZero.gameEnded = false;
+                        Sonya.playerAnimation.currentFrame = Vector2.Zero;
+                        SubZero.playerAnimation.currentFrame = Vector2.Zero;
                         game = 3;
-=======
-                 
-                        SonyaHealth = 550;
-                        SubZHealth = 550;
-                        game = 3;
-
->>>>>>> ec44edbf776c8a246973bfe9e9bd482b7010e292
                     }
                     //instructions
                     if (new Rectangle((graphics.PreferredBackBufferWidth / 2)-175, (graphics.PreferredBackBufferHeight / 2), 250, 30).Contains(mouseX, mouseY) || Keyboard.GetState().IsKeyDown(Keys.I))
@@ -205,7 +206,7 @@ namespace CSCI_2941_Lab5
                         game = 2;
                     }
                     //quit
-                    if (new Rectangle((graphics.PreferredBackBufferWidth / 2)-175, (2 * graphics.PreferredBackBufferHeight / 3), 250, 30).Contains(mouseX, mouseY))
+                    if (new Rectangle((graphics.PreferredBackBufferWidth / 2)-175, (5 * graphics.PreferredBackBufferHeight / 6), 250, 30).Contains(mouseX, mouseY))
                     {
                         selection.Play(1f, .1f, .5f);
                         this.Exit();
@@ -238,12 +239,6 @@ namespace CSCI_2941_Lab5
                     if (Keyboard.GetState().IsKeyDown(Keys.Enter) || new Rectangle((graphics.PreferredBackBufferWidth / 2)-300, (graphics.PreferredBackBufferHeight / 2), 250, 30).Contains(mouseX, mouseY))
                     {
                         selection.Play(1f, .1f, .5f);
-<<<<<<< HEAD
-                        player1 = 0;
-                        player2 = 0;
-                        game = 1;
-                       
-=======
                         
                         player1 = 0;
                         player2 = 0;
@@ -252,8 +247,6 @@ namespace CSCI_2941_Lab5
 
                         musicCue.Resume();
                         game = 1;
-
->>>>>>> ec44edbf776c8a246973bfe9e9bd482b7010e292
                     }
   
                     //quit
@@ -276,6 +269,22 @@ namespace CSCI_2941_Lab5
             {
                 Sonya.Update(gameTime);
                 SubZero.Update(gameTime);
+
+                if (Sonya.playerAnimation.playerPos.X > SubZero.playerAnimation.playerPos.X &&
+                    Sonya.currentState == (int)Sprite.Idle)
+                    Sonya.playerAnimation.flipHorizontal = true;
+
+                if (Sonya.playerAnimation.playerPos.X < SubZero.playerAnimation.playerPos.X &&
+                    Sonya.currentState == (int)Sprite.Idle)
+                    Sonya.playerAnimation.flipHorizontal = false;
+
+                if (SubZero.playerAnimation.playerPos.X < Sonya.playerAnimation.playerPos.X &&
+                    SubZero.currentState == (int)Sprite.Idle)
+                    SubZero.playerAnimation.flipHorizontal = false;
+
+                if (SubZero.playerAnimation.playerPos.X > Sonya.playerAnimation.playerPos.X &&
+                    SubZero.currentState == (int)Sprite.Idle)
+                    SubZero.playerAnimation.flipHorizontal = true;
 
                 // clock start and update  
                 if (clock.isRunning == false)
@@ -302,45 +311,74 @@ namespace CSCI_2941_Lab5
             }
 
             // Test if Sonya Gets Attacked //
-            Health = collision.TestCollision(Sonya.sonyaHitBox.playerHB, SubZero.subZAttackHB.playerHB,
+            SonyaHealthEffect = collision.TestCollision(Sonya.sonyaHitBox.playerHB, SubZero.subZAttackHB.playerHB,
                 Sonya.currentState, SubZero.currentState);
 
-            if (Health != 0 && SonyaHealth != 0)
+            if (SonyaHealthEffect > 10)
+                Sonya.beenHit = true;
+
+            if (SonyaHealthEffect != 0 && SonyaHealth != 0)
             {
                 if (Sonya.playerPosition.X > SubZero.playerPosition.X)
                 {
-                    Sonya.playerAnimation.playerPos.X += 10;
-                    Sonya.playerPosition.X += 10;//Sonya.playerAnimation.playerPos;
+                    Sonya.playerAnimation.playerPos.X += pushBack;
+                    Sonya.playerPosition.X += pushBack;//Sonya.playerAnimation.playerPos;
+                    if (Sonya.playerPosition.X >= graphics.PreferredBackBufferWidth - 135)
+                    {
+                        Sonya.playerAnimation.playerPos.X = graphics.PreferredBackBufferWidth - 135;
+                        Sonya.playerPosition.X = graphics.PreferredBackBufferWidth - 135;
+                    }
                 }
                 else
                 {
-                    Sonya.playerAnimation.playerPos.X -= 10;
-                    Sonya.playerPosition.X -= 10;//Sonya.playerAnimation.playerPos;
+                    Sonya.playerAnimation.playerPos.X -= pushBack;
+                    Sonya.playerPosition.X -= pushBack;//Sonya.playerAnimation.playerPos;
+                    if (Sonya.playerPosition.X <= 0)
+                    {
+                        Sonya.playerAnimation.playerPos.X = 0;
+                        Sonya.playerPosition.X = 0;
+                    }
                 }
-                    if (game == 3)
+
+                if (game == 3)
                     S_hurt.Play(1f, .1f, .5f);
-                SonyaHealth -= Health;
+
+                SonyaHealth -= SonyaHealthEffect;
                 SonyaGreenBar.update(SonyaHealth);
             }
             // Test is Sub Gets Attacked //
-            Health = collision.TestCollision(SubZero.subZeroHitBox.playerHB, Sonya.sonyaAttackHB.playerHB,
+            SubZeroHealthEffect = collision.TestCollision(SubZero.subZeroHitBox.playerHB, Sonya.sonyaAttackHB.playerHB,
                 SubZero.currentState, Sonya.currentState);
 
-            if (Health != 0 && SubZHealth != 0)
+            if (SubZeroHealthEffect > 10)
+                SubZero.beenHit = true;
+
+            if (SubZeroHealthEffect != 0 && SubZHealth != 0)
             {
                 if (Sonya.playerPosition.X > SubZero.playerPosition.X)
                 {
-                    SubZero.playerAnimation.playerPos.X -= 10;
-                    SubZero.playerPosition.X -= 10;
+                    SubZero.playerAnimation.playerPos.X -= pushBack;
+                    SubZero.playerPosition.X -= pushBack;
+                    if (SubZero.playerPosition.X <= 0)
+                    {
+                        SubZero.playerAnimation.playerPos.X = 0;
+                        SubZero.playerPosition.X = 0;
+                    }
                 }
                 else
                 {
-                    SubZero.playerAnimation.playerPos.X += 10;
-                    SubZero.playerPosition.X += 10;
+                    SubZero.playerAnimation.playerPos.X += pushBack;
+                    SubZero.playerPosition.X += pushBack;
+                    if (SubZero.playerPosition.X >= graphics.PreferredBackBufferWidth - 140)
+                    {
+                        SubZero.playerAnimation.playerPos.X = graphics.PreferredBackBufferWidth - 140;
+                        SubZero.playerPosition.X = graphics.PreferredBackBufferWidth - 140;
+                    }
                 }
+
                 if (game == 3)
                     SZ_hurt.Play(1f, .1f, .5f);
-                SubZHealth -= Health;
+                SubZHealth -= SubZeroHealthEffect;
                 SubZGreenBar.update(SubZHealth);
             }
             if (game == 3)
@@ -348,26 +386,53 @@ namespace CSCI_2941_Lab5
                 //clock runs out 
                 if (clock.isFinished)
                 {
+                    Sonya.gameEnded = true;
+                    SubZero.gameEnded = true;
+
                     if (SonyaHealth > SubZHealth)
+                    {
                         player1 = 1;
+                        Sonya.winGame = true;
+                        SubZero.winGame = false;
+                    }
                     if (SubZHealth > SonyaHealth)
+                    {
                         player2 = 1;
+                        Sonya.winGame = false;
+                        SubZero.winGame = true;
+                    }
                     musicCue.Pause();
                     game = 5;
                 }
                 if (SonyaHealth <= 0 || SubZHealth <= 0)
                 {
+                    Sonya.gameEnded = true;
+                    SubZero.gameEnded = true;
+
                     if (SonyaHealth <= 0)
+                    {
                         player2 = 1;
+                        Sonya.winGame = false;
+                        SubZero.winGame = true;
+                    }
+                       
                     if (SubZHealth <= 0)
+                    {
                         player1 = 1;
+                        Sonya.winGame = true;
+                        SubZero.winGame = false;
+                    }
                     musicCue.Pause();
                     clock.reset();
                     timer = 0;
-                    game = 5;
+                    drawBars = false;
+
+                    endMenuTimer -= (int)gameTime.ElapsedGameTime.TotalMilliseconds / 10;
+
+                    if (endMenuTimer <= 0)
+                        game = 5;
                 }
             }
-
             base.Update(gameTime);
         }
 
@@ -391,7 +456,7 @@ namespace CSCI_2941_Lab5
                 spriteBatch.DrawString(font, "Normal Kombat", new Vector2((graphics.PreferredBackBufferWidth / 4), (graphics.PreferredBackBufferHeight) / 30), Color.White);
                 spriteBatch.DrawString(font, "Play", new Vector2((graphics.PreferredBackBufferWidth / 2)-175, (2 * graphics.PreferredBackBufferHeight / 5)), Color.Azure);
                 spriteBatch.DrawString(font, "keys", new Vector2((graphics.PreferredBackBufferWidth / 2)-175, (graphics.PreferredBackBufferHeight / 2)), Color.Azure);
-                spriteBatch.DrawString(font, "Quit", new Vector2((graphics.PreferredBackBufferWidth / 2)-175, (2 * graphics.PreferredBackBufferHeight / 3)), Color.Azure);
+                spriteBatch.DrawString(font, "Quit", new Vector2((graphics.PreferredBackBufferWidth / 2)-175, (5 * graphics.PreferredBackBufferHeight / 6)), Color.Azure);
 
             }
             //instructions
@@ -416,17 +481,20 @@ namespace CSCI_2941_Lab5
             {
                 spriteBatch.DrawString(font, clock.displayClock, new Vector2(graphics.PreferredBackBufferWidth / 2 - (clockSize.X / 2), graphics.PreferredBackBufferHeight / 30), Color.Yellow);
             }
-            //spriteBatch.Draw(leftHealthBar, leftCoor, Color.White);
-            //spriteBatch.Draw(rightHealthBar, rightCoor, Color.White);
-            Sonya.Draw(spriteBatch);
-            SubZero.Draw(spriteBatch);
+                //spriteBatch.Draw(leftHealthBar, leftCoor, Color.White);
+                //spriteBatch.Draw(rightHealthBar, rightCoor, Color.White);
+                SubZero.Draw(spriteBatch);
+                Sonya.Draw(spriteBatch);
 
-            SonyaRedBar.Draw(spriteBatch);
-            SonyaGreenBar.Draw(spriteBatch);
+            if (drawBars)
+            {
+                SonyaRedBar.Draw(spriteBatch);
+                SonyaGreenBar.Draw(spriteBatch);
 
-            SubZRedBar.Draw(spriteBatch);
-            SubZGreenBar.Draw(spriteBatch);
-            
+                SubZRedBar.Draw(spriteBatch);
+                SubZGreenBar.Draw(spriteBatch);
+            }
+
             }
             //pause
             if (game == 4)
@@ -454,10 +522,6 @@ namespace CSCI_2941_Lab5
             base.Draw(gameTime);
         }
     }
-<<<<<<< HEAD
+
 }
 
-
-=======
-}
->>>>>>> ec44edbf776c8a246973bfe9e9bd482b7010e292

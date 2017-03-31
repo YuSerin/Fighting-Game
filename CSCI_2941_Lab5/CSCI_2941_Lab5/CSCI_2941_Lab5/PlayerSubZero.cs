@@ -15,20 +15,24 @@ namespace CSCI_2941_Lab5
         KeyboardState oldState = Keyboard.GetState();
         bool devMode = false;
         SoundEffect kick, punch;        //http://mkw.mortalkombatonline.com/umk3/sounds/#male
-        Texture2D[] playerSprite = new Texture2D[(int)Sprite.Max];
+        public Texture2D[] playerSprite = new Texture2D[(int)Sprite.Max];
         public Animation playerAnimation = new Animation();
-        Vector2[] FrameSize = new Vector2[(int)Sprite.Max];
+        public Vector2[] FrameSize = new Vector2[(int)Sprite.Max];
         public Vector2 playerPosition = new Vector2(1050f, 400f);
         public HitBox subZeroHitBox = new HitBox();
         public HitBox subZAttackHB = new HitBox();
         float moveSpeed = 300f;
         //float jumpSpeed = 10f;
-        bool looping = true;
+        public bool looping = true;
         Keys lastKey;
         bool stateChange;
        // bool reachedGround;
         public int currentState = (int)Sprite.Idle;
+        public bool beenHit = false;
         Vector2 screenSize;
+        public bool gameEnded;
+        public bool winGame;
+        public bool freezeFrame;
         public void Initialize(int screenWidth, int screenHeight)
         {
             FrameSize[(int)Sprite.Idle] = new Vector2(68f, 131f);
@@ -37,7 +41,9 @@ namespace CSCI_2941_Lab5
             FrameSize[(int)Sprite.Mid_Punch] = new Vector2(113f, 134f);
             FrameSize[(int)Sprite.Kick] = new Vector2(126f, 138f);
             FrameSize[(int)Sprite.Block] = new Vector2(61f, 131f);
-            //FrameSize[(int)Sprite.Jump] = new Vector2(70f, 136f);
+            FrameSize[(int)Sprite.Hit] = new Vector2(68f, 127f);
+            FrameSize[(int)Sprite.Victory] = new Vector2(75f, 171f);
+            FrameSize[(int)Sprite.Fall] = new Vector2(134f, 135f);
 
             screenSize = new Vector2(screenWidth, screenHeight);
             playerAnimation.flipHorizontal = true;
@@ -53,7 +59,9 @@ namespace CSCI_2941_Lab5
             playerSprite[(int)Sprite.Mid_Punch] = Content.Load<Texture2D>("SubZero/Mid_Punch");
             playerSprite[(int)Sprite.Kick] = Content.Load<Texture2D>("SubZero/Kick");
             playerSprite[(int)Sprite.Block] = Content.Load<Texture2D>("SubZero/Block");
-            //playerSprite[(int)Sprite.Jump] = Content.Load<Texture2D>("SubZero/Jump");
+            playerSprite[(int)Sprite.Hit] = Content.Load<Texture2D>("SubZero/Hit");
+            playerSprite[(int)Sprite.Victory] = Content.Load<Texture2D>("SubZero/Victory");
+            playerSprite[(int)Sprite.Fall] = Content.Load<Texture2D>("SubZero/Fall");
 
             punch = Content.Load<SoundEffect>("SubZero/punching");
             kick = Content.Load<SoundEffect>("SubZero/kicking");
@@ -80,17 +88,19 @@ namespace CSCI_2941_Lab5
 
             if (looping == false)
             {
-                playerAnimation.Update(gameTime, stateChange, looping);
+                playerAnimation.Update(gameTime, stateChange, looping, freezeFrame);
                 if (currentState != (int)Sprite.Block)
                     currentState = (int)Sprite.Idle;
                 else
                     currentState = (int)Sprite.Block;
-                if (playerAnimation.currentFrame.X >= playerAnimation.playerImg[playerAnimation.State].Width)
+
+                // Reached end of sprite sheet //
+                if (playerAnimation.currentFrame.X >= playerAnimation.playerImg[playerAnimation.State].Width && !freezeFrame)
                 {
-                    looping = true;
-                    playerAnimation.currentFrame = new Vector2(0, 0);
                     playerAnimation.playerPos = playerPosition;
-                    
+                    beenHit = false;
+                    playerAnimation.currentFrame = new Vector2(0, 0);
+                    looping = true;
                 }
             }
 
@@ -99,6 +109,7 @@ namespace CSCI_2941_Lab5
                 // Crouch down //
                 if (Keyboard.GetState().IsKeyDown(Keys.L))
                 {
+                    freezeFrame = false;
                     playerAnimation.holdFrame = true;
                     //move attack hitbox off screen
                     subZAttackHB.HB(new Vector2(playerPosition.X, playerPosition.Y + 10000), FrameSize[0]);
@@ -127,6 +138,7 @@ namespace CSCI_2941_Lab5
                 // Mid-Punch //
                 else if (newState.IsKeyDown(Keys.OemQuestion))
                 {
+                    freezeFrame = false;
                     if (!oldState.IsKeyDown(Keys.OemQuestion))
                     {
                         punch.Play(1f, .1f, .5f);
@@ -172,6 +184,7 @@ namespace CSCI_2941_Lab5
                 // Kick //
                 else if (newState.IsKeyDown(Keys.OemComma))
                 {
+                    freezeFrame = false;
                     if (!oldState.IsKeyDown(Keys.OemComma))
                     {
                         kick.Play(1f, .1f, .5f);
@@ -217,6 +230,7 @@ namespace CSCI_2941_Lab5
                 // Block //
                 else if (newState.IsKeyDown(Keys.OemPeriod))
                 {
+                    freezeFrame = false;
                     if (!oldState.IsKeyDown(Keys.OemPeriod))
                     {
                         //move attack hitbox off screen
@@ -263,6 +277,7 @@ namespace CSCI_2941_Lab5
                 // Move Right //
                 else if (Keyboard.GetState().IsKeyDown(Keys.OemSemicolon))
                 {
+                    freezeFrame = false;
                     //move attack hitbox off screen
                     subZAttackHB.HB(new Vector2(playerPosition.X, playerPosition.Y + 10000), FrameSize[0]);
 
@@ -292,6 +307,7 @@ namespace CSCI_2941_Lab5
                 // Move Left //
                 else if (Keyboard.GetState().IsKeyDown(Keys.K))
                 {
+                    freezeFrame = false;
                     //move attack hitbox off screen
                     subZAttackHB.HB(new Vector2(playerPosition.X, playerPosition.Y + 10000), FrameSize[0]);
 
@@ -316,8 +332,41 @@ namespace CSCI_2941_Lab5
                     else
                         subZeroHitBox.HB(playerPosition, FrameSize[0]);
                 }
+                // Hit //
+                else if (beenHit == true)
+                {
+                    freezeFrame = false;
+                    playerAnimation.holdFrame = false;
+                    currentState = (int)Sprite.Hit;
+                    stateChange = true;
+                    playerAnimation.State = (int)Sprite.Hit;
+                    looping = false;
+                    playerPosition = playerAnimation.playerPos;
+                }
+                // Game Over //
+                else if (gameEnded)
+                {
+                    freezeFrame = true;
+                    playerAnimation.holdFrame = false;
+                    stateChange = true;
+                    looping = false;
+                    playerPosition = playerAnimation.playerPos;
+
+                    if (winGame)
+                    {
+                        currentState = (int)Sprite.Victory;
+                        playerAnimation.State = (int)Sprite.Victory;
+                        playerAnimation.playerPos.Y -= 100;
+                    }
+                    else
+                    {
+                        currentState = (int)Sprite.Fall;
+                        playerAnimation.State = (int)Sprite.Fall;
+                    }
+                }
                 else
                 {
+                    freezeFrame = false;
                     //move attack hitbox off screen
                     subZAttackHB.HB(new Vector2(playerPosition.X, playerPosition.Y + 10000), FrameSize[0]);
 
@@ -335,7 +384,7 @@ namespace CSCI_2941_Lab5
                 }
                 
 
-                playerAnimation.Update(gameTime, stateChange, looping);
+                playerAnimation.Update(gameTime, stateChange, looping, freezeFrame);
                 stateChange = false;
                 oldState = newState;
 
