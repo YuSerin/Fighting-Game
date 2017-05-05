@@ -21,6 +21,7 @@ namespace CSCI_2941_Lab5
     /// </summary>
     public class Game1 : Microsoft.Xna.Framework.Game
     {
+        GamePadState oldPadState = GamePad.GetState(PlayerIndex.One);
         SoundEffect selection, S_hurt, SZ_hurt;
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
@@ -163,6 +164,7 @@ namespace CSCI_2941_Lab5
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
+            GamePadState newpadState = GamePad.GetState(PlayerIndex.One);
             KeyboardState keyboardState = Keyboard.GetState();      //setting the getstate to keyboardstate
             previousMouseState = Mouse.GetState();       //setting the getstate to the previousMousestate
             mouseState = Mouse.GetState();                 //setting the getstate to the mousestate
@@ -172,7 +174,7 @@ namespace CSCI_2941_Lab5
             {
                 if (game == 1)
                 {  //play
-                    if (Keyboard.GetState().IsKeyDown(Keys.Enter) || (new Rectangle((graphics.PreferredBackBufferWidth / 2)-175, (2 * graphics.PreferredBackBufferHeight / 5), 250, 30).Contains(mouseX, mouseY)))
+                    if (Keyboard.GetState().IsKeyDown(Keys.Enter) || (GamePad.GetState(PlayerIndex.One).Buttons.Start == ButtonState.Pressed))
                     {
                         Sonya.playerPosition = new Vector2(100f, 400f);
                         SubZero.playerPosition = new Vector2(1050f, 400f);
@@ -197,27 +199,15 @@ namespace CSCI_2941_Lab5
                         SubZero.gameEnded = false;
                         Sonya.playerAnimation.currentFrame = Vector2.Zero;
                         SubZero.playerAnimation.currentFrame = Vector2.Zero;
-                        game = 3;
-                    }
-                    //instructions
-                    if (new Rectangle((graphics.PreferredBackBufferWidth / 2)-175, (graphics.PreferredBackBufferHeight / 2), 250, 30).Contains(mouseX, mouseY) || Keyboard.GetState().IsKeyDown(Keys.I))
-                    {
-                        selection.Play(1f, .1f, .5f);
                         game = 2;
-                    }
-                    //quit
-                    if (new Rectangle((graphics.PreferredBackBufferWidth / 2)-175, (5 * graphics.PreferredBackBufferHeight / 6), 250, 30).Contains(mouseX, mouseY))
-                    {
-                        selection.Play(1f, .1f, .5f);
-                        this.Exit();
                     }
                 }
                 if (game == 2)
                 {  //return
-                    if (new Rectangle((2 * graphics.PreferredBackBufferWidth / 3)-175, (graphics.PreferredBackBufferHeight / 30), 250, 30).Contains(mouseX, mouseY))
+                    if ((GamePad.GetState(PlayerIndex.One).Buttons.Start == ButtonState.Pressed))
                     {
                         selection.Play(1f, .1f, .5f);
-                        game = 1;
+                        game = 3;
                     }
                 }
                 if (game == 4)
@@ -453,18 +443,13 @@ namespace CSCI_2941_Lab5
             if (game == 1)
             {
                 spriteBatch.Draw(title, mainFrame, Color.White);
-                spriteBatch.DrawString(font, "Normal Kombat", new Vector2((graphics.PreferredBackBufferWidth / 4), (graphics.PreferredBackBufferHeight) / 30), Color.White);
-                spriteBatch.DrawString(font, "Play", new Vector2((graphics.PreferredBackBufferWidth / 2)-175, (2 * graphics.PreferredBackBufferHeight / 5)), Color.Azure);
-                spriteBatch.DrawString(font, "keys", new Vector2((graphics.PreferredBackBufferWidth / 2)-175, (graphics.PreferredBackBufferHeight / 2)), Color.Azure);
-                spriteBatch.DrawString(font, "Quit", new Vector2((graphics.PreferredBackBufferWidth / 2)-175, (5 * graphics.PreferredBackBufferHeight / 6)), Color.Azure);
+                spriteBatch.DrawString(font, "Normal Kombat", new Vector2((graphics.PreferredBackBufferWidth / 4)-100, (graphics.PreferredBackBufferHeight) / 30), Color.White);
 
             }
             //instructions
             if (game == 2)
             {
                 spriteBatch.Draw(instructions, mainFrame, Color.White);
-
-                spriteBatch.DrawString(font, "Return", new Vector2((2 * graphics.PreferredBackBufferWidth / 3), (graphics.PreferredBackBufferHeight / 30)), Color.Red);
             }
             //gamePlay
             if (game == 3)
