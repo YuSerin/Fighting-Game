@@ -13,6 +13,7 @@ namespace CSCI_2941_Lab5
     class PlayerSonya
     {
         KeyboardState oldState = Keyboard.GetState();
+        GamePadState oldPadState = GamePad.GetState(PlayerIndex.One);
         bool devMode = false;
         SoundEffect kick, punch;            //http://mkw.mortalkombatonline.com/umk3/sounds/#female
         public Texture2D[] playerSprite = new Texture2D[(int)Sprite.Max];
@@ -77,7 +78,7 @@ namespace CSCI_2941_Lab5
             //Saving old and new keyboard state to tell if a key was just pressed or if it 
             //is being held down
             KeyboardState newState = Keyboard.GetState();
-
+            GamePadState newpadState = GamePad.GetState(PlayerIndex.One);
             if (newState.IsKeyDown(Keys.OemPlus))
             {
                 if (!oldState.IsKeyDown(Keys.OemPlus))
@@ -111,7 +112,7 @@ namespace CSCI_2941_Lab5
             if (looping)
             {
                 // Crouch down //
-                if (Keyboard.GetState().IsKeyDown(Keys.S))
+                if (Keyboard.GetState().IsKeyDown(Keys.S) || (GamePad.GetState(PlayerIndex.One).DPad.Down == ButtonState.Pressed))
                 {
                     playerAnimation.holdFrame = true;
                     //move attack hitbox off screen
@@ -142,10 +143,10 @@ namespace CSCI_2941_Lab5
 
                 }
                 // Mid-Punch //
-                else if (newState.IsKeyDown(Keys.C))
+                else if (newState.IsKeyDown(Keys.C) || GamePad.GetState(PlayerIndex.One).Buttons.X == ButtonState.Pressed)
                 {
                     freezeFrame = false;
-                    if (!oldState.IsKeyDown(Keys.C))
+                    if (!oldState.IsKeyDown(Keys.C) && !(oldPadState.Buttons.X == ButtonState.Pressed))
                     {
                         punch.Play(1f, .1f, .5f);
                         currentState = (int)Sprite.Mid_Punch;
@@ -188,10 +189,10 @@ namespace CSCI_2941_Lab5
                     }
                 }
                 // Kick //
-                else if (newState.IsKeyDown(Keys.Z))
+                else if (newState.IsKeyDown(Keys.Z) || GamePad.GetState(PlayerIndex.One).Buttons.B == ButtonState.Pressed)
                 {
                     freezeFrame = false;
-                    if (!oldState.IsKeyDown(Keys.Z))
+                    if (!oldState.IsKeyDown(Keys.Z) || !(oldPadState.Buttons.B == ButtonState.Pressed))
                     {
                         playerAnimation.holdFrame = false;
                         kick.Play(1f, .1f, .5f);
@@ -236,10 +237,10 @@ namespace CSCI_2941_Lab5
                     }
                 }
                 // Block //
-                else if (newState.IsKeyDown(Keys.X))
+                else if (newState.IsKeyDown(Keys.X) || newpadState.Buttons.Y == ButtonState.Pressed)
                 {
                     freezeFrame = false;
-                    if (!oldState.IsKeyDown(Keys.X))
+                    if (!oldState.IsKeyDown(Keys.X) && !(oldPadState.Buttons.Y == ButtonState.Pressed))
                     {
                         playerAnimation.holdFrame = false;
                         //move attack hitbox off screen
@@ -283,7 +284,7 @@ namespace CSCI_2941_Lab5
                     }
                 }
                 // Move Right //
-                else if (Keyboard.GetState().IsKeyDown(Keys.D))
+                else if (Keyboard.GetState().IsKeyDown(Keys.D) || GamePad.GetState(PlayerIndex.One).DPad.Right == ButtonState.Pressed)
                 {
                     freezeFrame = false;
                     playerAnimation.holdFrame = false;
@@ -312,7 +313,7 @@ namespace CSCI_2941_Lab5
                         sonyaHitBox.HB(playerPosition, FrameSize[0]);
                 }
                 // Move Left //
-                else if (Keyboard.GetState().IsKeyDown(Keys.A))
+                else if (Keyboard.GetState().IsKeyDown(Keys.A) || GamePad.GetState(PlayerIndex.One).DPad.Left == ButtonState.Pressed)
                 {
                     freezeFrame = false;
                     playerAnimation.holdFrame = false;
@@ -392,6 +393,7 @@ namespace CSCI_2941_Lab5
                 playerAnimation.Update(gameTime, stateChange, looping, freezeFrame);
                 stateChange = false;
                 oldState = newState;
+                oldPadState = newpadState;
             }
         }
         public void resetPos()

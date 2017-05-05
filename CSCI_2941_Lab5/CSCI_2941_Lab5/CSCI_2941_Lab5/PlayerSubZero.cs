@@ -13,6 +13,7 @@ namespace CSCI_2941_Lab5
     class PlayerSubZero
     {
         KeyboardState oldState = Keyboard.GetState();
+        GamePadState oldPadState = GamePad.GetState(PlayerIndex.Two);
         bool devMode = false;
         SoundEffect kick, punch;        //http://mkw.mortalkombatonline.com/umk3/sounds/#male
         public Texture2D[] playerSprite = new Texture2D[(int)Sprite.Max];
@@ -75,6 +76,7 @@ namespace CSCI_2941_Lab5
             //Saving old and new keyboard state to tell if a key was just pressed or if it 
             //is being held down
             KeyboardState newState = Keyboard.GetState();
+            GamePadState newPadState = GamePad.GetState(PlayerIndex.Two);
 
             if (newState.IsKeyDown(Keys.OemPlus))
             {
@@ -107,7 +109,7 @@ namespace CSCI_2941_Lab5
             if (looping)
             {
                 // Crouch down //
-                if (Keyboard.GetState().IsKeyDown(Keys.L))
+                if (Keyboard.GetState().IsKeyDown(Keys.L) || GamePad.GetState(PlayerIndex.Two).DPad.Down == ButtonState.Pressed)
                 {
                     freezeFrame = false;
                     playerAnimation.holdFrame = true;
@@ -136,10 +138,10 @@ namespace CSCI_2941_Lab5
 
                 }
                 // Mid-Punch //
-                else if (newState.IsKeyDown(Keys.OemQuestion))
+                else if (newState.IsKeyDown(Keys.OemQuestion) || GamePad.GetState(PlayerIndex.Two).Buttons.X == ButtonState.Pressed)
                 {
                     freezeFrame = false;
-                    if (!oldState.IsKeyDown(Keys.OemQuestion))
+                    if (!oldState.IsKeyDown(Keys.OemQuestion) && !(oldPadState.Buttons.X == ButtonState.Pressed))
                     {
                         punch.Play(1f, .1f, .5f);
                         currentState = (int)Sprite.Mid_Punch;
@@ -182,10 +184,10 @@ namespace CSCI_2941_Lab5
                     }
                 }
                 // Kick //
-                else if (newState.IsKeyDown(Keys.OemComma))
+                else if (newState.IsKeyDown(Keys.OemComma) || GamePad.GetState(PlayerIndex.Two).Buttons.B == ButtonState.Pressed)
                 {
                     freezeFrame = false;
-                    if (!oldState.IsKeyDown(Keys.OemComma))
+                    if (!oldState.IsKeyDown(Keys.OemComma) || !(oldPadState.Buttons.B == ButtonState.Pressed))
                     {
                         kick.Play(1f, .1f, .5f);
                         currentState = (int)Sprite.Kick;
@@ -228,10 +230,10 @@ namespace CSCI_2941_Lab5
                     }
                 }
                 // Block //
-                else if (newState.IsKeyDown(Keys.OemPeriod))
+                else if (newState.IsKeyDown(Keys.OemPeriod) || newPadState.Buttons.Y == ButtonState.Pressed)
                 {
                     freezeFrame = false;
-                    if (!oldState.IsKeyDown(Keys.OemPeriod))
+                    if (!oldState.IsKeyDown(Keys.OemPeriod) && !(oldPadState.Buttons.Y == ButtonState.Pressed))
                     {
                         //move attack hitbox off screen
                         subZAttackHB.HB(new Vector2(playerPosition.X, playerPosition.Y + 10000), FrameSize[0]);
@@ -275,7 +277,7 @@ namespace CSCI_2941_Lab5
                     }
                 }
                 // Move Right //
-                else if (Keyboard.GetState().IsKeyDown(Keys.OemSemicolon))
+                else if (Keyboard.GetState().IsKeyDown(Keys.OemSemicolon) || GamePad.GetState(PlayerIndex.Two).DPad.Right == ButtonState.Pressed)
                 {
                     freezeFrame = false;
                     //move attack hitbox off screen
@@ -305,7 +307,7 @@ namespace CSCI_2941_Lab5
                         subZeroHitBox.HB(playerPosition, FrameSize[0]);
                 }
                 // Move Left //
-                else if (Keyboard.GetState().IsKeyDown(Keys.K))
+                else if (Keyboard.GetState().IsKeyDown(Keys.K) || GamePad.GetState(PlayerIndex.Two).DPad.Left == ButtonState.Pressed)
                 {
                     freezeFrame = false;
                     //move attack hitbox off screen
@@ -388,7 +390,7 @@ namespace CSCI_2941_Lab5
                 playerAnimation.Update(gameTime, stateChange, looping, freezeFrame);
                 stateChange = false;
                 oldState = newState;
-
+                oldPadState = newPadState;
                 // playerAnimation.hasJumped = false;
             }
 
