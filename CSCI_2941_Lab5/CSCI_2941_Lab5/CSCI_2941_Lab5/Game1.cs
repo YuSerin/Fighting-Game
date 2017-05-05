@@ -58,6 +58,7 @@ namespace CSCI_2941_Lab5
         private MouseState mouseState, previousMouseState;
         private int mouseX, mouseY;
         int timer = 99;
+        bool menuSeen = false;
 
         //music
         Cue musicCue;
@@ -170,8 +171,8 @@ namespace CSCI_2941_Lab5
             mouseState = Mouse.GetState();                 //setting the getstate to the mousestate
             mouseX = mouseState.X;                      //setting the mouse X position
             mouseY = mouseState.Y;                      //setting the mouse Y position
-            if (keyboardState.IsKeyDown(Keys.Enter) || (mouseState.LeftButton == ButtonState.Pressed && previousMouseState.LeftButton == ButtonState.Pressed))
-            {
+          //  if (keyboardState.IsKeyDown(Keys.Enter) || (mouseState.LeftButton == ButtonState.Pressed && previousMouseState.LeftButton == ButtonState.Pressed || (GamePad.GetState(PlayerIndex.One).Buttons.Start == ButtonState.Pressed)))
+           // {
                 if (game == 1)
                 {  //play
                     if (Keyboard.GetState().IsKeyDown(Keys.Enter) || (GamePad.GetState(PlayerIndex.One).Buttons.Start == ButtonState.Pressed))
@@ -200,15 +201,17 @@ namespace CSCI_2941_Lab5
                         Sonya.playerAnimation.currentFrame = Vector2.Zero;
                         SubZero.playerAnimation.currentFrame = Vector2.Zero;
                         game = 2;
+                   
                     }
                 }
                 if (game == 2)
                 {  //return
-                    if ((GamePad.GetState(PlayerIndex.One).Buttons.Start == ButtonState.Pressed))
+                    if ((GamePad.GetState(PlayerIndex.One).Buttons.A == ButtonState.Pressed))
                     {
                         selection.Play(1f, .1f, .5f);
                         game = 3;
                     }
+                   
                 }
                 if (game == 4)
                 {  //play
@@ -247,7 +250,7 @@ namespace CSCI_2941_Lab5
                     }
                 }
 
-            }
+         //   }
             if (Keyboard.GetState().IsKeyDown(Keys.Escape))
                 this.Exit();
 
