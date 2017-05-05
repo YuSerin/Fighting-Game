@@ -101,7 +101,7 @@ namespace CSCI_2941_Lab5
             musicCue = soundBank.GetCue("fighting backgorund music");
             musicCue.Play();
             base.Initialize();
-            this.IsMouseVisible = true;
+            this.IsMouseVisible = false;
         }
 
         /// <summary>
@@ -215,21 +215,15 @@ namespace CSCI_2941_Lab5
                 }
                 if (game == 4)
                 {  //play
-                    if (new Rectangle((graphics.PreferredBackBufferWidth / 2), (graphics.PreferredBackBufferHeight / 2), 250, 30).Contains(mouseX, mouseY))
+                    if ((GamePad.GetState(PlayerIndex.One).Buttons.A == ButtonState.Pressed))
                     {
                         selection.Play(1f, .1f, .5f);
                         game = 3;
                     }
-                    //quit
-                    if (new Rectangle((graphics.PreferredBackBufferWidth / 2), (2 * graphics.PreferredBackBufferHeight / 3), 250, 30).Contains(mouseX, mouseY))
-                    {
-                        selection.Play(1f, .1f, .5f);
-                        this.Exit();
-                    }
                 }
                 if (game == 5)
                 {  //play
-                    if (Keyboard.GetState().IsKeyDown(Keys.Enter) || new Rectangle((graphics.PreferredBackBufferWidth / 2)-300, (graphics.PreferredBackBufferHeight / 2), 250, 30).Contains(mouseX, mouseY))
+                    if (Keyboard.GetState().IsKeyDown(Keys.Enter) || (GamePad.GetState(PlayerIndex.One).Buttons.A == ButtonState.Pressed))
                     {
                         selection.Play(1f, .1f, .5f);
                         
@@ -243,7 +237,7 @@ namespace CSCI_2941_Lab5
                     }
   
                     //quit
-                    if (new Rectangle((graphics.PreferredBackBufferWidth / 2)-300, (2 * graphics.PreferredBackBufferHeight / 3), 250, 30).Contains(mouseX, mouseY))
+                    if ((GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed))
                     {
                         selection.Play(1f, .1f, .5f);
                         this.Exit();
@@ -291,16 +285,23 @@ namespace CSCI_2941_Lab5
                 }
 
             }
-            if (game == 3 || game == 4)
+            //keyboard controls
+            //if (game == 3 || game == 4)
+            //{
+            //    if (keyboardState.IsKeyDown(Keys.P))
+            //    {
+            //        game = 4;
+            //    }
+            //    if (keyboardState.IsKeyDown(Keys.R))
+            //    {
+            //        game = 3;
+            //    }
+            //}
+
+            if(game == 3)
             {
-                if (keyboardState.IsKeyDown(Keys.P))
-                {
+                if ((GamePad.GetState(PlayerIndex.One).Buttons.Start == ButtonState.Pressed))
                     game = 4;
-                }
-                if (keyboardState.IsKeyDown(Keys.R))
-                {
-                    game = 3;
-                }
             }
 
             // Test if Sonya Gets Attacked //
